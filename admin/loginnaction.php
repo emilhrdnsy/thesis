@@ -2,7 +2,8 @@
 session_start();
 require_once '../lib/koneksi.php';
 $nm_pengguna = $_POST['nm_pengguna'];
-$password = md5($_POST['password']);
+// $password = md5($_POST['password']);
+$password = $_POST['password'];
 
 
 

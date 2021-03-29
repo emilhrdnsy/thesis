@@ -1,7 +1,7 @@
 <div id="sidebar" class="sidebar responsive ace-save-state">
-  <ul class="nav nav-list">
+  <ul class="nav nav-list" >
       <?php
-                                if ($_SESSION['status'] == "admin"){
+                                  if ($_SESSION['status'] == "Admin"){
                                     ?>
     <li <?php if ($page=='dashboard') {echo $active;}?>>
         <a href="adminmainapp.php?unit=dashboard">

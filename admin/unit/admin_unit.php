@@ -70,13 +70,13 @@ include("../admin/leftbar.php");
                                 <tr>
                                     <td style= text-align:center >$no</td>
                                     <td style= text-align:left  >$ddatagrid[nama]</td>
-                                    <td style= text-align:center>$ddatagrid[nm_pengguna]</td>
-                                    <td style= text-align:center>$ddatagrid[katasandi]</td>	
+                                    <td style= text-align:center>$ddatagrid[nama_pengguna]</td>
+                                    <td style= text-align:center>$ddatagrid[kata_sandi]</td>	
                                     <td style= text-align:center>$ddatagrid[status]</td>
                                     
                                     <td style=text-align:center>
-                                        <a href=?unit=admin_unit&act=update&kd_login=$ddatagrid[kd_login] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
-                                        <a href=?unit=admin_unit&act=delete&kd_login=$ddatagrid[kd_login] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
+                                        <a href=?unit=admin_unit&act=update&id_login=$ddatagrid[id_login] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
+                                        <a href=?unit=admin_unit&act=delete&id_login=$ddatagrid[id_login] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
                                     </td>                
                                 </tr>
                                 ";
@@ -151,33 +151,19 @@ include("../admin/leftbar.php");
                        </div>
 					   
 					    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="nm_pengguna">Nama Pengguna</label>
+                      <label class="col-sm-3 control-label no-padding-right"for="nama_pengguna">Nama Pengguna</label>
                       <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="nm_pengguna" id="nm_pengguna" required    />
+                       <input class="col-xs-10 col-sm-5" type="text" name="nama_pengguna" id="nama_pengguna" required    />
                        </div>
                        </div>
 					    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="katasandi">Kata Sandi</label>
+                      <label class="col-sm-3 control-label no-padding-right"for="kata_sandi">Kata Sandi</label>
                       <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="katasandi" id="katasandi" required    />
+                       <input class="col-xs-10 col-sm-5" type="text" name="kata_sandi" id="kata_sandi" required    />
                        </div>
                        </div>
 					   <div class="form-group">
-						<label  class="col-sm-3 control-label no-padding-right"for="jk">Jenis Kelamin</label>
-						<div class="col-sm-9">
-                    <select class="col-xs-10 col-sm-5" name="jk" id="jk" required>
-                        <option value=""></option>
-                        <option value="laki-laki">Laki-Laki</option>
-                        <option value="perempuan">Perempuan</option>
-                    </select>
-                       </div>
-                       </div>
-					   <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="email">Email</label>
-                      <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="email" id="email" required    />
-                       </div>
-                       </div>
+				
 					    <div class="form-group">
                       <label class="col-sm-3 control-label no-padding-right"for="status">Status</label>
                       <div class="col-sm-9">
@@ -213,48 +199,42 @@ include("../admin/leftbar.php");
         break;
     
         case "inputact":
-          $nm_pengguna = $_POST['nm_pengguna'];
-        $katasandi = md5($_POST['katasandi']);
+        $nama_pengguna = $_POST['nama_pengguna'];
+        // $kata_sandi = md5($_POST['kata_sandi']);
+        $kata_sandi = $_POST['kata_sandi'];
         $nama = $_POST['nama'];
-        $email = $_POST['email'];
         $status = $_POST['status'];
         $qinput = "
           INSERT INTO t_login
           (
-            nm_pengguna,
-            katasandi,
+            nama_pengguna,
+            kata_sandi,
             nama,
-            email,
             status
           )
           VALUES
           (
-            '$nm_pengguna',
-            '$katasandi',
+            '$nama_pengguna',
+            '$kata_sandi',
             '$nama',
-            '$email',
             '$status'
           )
         ";
         
-	$cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_login WHERE nm_pengguna = '$nm_pengguna'"));
+	$cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_login WHERE nama_pengguna = '$nama_pengguna'"));
         
-        if (!preg_match('/^\S+@[\w\d.-]{2,}\.[\w]{2,6}$/iU',$_POST['email'])) {
-          echo "<script> alert('Perbaiki Email Anda');
-              document.location='adminmainapp.php?unit=admin_unit&act=input';
-              </script>";
-          } else {
+       
           mysqli_query($mysqli,$qinput);
           echo "<script> alert('Data Tersimpan');
               document.location='adminmainapp.php?unit=admin_unit&act=datagrid';
               </script>";
           exit();
-         }
+        
         break;    
     
         case "update":
-            $kd_login = $_GET['kd_login'];
-        $qupdate = "SELECT * FROM  t_login WHERE kd_login = '$kd_login'";
+            $id_login = $_GET['id_login'];
+        $qupdate = "SELECT * FROM  t_login WHERE id_login = '$id_login'";
         $rupdate = mysqli_query($mysqli, $qupdate);
         $dupdate = mysqli_fetch_assoc($rupdate);
             ?>
@@ -283,9 +263,9 @@ include("../admin/leftbar.php");
                                                             
 <form class="form-horizontal" method="post" action="?unit=admin_unit&act=updateact" enctype="multipart/form-data" >
                    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="kd_login">Kode Pengguna</label>
+                      <label class="col-sm-3 control-label no-padding-right"for="id_login">Kode Pengguna</label>
                       <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="kd_login" id="kd_login" readonly="readonly" value="<?php echo $dupdate['kd_login'] ?>"  required    />
+                       <input class="col-xs-10 col-sm-5" type="text" name="id_login" id="id_login" readonly="readonly" value="<?php echo $dupdate['id_login'] ?>"  required    />
                        </div>
                        </div>
                     <div class="form-group">
@@ -296,50 +276,18 @@ include("../admin/leftbar.php");
                        </div>
 					   
 					    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="nm_pengguna">Nama Pengguna</label>
+                      <label class="col-sm-3 control-label no-padding-right"for="nama_pengguna">Nama Pengguna</label>
                       <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="nm_pengguna" id="nm_pengguna" value="<?php echo $dupdate['nm_pengguna'] ?>" required    />
+                       <input class="col-xs-10 col-sm-5" type="text" name="nama_pengguna" id="nama_pengguna" value="<?php echo $dupdate['nama_pengguna'] ?>" required    />
                        </div>
                        </div>
 					    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="katasandi">Kata Sandi</label>
+                      <label class="col-sm-3 control-label no-padding-right"for="kata_sandi">Kata Sandi</label>
                       <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="katasandi" id="katasandi" value="<?php echo $dupdate['katasandi'] ?>"  required    />
+                       <input class="col-xs-10 col-sm-5" type="text" name="kata_sandi" id="kata_sandi" value="<?php echo $dupdate['kata_sandi'] ?>"  required    />
                        </div>
                        </div>
-					   <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right" for="jk">Jenis Kelamin</label>
-                     <div class="col-sm-9">
-                        <select class="col-xs-10 col-sm-5" name="jk" id="jk" required>
-                                         <?php
-                        $qcombo = 
-                        "
-                        SELECT * FROM t_login
-                        ";
-                        $rcombo = mysqli_query($mysqli,$qcombo);
-                        while($dcombo = mysqli_fetch_assoc($rcombo)) {
-                            if($dcombo['kd_login'] == $dupdate['kd_login']) {
-                                echo "
-                                <option value=$dcombo[kd_login] selected=selected>$dcombo[jk]</option> 
-                                ";                                
-                            }
-                            else {
-                                echo "
-                                <option value=$dcombo[kd_login]>$dcombo[jk]</option> 
-                                ";                                
-                            }
-
-                        }
-                        ?>
-                    </select>
-                       </div>
-                       </div>
-					   <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="email">Email</label>
-                      <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="email" name="email" id="email" value="<?php echo $dupdate['email'] ?>" required    />
-                       </div>
-                       </div>
+					  
 					    <div class="form-group">
                       <label class="col-sm-3 control-label no-padding-right"for="status">Status</label>
                       <div class="col-sm-9">
@@ -374,39 +322,33 @@ include("../admin/leftbar.php");
         break;
     
          case "updateact":
-        $kd_login = $_POST['kd_login'];
+        $id_login = $_POST['id_login'];
         $nama = $_POST['nama'];
-        $nm_pengguna = $_POST['nm_pengguna'];
-        $katasandi = md5($_POST['katasandi']);
-        $jk = $_POST['jk'];
-        $email = $_POST['email'];
+        $nama_pengguna = $_POST['nama_pengguna'];
+        // $kata_sandi = md5($_POST['kata_sandi']);
+        $kata_sandi = $_POST['kata_sandi'];
         $status = $_POST['status'];
         
         $qupdate = "";
-        if($katasandi == "") {
+        if($kata_sandi == "") {
             $qupdate = "
               UPDATE t_login SET
-                nm_pengguna = '$nm_pengguna',
+                nama_pengguna = '$nama_pengguna',
                 nama = '$nama', 
-                jk = '$jk',
-                email = '$email',    
                 status = '$status'        
               WHERE
-                kd_login = '$kd_login'
+                id_login = '$id_login'
             ";            
         }
         else {
-            $katasandi = md5($katasandi);
             $qupdate = "
               UPDATE t_login SET
-                nm_pengguna = '$nm_pengguna',
-                 nama = '$nama',
-                katasandi = '$katasandi',    
-                 jk = '$jk',
-                email = '$email',    
+                nama_pengguna = '$nama_pengguna',
+                nama = '$nama',
+                kata_sandi = '$kata_sandi',        
                 status = '$status'        
               WHERE
-                kd_login = '$kd_login'
+                id_login = '$id_login'
             ";                        
         }
 
@@ -416,19 +358,19 @@ include("../admin/leftbar.php");
         break;      
     
         case "delete":
-        $kd_login = $_GET['kd_login'];
+        $id_login = $_GET['id_login'];
         $qdelete = "
           DELETE  FROM t_login 
        
           WHERE
-            kd_login = '$kd_login'
+            id_login = '$id_login'
         ";
         $rdelete = mysqli_query($mysqli,$qdelete);
         header("location:?unit=admin_unit&act=datagrid");
             break;
 
 case "aktif":
-      $kd_login = $_GET['kd_login'];
+      $id_login = $_GET['id_login'];
                 $blokir = $_POST['blokir'];
         $qupdate = "
           UPDATE t_login SET
@@ -436,7 +378,7 @@ case "aktif":
             batas_login = '0' 
      
           WHERE
-            kd_login = '$kd_login' 
+            id_login = '$id_login' 
         ";
         $rupdate = mysqli_query($mysqli,$qupdate);
         header("location:?unit=admin_unit&act=datagrid");
@@ -444,18 +386,15 @@ case "aktif":
 
         break;
     case "blokir":
-      $kd_login = $_GET['kd_login'];
+      $id_login = $_GET['id_login'];
                 $blokir = $_POST['blokir'];
         $qupdate = "
           UPDATE t_login SET
             blokir = 'Y' 
-     
           WHERE
-            kd_login = '$kd_login' 
+            id_login = '$id_login' 
         ";
         $rupdate = mysqli_query($mysqli,$qupdate);
         header("location:?unit=admin_unit&act=datagrid");
-
-
         break;
 }

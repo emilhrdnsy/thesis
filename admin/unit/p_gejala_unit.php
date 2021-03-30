@@ -9,57 +9,59 @@ switch($act){
         ?>
 <?php
 include("../admin/leftbar.php");
-?> 
+?>
 
 
-			<div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="adminmainapp.php?unit=dashboard">Beranda</a>
-							</li>
-              <li>Data Transaksi</li>
-							<li>Konsultasi</li>
-						</ul><!-- /.breadcrumb -->
-					</div>
+<div class="main-content">
+  <div class="main-content-inner">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+      <ul class="breadcrumb">
+        <li>
+          <i class="ace-icon fa fa-home home-icon"></i>
+          <a href="adminmainapp.php?unit=dashboard">Beranda</a>
+        </li>
+        <li>Data Transaksi</li>
+        <li>Konsultasi</li>
+      </ul><!-- /.breadcrumb -->
+    </div>
 
-					<div class="page-content">
-						<div class="page-header">
-							<h1>Konsultasi<small> Nama : <?php echo $dupdate['nm_pasien']; ?></h1>
-							
-						</div>
-                         <h6>Silahkan Pilih Kondisi Gejala Susai Yang Dialami:</h6>                       
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="row">
-								
-             <form name="p_gejala" id="p_gejala" method="post" action="?unit=p_gejala_unit&act=proses&kd_daftar=<?php echo $dupdate['kd_daftar']; ?>" enctype="multipart/form-data">
-				 
-				 <div class="widget-box widget-color-red" id="widget-box-2">
-				   												<div class="widget-header">
-													<h5 class="widget-title bigger lighter">
-														<i class=""></i>
-														Pilih Gejala
-													</h5>
+    <div class="page-content">
+      <div class="page-header">
+        <h1>Konsultasi<small> Nama : <?php echo $dupdate['nm_pasien']; ?></h1>
 
-											</div>
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-														<table class="table table-striped table-bordered table-hover">
-															<thead class="thin-border-bottom">
-																
-                          <tr>
-                            <th style="width:100px; center">No.</th>
-                            <th style="width:100px; text-align:center">Kode Gejala</th>
-                            <th style="text-align: center">Nama Gejala</th>
-                            <th style="width:300px; text-align:center">Pilih Kondisi</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                         <?php 
+      </div>
+      <h6>Silahkan Pilih Kondisi Gejala Susai Yang Dialami:</h6>
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- PAGE CONTENT BEGINS -->
+          <div class="row">
+
+            <form name="p_gejala" id="p_gejala" method="post"
+              action="?unit=p_gejala_unit&act=proses&kd_daftar=<?php echo $dupdate['kd_daftar']; ?>"
+              enctype="multipart/form-data">
+
+              <div class="widget-box widget-color-red" id="widget-box-2">
+                <div class="widget-header">
+                  <h5 class="widget-title bigger lighter">
+                    <i class=""></i>
+                    Pilih Gejala
+                  </h5>
+
+                </div>
+                <div class="widget-body">
+                  <div class="widget-main no-padding">
+                    <table class="table table-striped table-bordered table-hover">
+                      <thead class="thin-border-bottom">
+
+                        <tr>
+                          <th style="width:100px; center">No.</th>
+                          <th style="width:100px; text-align:center">Kode Gejala</th>
+                          <th style="text-align: center">Nama Gejala</th>
+                          <th style="width:300px; text-align:center">Pilih Kondisi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
                           $qdatagrid ="  SELECT * FROM t_gejala ORDER by kode_gejala ";
                             $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                             
@@ -75,55 +77,60 @@ include("../admin/leftbar.php");
 									$rdatagridk = mysqli_query($mysqli, $qdatagridk);
 									while($ddatagridk=mysqli_fetch_array($rdatagridk)) {
 									 ?>
-									<option data-id="<?php echo $ddatagridk['id']; ?>" value="<?php echo $ddatagrid['kode_gejala'] . '_' . $ddatagridk['id']; ?>"><?php echo $ddatagridk['kondisi']; ?></option>
-									<?php
+                        <option data-id="<?php echo $ddatagridk['id']; ?>"
+                          value="<?php echo $ddatagrid['kode_gejala'] . '_' . $ddatagridk['id']; ?>">
+                          <?php echo $ddatagridk['kondisi']; ?></option>
+                        <?php
 									}
 									echo '</select></td>';
 									
                              }
                              ?>
-									             
-                                </tr>
-								
-                        </tbody>
-														</table>
-													</div>
-												</div>
-											</div>
-											<div class="clearfix form-actions">
-                            <div class="col-md-offset-3 col-md-9">
-                        <button type="submit" name="submit" class="btn btn-danger">Proses Gejala</button>
-                         </div>
-			</div> 
-</form>
-       
 
-								</div><!-- /.row -->
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div>
-			</div><!-- /.main-content -->
+                        </tr>
 
-		<?php
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix form-actions">
+                <div class="col-md-offset-3 col-md-9">
+                  <button type="submit" name="submit" class="btn btn-danger">Proses Gejala</button>
+                </div>
+              </div>
+            </form>
+
+
+          </div><!-- /.row -->
+          <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.page-content -->
+  </div>
+</div><!-- /.main-content -->
+
+<?php
             include("../admin/footer.php");
             ?>
-      <!-- DATA TABLES SCRIPT -->
-      <script src="../css/backend/js/jquery.dataTables.min.js" type="text/javascript"></script>
-      <script src="../css/backend/js/jquery.dataTables.bootstrap.min.js" type="text/javascript"></script>
-      <script type="text/javascript">
-      function confirmDialog() {
-       return confirm('Apakah anda yakin?')
-      }
-        $('#datatable').dataTable({
-          "lengthMenu": [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, "Semua"]]
-        });
-		
-      </script>
-	</body>
+<!-- DATA TABLES SCRIPT -->
+<script src="../css/backend/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="../css/backend/js/jquery.dataTables.bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  function confirmDialog() {
+    return confirm('Apakah anda yakin?')
+  }
+  $('#datatable').dataTable({
+    "lengthMenu": [
+      [10, 25, 50, 100, 500, 1000, -1],
+      [10, 25, 50, 100, 500, 1000, "Semua"]
+    ]
+  });
+</script>
+</body>
+
 </html>
- <?php
+<?php
         
         break;
 		
@@ -250,126 +257,150 @@ include("../admin/leftbar.php");
 <?php
 include("../admin/leftbar.php");
 ?>
-			<div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Beranda</a>
-							</li>
-              <li>Data Transaksi</li>
-							<li>Konsultasi</li>
-						</ul><!-- /.breadcrumb -->
-					</div>
+<div class="main-content">
+  <div class="main-content-inner">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+      <ul class="breadcrumb">
+        <li>
+          <i class="ace-icon fa fa-home home-icon"></i>
+          <a href="#">Beranda</a>
+        </li>
+        <li>Data Transaksi</li>
+        <li>Konsultasi</li>
+      </ul><!-- /.breadcrumb -->
+    </div>
 
-					<div class="page-content">
-						<div class="page-header"><h1>Konsultasi<br><small> Untuk Memulai Konsultasi Silahkan Masukan Identitas Terlebih Dahulu</h1>
-            
+    <div class="page-content">
+      <div class="page-header">
+        <h1>Konsultasi<br><small> Untuk Memulai Konsultasi Silahkan Masukan Identitas Terlebih Dahulu</h1>
 
-            </div>
 
-						<div class="row">
+      </div>
 
-							<div class="col-xs-12">
-                              
-               <?php
+      <div class="row">
+
+        <div class="col-xs-12">
+
+          <?php
 				$mysqli= mysqli_connect("localhost","root","","expert-systemDB");
-                $qupdate = "SELECT max(kode_daftar) as maxKode FROM t_daftar";
+                $qupdate = "SELECT max(id_siswa) as maxKode FROM t_siswa";
                 $rupdate = mysqli_query($mysqli, $qupdate);
                 $dupdate = mysqli_fetch_assoc($rupdate);
                 $kd_daftar = $dupdate['maxKode'];
                 $no_urut = $kd_daftar + 1;
-                $char = "K";
+                $char = "S";
                 $newID = $char.sprintf("%01s",$no_urut);
 
-                    ?>                             
-             <form class="form-horizontal" name="tambah_subkat" id="tambah_subkat" method="post" action="?unit=p_gejala_unit&act=inputact" enctype="multipart/form-data">
-                 
+                    ?>
+          <form class="form-horizontal" name="tambah_subkat" id="tambah_subkat" method="post"
+            action="?unit=p_gejala_unit&act=inputact" enctype="multipart/form-data">
 
 
-				  <div class="form-group">
-                          <label class="col-sm-3 control-label no-padding-right">Kode Daftar</label>
-                            <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="kd_daftar" id="kd_daftar" required="required" value="<?php echo "$newID"; ?>" readonly="" />
-                            </div>
-                       </div>
-                                                           
-                        <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="nm_pasien">Nama</label>
-                      <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="nm_pasien" id="nm_pasien" required    />
-                       </div>
-                       </div>
-                                   <div class="form-group">
-            <label  class="col-sm-3 control-label no-padding-right"for="jk">Jenis Kelamin</label>
-            <div class="col-sm-9">
-                    <select class="col-xs-10 col-sm-5" name="jk" id="jk" required>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right">Kode Daftar</label>
+              <div class="col-sm-9">
+                <input class="col-xs-10 col-sm-5" type="text" name="id_siswa" id="kd_daftar" required="required"
+                  value="<?php echo "$newID"; ?>" readonly="" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="nm_pasien">Nama</label>
+              <div class="col-sm-9">
+                <input class="col-xs-10 col-sm-5" type="text" name="nama_siswa" id="nama_siswa" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="jk">Jenis Kelamin</label>
+              <div class="col-sm-9">
+                <!-- <select class="col-xs-10 col-sm-5" name="jk" id="jk" required>
                         <option value=""></option>
                         <option value="laki-laki">Laki-Laki</option>
                         <option value="perempuan">Perempuan</option>
-                    </select>
-                       </div>
-                       </div>
-					   
-					    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="usia">Usia</label>
-                      <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="usia" id="usia" required    />
-                       </div>
-                       </div>
-					   
-                  <div class="clearfix form-actions">
-                            <div class="col-md-offset-3 col-md-9">
-                        <button type="submit" name="submit" class="btn btn-success">Lanjutkan</button>
-                        <button type="reset" name="reset" class="btn btn-danger">Batal</button>
-                         </div>
-			</div> 
-       
-                 </form>
-             
+                    </select> -->
 
-                   
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div>
-                
-			</div><!-- /.main-content -->
-		<?php
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin" value="Laki-laki" checked>
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Laki-laki
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin" value="Perempuan">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Perempuan
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="kelas">Kelas</label>
+              <div class="col-sm-9">
+                <!-- <input class="col-xs-10 col-sm-5" type="text" name="usia" id="usia" required    /> -->
+                <select class="form-select col-xs-10 col-sm-5 " name="kelas" id="kelas"
+                  aria-label="Default select example" required>
+                  <option value="X IPA 1">X IPA 1</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="clearfix form-actions">
+              <div class="col-md-offset-3 col-md-9">
+                <button type="submit" name="submit" class="btn btn-success">Lanjutkan</button>
+                <button type="reset" name="reset" class="btn btn-danger">Batal</button>
+              </div>
+            </div>
+
+          </form>
+
+
+
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.page-content -->
+  </div>
+
+</div><!-- /.main-content -->
+<?php
             include("../admin/footer.php");
             ?>
- <script  type="text/javascript">
- var frmvalidator = new Validator("tambah_subkat");
- 
- frmvalidator.addValidation("kd_penyakit","req","Silakan Pilih kategori");
- frmvalidator.addValidation("namasubkategori","req","Silakan Masukkan Nama Subkategori");
- frmvalidator.addValidation("namasubkategori","maxlen=35","Maksimal Karakter Nama 35 digit");
- frmvalidator.addValidation("namasubkategori","alpha_s","Hanya Huruf Saja");
- frmvalidator.addValidation("namasubkategori","simbol","Hanya Huruf Saja");
+<script type="text/javascript">
+  var frmvalidator = new Validator("tambah_subkat");
+
+  frmvalidator.addValidation("kd_penyakit", "req", "Silakan Pilih kategori");
+  frmvalidator.addValidation("namasubkategori", "req", "Silakan Masukkan Nama Subkategori");
+  frmvalidator.addValidation("namasubkategori", "maxlen=35", "Maksimal Karakter Nama 35 digit");
+  frmvalidator.addValidation("namasubkategori", "alpha_s", "Hanya Huruf Saja");
+  frmvalidator.addValidation("namasubkategori", "simbol", "Hanya Huruf Saja");
 </script>
-	</body>
+</body>
+
 </html>
 
 
- <?php
+<?php
         break;
     
-             case "inputact":
+       case "inputact":
       
-             $kd_daftar = $_POST['kd_daftar'];
-			 $nm_pasien = $_POST['nm_pasien'];
-			 $jk = $_POST['jk'];
-			 $usia = $_POST['usia'];
+       $id_siswa = $_POST['id_siswa'];
+			 $nama_siswa = $_POST['nama_siswa'];
+			 $jenis_kelamin = $_POST['jenis_kelamin'];
+			 $kelas = $_POST['kelas'];
 			
-             $qinput = "
-          INSERT INTO t_daftar
-          (kd_daftar, nm_pasien, jk, usia)
+          $qinput = "
+          INSERT INTO t_siswa
+          (id_siswa, nama_siswa, jenis_kelamin, kelas)
           VALUES
-          ('$kd_daftar', '$nm_pasien', '$jk', '$usia')
+          ('$id_siswa', '$nama_siswa', '$jenis_kelamin', '$kelas')
         ";
 
-        $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_daftar WHERE kd_daftar = '$kd_daftar'"));
+        $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_siswa WHERE id_siswa = '$id_siswa'"));
         
         if ($cek > 0) {
           echo "<script> alert('Kode Sudah Ada');
@@ -385,9 +416,9 @@ include("../admin/leftbar.php");
         break;
     
         case "update":
-        $kd_daftar = $_GET['kd_daftar'];
+        $id_siswa = $_GET['id_siswa'];
         $qupdate = "SELECT 
-                           t_hasil.kd_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,t_hasil.kd_daftar,
+               t_hasil.kd_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,t_hasil.kd_daftar,
 						   t_penyakit.kode_penyakit, t_penyakit.nm_penyakit, t_penyakit.penyebab,
 						   t_penyakit.pencegahan, t_penyakit.penanganan,
 						   t_daftar.kd_daftar, t_daftar.nm_pasien
@@ -455,47 +486,50 @@ include("../admin/leftbar.php");
 <?php
 include("../admin/leftbar.php");
 ?>
-			<div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Beranda</a>
-							</li>
-              <li>Data Transaksi</li>
-							<li>Data Hasil Konsultasi</li>
-						</ul><!-- /.breadcrumb -->
-					</div>
+<div class="main-content">
+  <div class="main-content-inner">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+      <ul class="breadcrumb">
+        <li>
+          <i class="ace-icon fa fa-home home-icon"></i>
+          <a href="#">Beranda</a>
+        </li>
+        <li>Data Transaksi</li>
+        <li>Data Hasil Konsultasi</li>
+      </ul><!-- /.breadcrumb -->
+    </div>
 
-					<div class="page-content">
-						<div class="page-header"><h1>Data Hasil Konsultasi</h1></div>
-						<h7>Berikut adalah hasil Konsultasi <?php echo $dupdate['nm_pasien']; ?>, Pada Tanggal <?php echo $dupdate['tanggal']; ?></h7>
-						<div class="row">
-							<div class="col-xs-12">
-                                                            
-                   <div class="widget-box widget-color-red" id="widget-box-2">
-				   												<div class="widget-header">
-													<h5 class="widget-title bigger lighter">
-														<i class=""></i>
-														Gejala  Yang Dipilih
-													</h5>
+    <div class="page-content">
+      <div class="page-header">
+        <h1>Data Hasil Konsultasi</h1>
+      </div>
+      <h7>Berikut adalah hasil Konsultasi <?php echo $dupdate['nm_pasien']; ?>, Pada Tanggal
+        <?php echo $dupdate['tanggal']; ?></h7>
+      <div class="row">
+        <div class="col-xs-12">
 
-											</div>
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-														<table class="table table-striped table-bordered table-hover">
-															<thead class="thin-border-bottom">
-																
-                          <tr>
-                            <th style="text-align: center">No.</th>
-                            <th style="text-align: center">Kode Gejala</th>
-                            <th style="text-align: center">Nama Gejala</th>
-                            <th style="text-align: center">Nilai CF (Kondsi)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                         <?php  
+          <div class="widget-box widget-color-red" id="widget-box-2">
+            <div class="widget-header">
+              <h5 class="widget-title bigger lighter">
+                <i class=""></i>
+                Gejala Yang Dipilih
+              </h5>
+
+            </div>
+            <div class="widget-body">
+              <div class="widget-main no-padding">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead class="thin-border-bottom">
+
+                    <tr>
+                      <th style="text-align: center">No.</th>
+                      <th style="text-align: center">Kode Gejala</th>
+                      <th style="text-align: center">Nama Gejala</th>
+                      <th style="text-align: center">Nilai CF (Kondsi)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php  
 						 
 						$ig = 0;
 						foreach ($argejala as $key => $value) {
@@ -512,38 +546,38 @@ include("../admin/leftbar.php");
   
 						}
                              ?>
-							             
-                                </tr>
-								
-                        </tbody>
-														</table>
-													</div>
-												</div>
-											</div>
-											
-											<div class="page-header"></div>
-											 <div class="widget-box widget-color-red" id="widget-box-2">
-				   												<div class="widget-header">
-													<h5 class="widget-title bigger lighter">
-														<i class=""></i>
-														Hasil Konsultasi Penyakit
-													</h5>
 
-											</div>
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-														<table class="table table-striped table-bordered table-hover">
-															<thead class="thin-border-bottom">
-																<tr>
-                            <th style="text-align: center">No.</th>
-                            <th style="text-align: center">Kode</th>
-                            <th style="text-align: center">Penyakit</th>
-                            <th style="text-align: center">Nilai CF</th>
-                            <th style="text-align: center">Persen</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                         <?php  
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-header"></div>
+          <div class="widget-box widget-color-red" id="widget-box-2">
+            <div class="widget-header">
+              <h5 class="widget-title bigger lighter">
+                <i class=""></i>
+                Hasil Konsultasi Penyakit
+              </h5>
+
+            </div>
+            <div class="widget-body">
+              <div class="widget-main no-padding">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead class="thin-border-bottom">
+                    <tr>
+                      <th style="text-align: center">No.</th>
+                      <th style="text-align: center">Kode</th>
+                      <th style="text-align: center">Penyakit</th>
+                      <th style="text-align: center">Nilai CF</th>
+                      <th style="text-align: center">Persen</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php  
 						 
 						$np = 0;
 						foreach ($arpenyakit as $key => $value) {
@@ -565,56 +599,59 @@ include("../admin/leftbar.php");
 						 }
 						
                              ?>
-							             
-                                
-								
-                        </tbody>
-														</table>
-													</div>
-												</div>
-											</div>
-											
-											
-											<div class="page-header"></div>
-											<h5>DIAGNOSA</h5>
-											<h6>Hasil Dari Diagnosa Penyakit Yang Paling Mungkin adalah : <?php echo $dupdate['nm_penyakit']; ?></h6>
-													
-												<div class="widget-body">
-													<div class="widget-main">
-														
-														<p class="alert alert-danger">
-															Penyebab	: <?php echo $dupdate['penyebab']; ?>
-														</p>
-														<p class="alert alert-danger">
-															Penceggahan	: <?php echo $dupdate['pencegahan']; ?>
-														</p>
-														<p class="alert alert-danger">
-															Penanganan	: <?php echo $dupdate['penanganan']; ?>
-														</p>
-														
-													</div>
-												</div>
-											<div class="clearfix form-actions">
-                            <div class="col-md-offset-3 col-md-9">
-                         <a href="adminmainapp.php?unit=l_konsultasi&kd_daftar=<?php echo $kd_daftar; ?>" class='btn btn-sm btn-danger glyphicon glyphicon-print' > Print</a> 
-						 <a href="adminmainapp.php?unit=p_gejala_unit&act=datagrid&kd_daftar=<?php echo $kd_daftar; ?>" class='btn btn-sm btn-info glyphicon' >Kembali</a> <br><br><br>
-                         </div>
-			</div> 
 
-       
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div>
-                
-			</div><!-- /.main-content -->
-		<?php
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="page-header"></div>
+          <h5>DIAGNOSA</h5>
+          <h6>Hasil Dari Diagnosa Penyakit Yang Paling Mungkin adalah : <?php echo $dupdate['nm_penyakit']; ?></h6>
+
+          <div class="widget-body">
+            <div class="widget-main">
+
+              <p class="alert alert-danger">
+                Penyebab : <?php echo $dupdate['penyebab']; ?>
+              </p>
+              <p class="alert alert-danger">
+                Penceggahan : <?php echo $dupdate['pencegahan']; ?>
+              </p>
+              <p class="alert alert-danger">
+                Penanganan : <?php echo $dupdate['penanganan']; ?>
+              </p>
+
+            </div>
+          </div>
+          <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+              <a href="adminmainapp.php?unit=l_konsultasi&kd_daftar=<?php echo $kd_daftar; ?>"
+                class='btn btn-sm btn-danger glyphicon glyphicon-print'> Print</a>
+              <a href="adminmainapp.php?unit=p_gejala_unit&act=datagrid&kd_daftar=<?php echo $kd_daftar; ?>"
+                class='btn btn-sm btn-info glyphicon'>Kembali</a> <br><br><br>
+            </div>
+          </div>
+
+
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.page-content -->
+  </div>
+
+</div><!-- /.main-content -->
+<?php
             include("../admin/footer.php");
             ?>
-	</body>
+</body>
+
 </html>
 
-  <?php
+<?php
         break;
     
            

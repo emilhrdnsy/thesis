@@ -4,8 +4,8 @@
     <div class="footer-inner">
       <div class="footer-content">
         <span class="bigger-120">
-          Sistem Pakar Diagnosa Penyakit Pencernaan Menggunkan Metode Certainty 
-		  &copy; <span class="blue bolder">Maisyarah 310115022745</span> (2019)
+          Sistem Pakar  Menggunakan Metode Certainty 
+		  &copy; <span class="blue bolder">Maisyarah 310115022745</span> (<?= date("Y") ?>)
         </span>
         
        <!-- <span class="action-buttons">

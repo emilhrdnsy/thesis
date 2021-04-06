@@ -5,9 +5,18 @@
        header("location:dashboard.php");
     }
         require_once '../lib/koneksi.php';
-         $qupdate = "SELECT * FROM  t_login WHERE nama_pengguna = '".$_SESSION['nm_pengguna']."'";
-        $rupdate = mysqli_query($mysqli, $qupdate);
-        $dupdate = mysqli_fetch_assoc($rupdate);
+        if ($_SESSION['status'] == 'Admin') {
+          $qupdate = "SELECT * FROM  t_admin WHERE nama_pengguna = '".$_SESSION['nm_pengguna']."'";
+         $rupdate = mysqli_query($mysqli, $qupdate);
+         $dupdate = mysqli_fetch_assoc($rupdate);
+
+        }
+        else {
+          $qupdate = "SELECT * FROM  t_user WHERE nama_pengguna = '".$_SESSION['nm_pengguna']."'";
+          $rupdate = mysqli_query($mysqli, $qupdate);
+          $dupdate = mysqli_fetch_assoc($rupdate);
+ 
+        }
         ?>
         <div id="navbar" class="navbar navbar-default ace-save-state">
             <div class="navbar-container ace-save-state" id="navbar-container">
@@ -29,11 +38,9 @@
               <ul class="nav ace-nav">
                 <li class="light-blue dropdown-modal">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                    <span class="user-info"><small>Selamat Datang</small>  <?php echo $dupdate['nama_pengguna']; ?></span>
+                    <span class="user-info"><small>Selamat Datang</small>  <?php echo $dupdate['nama']; ?></span>
                     
                   </a>
-
-                  
                 </li>
               </ul>
             </div>

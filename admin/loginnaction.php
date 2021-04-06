@@ -12,7 +12,7 @@ $qlogin =
    SELECT
     *
    FROM
-    t_login
+    t_admin
    WHERE
     nama_pengguna = '$nm_pengguna'
     AND
@@ -20,11 +20,28 @@ $qlogin =
 ";
 $rlogin = mysqli_query($mysqli, $qlogin);
 $jumlahbaris = mysqli_num_rows($rlogin);
+
+
+$qlogin2 =
+"
+   SELECT
+    *
+   FROM
+    t_user
+   WHERE
+    nama_pengguna = '$nm_pengguna'
+    AND
+    kata_sandi = '$password'
+";
+$rlogin2 = mysqli_query($mysqli, $qlogin2);
+$jumlahbaris2 = mysqli_num_rows($rlogin2);
+
+
 if ($jumlahbaris > 0 ){
     $dlogin = mysqli_fetch_assoc($rlogin);
     $_SESSION['katasandi'] = $dlogin ['kata_sandi'];
     $_SESSION['nm_pengguna'] = $dlogin ['nama_pengguna'];
-    $_SESSION['status'] = $dlogin ['status'];
+    $_SESSION['status'] = "Admin";
         date_default_timezone_set("Asia/Brunei");
         $tanggalsekarang = date("Y-m-d H:i:s");
         $zupdate = 
@@ -37,6 +54,24 @@ if ($jumlahbaris > 0 ){
       $rupdate = mysqli_query($mysqli,$zupdate);
     header('location:adminmainapp.php?unit=dashboard');
 }
+
+ else if ($jumlahbaris2 >0 ) {
+  $dlogin2 = mysqli_fetch_assoc($rlogin2);
+    $_SESSION['katasandi'] = $dlogin2 ['kata_sandi'];
+    $_SESSION['nm_pengguna'] = $dlogin2 ['nama_pengguna'];
+    $_SESSION['status'] = "Pengguna";
+        date_default_timezone_set("Asia/Brunei");
+        $tanggalsekarang = date("Y-m-d H:i:s");
+        $zupdate2 = 
+                "
+                UPDATE t_login SET
+                jammasuk ='$tanggalsekarang'
+                WHERE
+                katasandi = '".$_SESSION['katasandi']."'
+                ";  
+      $rupdate2 = mysqli_query($mysqli,$zupdate2);
+    header('location:adminmainapp.php?unit=dashboard');
+ }
  else {
       $qdatagrid =" UPDATE t_login SET bataslogin = bataslogin + 1 where nama_pengguna='$nm_pengguna' ";
                             $rdatagrid = mysqli_query($mysqli, $qdatagrid);

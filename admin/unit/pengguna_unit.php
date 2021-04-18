@@ -42,13 +42,12 @@ include("../admin/leftbar.php");
                             <th style="text-align: center">Nama</th>
                             <th style="text-align: center">Nama Pengguna</th>
                             <th style="text-align: center">Kata Sandi</th>
-                            <th style="text-align: center">Status</th>
                             <th style="text-align: center">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php $no=1; 
-                          $qdatagrid =" SELECT * FROM t_login WHERE status ='pengguna' ";
+                          $qdatagrid =" SELECT * FROM t_user";
                             $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                             while($ddatagrid=mysqli_fetch_assoc($rdatagrid)) {
                               $st="";
@@ -70,7 +69,6 @@ include("../admin/leftbar.php");
                                     <td style= text-align:left>$ddatagrid[nama]</td>
                                     <td style= text-align:center>$ddatagrid[nama_pengguna]</td>
                                     <td style= text-align:center>$ddatagrid[kata_sandi]</td>
-                                    <td style= text-align:center>$ddatagrid[status]</td>
                                     <td style=text-align:center>
                                       <a href=?unit=pengguna_unit&act=update&id_login=$ddatagrid[id_login] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
                                       <a href=?unit=pengguna_unit&act=delete&id_login=$ddatagrid[id_login] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
@@ -162,11 +160,8 @@ include("../admin/leftbar.php");
 		
                        </div>
 					    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="status">Status</label>
                       <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="status" id="status" value="Pengguna" readonly="readonly" required    />
-                       </div>
-                       </div>
+                       
                   <div class="clearfix form-actions">
                             <div class="col-md-offset-3 col-md-9">
                         <button type="submit" name="submit" class="btn btn-success">Simpan</button>
@@ -195,25 +190,22 @@ include("../admin/leftbar.php");
           $nama = $_POST['nama'];
           // $kata_sandi = md5($_POST['kata_sandi']);
           $kata_sandi = $_POST['kata_sandi'];
-          $status = $_POST['status'];
           $qinput = "
-          INSERT INTO t_login
+          INSERT INTO t_user
             (
               nama_pengguna,
               nama,
-              kata_sandi,
-              status
+              kata_sandi
             )
           VALUES
             (
               '$nama_pengguna',
               '$nama',
-              '$kata_sandi',
-              '$status'
+              '$kata_sandi'
             )
         ";
         
-         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_login WHERE nama_pengguna = '$nama_pengguna'"));
+         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_user WHERE nama_pengguna = '$nama_pengguna'"));
         
         
           mysqli_query($mysqli,$qinput);
@@ -226,7 +218,7 @@ include("../admin/leftbar.php");
     
         case "update":
           $id_login = $_GET['id_login'];
-          $qupdate = "SELECT * FROM  t_login WHERE id_login = '$id_login'";
+          $qupdate = "SELECT * FROM  t_user WHERE id_login = '$id_login'";
           $rupdate = mysqli_query($mysqli, $qupdate);
           $dupdate = mysqli_fetch_assoc($rupdate);
         ?>
@@ -281,12 +273,7 @@ include("../admin/leftbar.php");
                        </div>
 					  
 					   
-					    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="status">Status</label>
-                      <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="status" id="status" value="<?php echo $dupdate['status'] ?>"readonly="readonly" required    />
-                       </div>
-                       </div>
+					  
                     
                  <div class="clearfix form-actions">
                             <div class="col-md-offset-3 col-md-9">
@@ -320,27 +307,23 @@ include("../admin/leftbar.php");
         $nama = $_POST['nama'];
         // $kata_sandi = md5($_POST['kata_sandi']);
         $kata_sandi = $_POST['kata_sandi'];
-        $status = $_POST['status'];
         
         $qupdate = "";
         if($kata_sandi == "") {
             $qupdate = "
-              UPDATE t_login SET
+              UPDATE t_user SET
                 nama_pengguna = '$nama_pengguna',
-                nama = '$nama',     
-                status = '$status'        
+                nama = '$nama'       
               WHERE
                 id_login = '$id_login'
             ";            
         }
         else {
             $qupdate = "
-              UPDATE t_login SET
+              UPDATE t_user SET
                 nama_pengguna = '$nama_pengguna',
                  nama = '$nama',
-                kata_sandi = '$kata_sandi',    
-    
-                status = '$status'        
+                kata_sandi = '$kata_sandi'       
               WHERE
                 id_login = '$id_login'
             ";                        
@@ -354,7 +337,7 @@ include("../admin/leftbar.php");
         case "delete":
         $id_login = $_GET['id_login'];
         $qdelete = "
-          DELETE  FROM t_login 
+          DELETE  FROM t_user
        
           WHERE
             id_login = '$id_login'
@@ -367,7 +350,7 @@ case "aktif":
       $id_login = $_GET['id_login'];
                 $blokir = $_POST['blokir'];
         $qupdate = "
-          UPDATE t_login SET
+          UPDATE t_user SET
             blokir = 'N',
             bataslogin = '0' 
      
@@ -383,7 +366,7 @@ case "aktif":
       $id_login = $_GET['id_login'];
                 $blokir = $_POST['blokir'];
         $qupdate = "
-          UPDATE t_login SET
+          UPDATE t_user SET
             blokir = 'Y' 
      
           WHERE

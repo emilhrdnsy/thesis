@@ -119,7 +119,7 @@ include("../admin/leftbar.php");
 							<div class="col-xs-12">
                                                             
                  <?php
-				$mysqli= mysqli_connect("localhost","root","","expert-systemDB");
+				$mysqli= mysqli_connect("localhost","root","","thesisDB");
                 $qupdate = "SELECT max(kode_item_masalah) as maxKode FROM t_item_masalah";
 
                 $rupdate = mysqli_query($mysqli, $qupdate);

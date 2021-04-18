@@ -179,7 +179,7 @@ include("../admin/leftbar.php");
       while ($rpenyakit = mysqli_fetch_array($sqlpenyakit)) {
         $cftotal_temp = 0;
         $cf = 0;
-        // print_r($rpenyakit['kode_bidang_masalah']);
+        // print_r($rpenyakit);
         $sqlg =(" SELECT * FROM t_identifikasi where kode_bidang_masalah = '$rpenyakit[kode_bidang_masalah]'");
         $sqlgejala = mysqli_query($mysqli, $sqlg);
         $cflama = 0;
@@ -188,6 +188,8 @@ include("../admin/leftbar.php");
           $arkondisi = explode("_", $_POST['kondisi'][0]);
           $gejala = $arkondisi[0];
 
+          print_r($arkondisi);
+          // print_r($_POST['kondisi']);
           for ($i = 0; $i < count($_POST['kondisi']); $i++) {
             $arkondisi = explode("_", $_POST['kondisi'][$i]);
             $gejala = $arkondisi[0];
@@ -297,7 +299,7 @@ include("../admin/leftbar.php");
         <div class="col-xs-12">
 
           <?php
-				$mysqli= mysqli_connect("localhost","root","","expert-systemDB");
+				$mysqli= mysqli_connect("localhost","root","","thesisDB");
                 $qupdate = "SELECT max(id_siswa) as maxKode FROM t_siswa";
                 $rupdate = mysqli_query($mysqli, $qupdate);
                 $dupdate = mysqli_fetch_assoc($rupdate);
@@ -492,7 +494,7 @@ include("../admin/leftbar.php");
     $argejala = unserialize($rhasil['item_masalah']);
   }
 
-  print_r($argejala);
+  // print_r($argejala);
 
   $np1 = 0;
   foreach ($arpenyakit as $key1 => $value1) {

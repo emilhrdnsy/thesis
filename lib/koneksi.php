@@ -2,7 +2,7 @@
 $server ='localhost';
 $user   ='root';
 $password ='';
-$database ='expert-systemDB';
+$database ='thesisdb';
 
 $mysqli = mysqli_connect($server, $user, $password, $database) or (mysqli_error($mysqli));
 if (mysqli_connect_errno($mysqli)){

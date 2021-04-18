@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2021 at 07:11 AM
+-- Generation Time: Apr 19, 2021 at 01:55 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -87,10 +87,8 @@ CREATE TABLE `t_hasil` (
 --
 
 INSERT INTO `t_hasil` (`kode_hasil`, `bidang_masalah`, `item_masalah`, `nilai_cf`, `tanggal`, `hasil_id`, `kode_siswa`) VALUES
-(1, 'a:0:{}', 'a:5:{s:5:\"IM002\";s:1:\"1\";s:5:\"IM003\";s:1:\"3\";s:5:\"IM006\";s:1:\"2\";s:5:\"IM016\";s:1:\"3\";s:5:\"IM026\";s:1:\"4\";}', '', '2021-04-18 10:50:21', '0', 'S1'),
-(2, 'a:0:{}', 'a:5:{s:5:\"IM001\";s:1:\"2\";s:5:\"IM007\";s:1:\"1\";s:5:\"IM023\";s:1:\"4\";s:5:\"IM033\";s:1:\"3\";s:5:\"IM052\";s:1:\"2\";}', '', '2021-04-18 11:02:51', '0', 'S2'),
-(3, 'a:2:{s:3:\"BM2\";s:6:\"0.6987\";s:3:\"BM4\";s:6:\"0.2286\";}', 'a:3:{s:4:\"IM59\";s:1:\"2\";s:4:\"IM60\";s:1:\"3\";s:4:\"IM61\";s:1:\"1\";}', '0.6987', '2021-04-18 11:26:50', '0', 'S3'),
-(4, 'a:2:{s:3:\"BM2\";s:6:\"0.5534\";s:3:\"BM4\";s:6:\"0.5334\";}', 'a:3:{s:4:\"IM59\";s:1:\"3\";s:4:\"IM60\";s:1:\"1\";s:4:\"IM61\";s:1:\"2\";}', '0.5534', '2021-04-18 11:30:27', 'BM2', 'S4');
+(1, 'a:2:{s:3:\"BM2\";s:6:\"0.5534\";s:3:\"BM4\";s:6:\"0.5334\";}', 'a:3:{s:4:\"IM59\";s:1:\"3\";s:4:\"IM60\";s:1:\"1\";s:4:\"IM61\";s:1:\"2\";}', '0.5534', '2021-04-18 11:30:27', 'BM2', 'S4'),
+(2, 'a:1:{s:3:\"BM1\";s:6:\"0.4358\";}', 'a:3:{s:3:\"IM1\";s:1:\"2\";s:3:\"IM2\";s:1:\"2\";s:3:\"IM3\";s:1:\"4\";}', '0.4358', '2021-04-18 14:11:16', 'BM1', 'S6');
 
 -- --------------------------------------------------------
 
@@ -298,7 +296,9 @@ INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode
 (1, 'emil', 'Laki-laki', 'X IPA 1', 'S1'),
 (2, 'emil', 'Laki-laki', 'X IPA 1', 'S2'),
 (3, 'qwe', 'Laki-laki', 'X IPA 1', 'S3'),
-(4, 'qwe', 'Laki-laki', 'X IPA 1', 'S4');
+(4, 'qwe', 'Laki-laki', 'X IPA 1', 'S4'),
+(5, 'emil', 'Laki-laki', 'X IPA 1', 'S5'),
+(6, 'emil', 'Laki-laki', 'X IPA 1', 'S6');
 
 -- --------------------------------------------------------
 
@@ -394,7 +394,7 @@ ALTER TABLE `t_bidang_masalah`
 -- AUTO_INCREMENT for table `t_hasil`
 --
 ALTER TABLE `t_hasil`
-  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `t_identifikasi`
@@ -418,7 +418,7 @@ ALTER TABLE `t_pilihan_pengguna`
 -- AUTO_INCREMENT for table `t_siswa`
 --
 ALTER TABLE `t_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `t_user`

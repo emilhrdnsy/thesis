@@ -39,10 +39,9 @@ include("../admin/leftbar.php");
                         <thead>
                           <tr>
                             <th style="text-align: center">No.</th>
-                            <th style="text-align: center">Penyakit</th>
-                            <th style="text-align: center">Gejala</th>
-                            <th style="text-align: center">MB</th>
-                            <th style="text-align: center">MD</th>
+                            <th style="text-align: center; width: 20%">Penyakit</th>
+                            <th style="text-align: center; width: 45%">Gejala</th>
+                            
                             <th style="text-align: center">CF(Pakar)</th>
                             <th style="text-align: center">Aksi</th>
                           </tr>
@@ -50,23 +49,24 @@ include("../admin/leftbar.php");
                         <tbody>
                          <?php $no=1; 
                           $qdatagrid ="  SELECT 
-                           t_diagnosa.kd_diagnosa, t_diagnosa.mb, t_diagnosa.md, t_diagnosa.cf_penyakit, 
-						   t_penyakit.kode_penyakit, t_penyakit.nm_penyakit,
-						   t_gejala.kode_gejala, t_gejala.nm_gejala
+                           t_identifikasi.kode_identifikasi, 
+                          --  t_diagnosa.mb, t_diagnosa.md, 
+                           t_identifikasi.cf_bidang_masalah, 
+						   t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
+						   t_item_masalah.kode_item_masalah, t_item_masalah.nama_item_masalah
                             FROM 
-                                t_diagnosa
-                                    JOIN t_penyakit ON t_diagnosa.kode_penyakit = t_penyakit.kode_penyakit
-									JOIN t_gejala ON t_diagnosa.kode_gejala = t_gejala.kode_gejala";
+                                t_identifikasi
+                                    JOIN t_bidang_masalah ON t_identifikasi.kode_bidang_masalah = t_bidang_masalah.kode_bidang_masalah
+									JOIN t_item_masalah ON t_identifikasi.kode_item_masalah = t_item_masalah.kode_item_masalah";
                             $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                             while($ddatagrid=mysqli_fetch_assoc($rdatagrid)) {
                                 echo "
                                 <tr>
                                      <td style= text-align:center>$no</td>
-                                     <td style= text-align:center>$ddatagrid[nm_penyakit]</td>
-                                     <td style= text-align:center>$ddatagrid[nm_gejala]</td>
-                                     <td style= text-align:center>$ddatagrid[mb]</td>
-                                     <td style= text-align:center>$ddatagrid[md]</td>
-                                     <td style= text-align:center>$ddatagrid[cf_penyakit]</td>
+                                     <td style= text-align:left>$ddatagrid[nama_bidang_masalah]</td>
+                                     <td style= text-align:left>$ddatagrid[nama_item_masalah]</td>
+                                   
+                                     <td style= text-align:center>$ddatagrid[cf_bidang_masalah]</td>
                                      <td style=text-align:center>
                                          <a href=?unit=dbp_unit&act=update&kd_diagnosa=$ddatagrid[kd_diagnosa] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
                                          <a href=?unit=dbp_unit&act=delete&kd_diagnosa=$ddatagrid[kd_diagnosa] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    

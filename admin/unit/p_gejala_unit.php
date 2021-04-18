@@ -27,7 +27,7 @@ include("../admin/leftbar.php");
 
     <div class="page-content">
       <div class="page-header">
-        <h1>Konsultasi<small> Nama : <?php echo $dupdate['nama_siswa']; ?></h1>
+        <h1>Konsultasi<small> Nama : <?php echo ucwords($dupdate['nama_siswa']); ?></h1>
 
       </div>
       <h6>Silahkan Pilih Kondisi Gejala Seusai Yang Dialami:</h6>

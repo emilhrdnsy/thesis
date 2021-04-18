@@ -24,23 +24,27 @@ include("../admin/leftbar.php");
 							<div class="alert alert-block alert-success">
 								<button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>
 								<i class="ace-icon fa fa-bullhorn green"></i> Selamat Datang di Aplikasi Sistem Pakar Diagnosa Penyakit Pencernaan Menggunkan Metode Certainty
-						</div>
+							</div>
 						</div><!-- /.col -->
-						<div class="col-xs-12 infobox-container">
+					</div><!-- /.row -->
+
+					<div class="row">
+						
+						<div class="col-xs-4 infobox-container">
 		          <div class="infobox infobox-green">
 		            <div class="infobox-icon"><i class="ace-icon fa fa-table"></i></div>
-                             <?php
+                <?php
                 $qproduk =" SELECT * FROM t_penyakit ";
                 $rproduk = mysqli_query($mysqli, $qproduk);
                 $dproduk = mysqli_num_rows($rproduk);
                 echo "<div class='infobox-data'><span class='infobox-data-number'>$dproduk</span>";
                 ?>
-                
-                
 		              <div class="infobox-content">Data Penyakit</div>
 		            </div>
 		          </div>
+						</div>
 
+						<div class="col-xs-4 infobox-container">
 		          <div class="infobox infobox-blue">
 		            <div class="infobox-icon"><i class="ace-icon fa fa-table"></i></div>
 		             <?php
@@ -52,7 +56,9 @@ include("../admin/leftbar.php");
 		              <div class="infobox-content">Data Gejala</div>
 		            </div>
 		          </div>
+						</div>
 
+						<div class="col-xs-4 infobox-container">
 		          <div class="infobox infobox-pink">
 		            <div class="infobox-icon"><i class="ace-icon fa fa-book"></i></div>
 		           <?php
@@ -64,10 +70,12 @@ include("../admin/leftbar.php");
 		              <div class="infobox-content">Data Konsultasi</div>
 		            </div>
 		          </div>
+						</div>
 
+						<div class="col-xs-4 infobox-container">
 							<div class="infobox infobox-red">
 		            <div class="infobox-icon"><i class="ace-icon fa fa-book"></i></div>
-		<?php
+								<?php
                 $qsubkategori =" SELECT * FROM t_diagnosa ";
                 $rsubkategori = mysqli_query($mysqli, $qsubkategori);
                 $dsubkategori= mysqli_num_rows($rsubkategori);
@@ -76,10 +84,12 @@ include("../admin/leftbar.php");
 		              <div class="infobox-content">Data Basis Pengetahuan</div>
 		            </div>
 		          </div>
+						</div>
 
+						<div class="col-xs-4 infobox-container">
 							<div class="infobox infobox-orange">
 		            <div class="infobox-icon"><i class="ace-icon fa fa-users"></i></div>
-		        <?php
+		        		<?php
                 $qbrand =" SELECT * FROM t_login where status ='pengguna' ";
                 $rbrand = mysqli_query($mysqli, $qbrand);
                 $dbrand= mysqli_num_rows($rbrand);
@@ -88,10 +98,12 @@ include("../admin/leftbar.php");
 		              <div class="infobox-content">Data Pengguna</div>
 		            </div>
 		          </div>
-            
+            </div>
+						
+						<div class="col-xs-4 infobox-container">
 							<div class="infobox infobox-red">
 		            <div class="infobox-icon"><i class="ace-icon fa fa-user"></i></div>
-		<?php
+								<?php
                 $qblog =" SELECT * FROM t_login where status ='admin'";
                 $rblog = mysqli_query($mysqli, $qblog);
                 $dblog = mysqli_num_rows($rblog);
@@ -100,10 +112,9 @@ include("../admin/leftbar.php");
 		              <div class="infobox-content">Data Admin</div>
 		            </div>
 		          </div>
+						</div>
 
-						
-		             </div>
-					</div><!-- /.row -->
+					</div>
 				</div><!-- /.page-content -->
 			</div>
 		</div><!-- /.main-content -->
@@ -112,4 +123,3 @@ include("../admin/leftbar.php");
             ?>    
 	</body>
 </html>
-

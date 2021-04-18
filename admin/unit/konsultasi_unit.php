@@ -37,7 +37,7 @@ include("../admin/leftbar.php");
                             <th style="text-align: center">No.</th>
                             <th style="text-align: center">Tanggal</th>
                             <th style="text-align: center">Nama</th>
-                            <th style="text-align: center">Penyakit</th>
+                            <th style="text-align: center">Penyakit qwe</th>
                             <th style="text-align: center">Nilai CF</th>
                             <th style="text-align: center">Aksi</th>
                           </tr>
@@ -45,21 +45,21 @@ include("../admin/leftbar.php");
                         <tbody>
                          <?php $no=1; 
                           $qdatagrid ="  SELECT 
-                           t_hasil.kd_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
-						   t_penyakit.kode_penyakit, t_penyakit.nm_penyakit,
-						   t_daftar.kd_daftar, t_daftar.nm_pasien
+                           t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
+						   t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
+						   t_siswa.kode_siswa, t_siswa.nama_siswa
                             FROM 
                                 t_hasil
-                                    JOIN t_penyakit ON t_hasil.hasil_id = t_penyakit.kode_penyakit
-									JOIN t_daftar ON t_hasil.kd_daftar = t_daftar.kd_daftar";
+                                    JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
+									JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa";
                             $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                             while($ddatagrid=mysqli_fetch_assoc($rdatagrid)) {
                                 echo "
                                 <tr>
                                      <td style= text-align:center>$no</td>
                                      <td style= text-align:center>$ddatagrid[tanggal]</td>
-                                     <td style= text-align:center>$ddatagrid[nm_pasien]</td>
-                                     <td style= text-align:center>$ddatagrid[nm_penyakit]</td>
+                                     <td style= text-align:center>".ucwords("$ddatagrid[nama_siswa]")."</td>
+                                     <td style= text-align:center>$ddatagrid[nama_bidang_masalah]</td>
                                      <td style= text-align:center>$ddatagrid[nilai_cf]</td>
                                      <td style=text-align:center>
                                          <a href=?unit=konsultasi_unit&act=update&kd_hasil=$ddatagrid[kd_hasil] class='btn btn-sm btn-info glyphicon glyphicon-eye-open' > Detail</a> 

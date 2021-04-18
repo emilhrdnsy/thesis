@@ -132,7 +132,7 @@
 	
 <li <?php if ($page=='p_gejala_unit') {echo $open;}?>>
       <a href="#" class="dropdown-toggle">
-        <i class="menu-icon fa fa-search-plus""></i>
+        <i class="menu-icon fa fa-search-plus"></i>
         <span class="menu-text"> Konsultasi </span>
         <b class="arrow fa fa-angle-down"></b>
       </a>

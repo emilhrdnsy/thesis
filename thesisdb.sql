@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 01:55 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Waktu pembuatan: 27 Apr 2021 pada 05.14
+-- Versi server: 10.4.13-MariaDB
+-- Versi PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_admin`
+-- Struktur dari tabel `t_admin`
 --
 
 CREATE TABLE `t_admin` (
@@ -37,7 +37,7 @@ CREATE TABLE `t_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t_admin`
+-- Dumping data untuk tabel `t_admin`
 --
 
 INSERT INTO `t_admin` (`id_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas_login`, `blokir`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `t_admin` (`id_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_bidang_masalah`
+-- Struktur dari tabel `t_bidang_masalah`
 --
 
 CREATE TABLE `t_bidang_masalah` (
@@ -56,7 +56,7 @@ CREATE TABLE `t_bidang_masalah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t_bidang_masalah`
+-- Dumping data untuk tabel `t_bidang_masalah`
 --
 
 INSERT INTO `t_bidang_masalah` (`id_bidang_masalah`, `kode_bidang_masalah`, `nama_bidang_masalah`) VALUES
@@ -69,7 +69,30 @@ INSERT INTO `t_bidang_masalah` (`id_bidang_masalah`, `kode_bidang_masalah`, `nam
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_hasil`
+-- Struktur dari tabel `t_detail_bidang_masalah`
+--
+
+CREATE TABLE `t_detail_bidang_masalah` (
+  `id` int(11) NOT NULL,
+  `nama_item_masalah` varchar(100) NOT NULL,
+  `detail` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `t_detail_bidang_masalah`
+--
+
+INSERT INTO `t_detail_bidang_masalah` (`id`, `nama_item_masalah`, `detail`) VALUES
+(1, 'Prasyarat penguasaan materi pelajaran', 'Masalah yang sering terjadi pada konten prasyarat penguasaan materi adalah ditemukan adanya siswa yang memiliki hambatan dan tidak menguasai materi pelajaran yang telah diberikan guru dan siswa yang tidak mampu menjawab soal-soal ulangan atau ujian karena kurangnya penguasaan materi pelajaran. '),
+(2, 'Ketrampilan belajar ', 'Masalah yang sering terjadi pada konten keterampilan belajar adalah siwa yang tidak mencatat materi pelajaran yang telah diberikan guru, siswa mengalami kesulitan terhadap materi yang memuat kata-kata dalam bahasa asing, siswa yang memiliki kebiasaan mengganggu teman ketika belajar atau ribut ketika jam pelajaran berlangsung, siswa yang sering lupa atau tidak membawa peralatan yang diperlukan dalam belajar di sekolah, tidak menggunakan waktu luang untuk mendalami materi pelajaran, tidak terbiasa'),
+(3, 'Sarana belajar', 'Masalah yang sering terjadi pada konten sarana dan prasarana belajar yaitu siswa merasa tidak nyaman didalam kelas karena terasa panas, sarana belajar yang tidak memadai di rumah dan ekonomi orang tua yang pas-pasan. '),
+(4, 'Keadaan diri pribadi', 'Masalah yang sering terjadi pada konten diri sendiri atau masalah pribadi siswa yaitu siswa merasa tidak konsestrasi belajar dan motivasi belajarnya sangat rendah, merokok di sekolah supaya terlihat keren oleh teman-temannya dan Siswa yang tidak menghormati atau mengolok-olok gurunya. '),
+(5, 'Lingkungan belajar dan sosio emosional', 'Masalah yang sering terjadi pada konten lingkungan belajar dan sosio-emosional yaitu siswa sering terlambat ke sekolah karena jarak tempuh antara rumah siswa ke sekolah sangat jauh, Siswa yang tidak bisa bergaul dengan teman kelasnya, Sering bolos sekolah karena ingin main bersama teman dan siswa yang merasa rendah diri karena sering di bully.');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `t_hasil`
 --
 
 CREATE TABLE `t_hasil` (
@@ -83,7 +106,7 @@ CREATE TABLE `t_hasil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t_hasil`
+-- Dumping data untuk tabel `t_hasil`
 --
 
 INSERT INTO `t_hasil` (`kode_hasil`, `bidang_masalah`, `item_masalah`, `nilai_cf`, `tanggal`, `hasil_id`, `kode_siswa`) VALUES
@@ -93,7 +116,7 @@ INSERT INTO `t_hasil` (`kode_hasil`, `bidang_masalah`, `item_masalah`, `nilai_cf
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_identifikasi`
+-- Struktur dari tabel `t_identifikasi`
 --
 
 CREATE TABLE `t_identifikasi` (
@@ -107,7 +130,7 @@ CREATE TABLE `t_identifikasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t_identifikasi`
+-- Dumping data untuk tabel `t_identifikasi`
 --
 
 INSERT INTO `t_identifikasi` (`kode_identifikasi`, `mb`, `md`, `cf_bidang_masalah`, `cf_item_masalah`, `kode_bidang_masalah`, `kode_item_masalah`) VALUES
@@ -176,7 +199,7 @@ INSERT INTO `t_identifikasi` (`kode_identifikasi`, `mb`, `md`, `cf_bidang_masala
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_item_masalah`
+-- Struktur dari tabel `t_item_masalah`
 --
 
 CREATE TABLE `t_item_masalah` (
@@ -186,7 +209,7 @@ CREATE TABLE `t_item_masalah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t_item_masalah`
+-- Dumping data untuk tabel `t_item_masalah`
 --
 
 INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item_masalah`) VALUES
@@ -255,7 +278,7 @@ INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_pilihan_pengguna`
+-- Struktur dari tabel `t_pilihan_pengguna`
 --
 
 CREATE TABLE `t_pilihan_pengguna` (
@@ -265,7 +288,7 @@ CREATE TABLE `t_pilihan_pengguna` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t_pilihan_pengguna`
+-- Dumping data untuk tabel `t_pilihan_pengguna`
 --
 
 INSERT INTO `t_pilihan_pengguna` (`id_pilihan_pengguna`, `kondisi`, `keterangan`) VALUES
@@ -277,7 +300,7 @@ INSERT INTO `t_pilihan_pengguna` (`id_pilihan_pengguna`, `kondisi`, `keterangan`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_siswa`
+-- Struktur dari tabel `t_siswa`
 --
 
 CREATE TABLE `t_siswa` (
@@ -289,7 +312,7 @@ CREATE TABLE `t_siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t_siswa`
+-- Dumping data untuk tabel `t_siswa`
 --
 
 INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode_siswa`) VALUES
@@ -298,12 +321,13 @@ INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode
 (3, 'qwe', 'Laki-laki', 'X IPA 1', 'S3'),
 (4, 'qwe', 'Laki-laki', 'X IPA 1', 'S4'),
 (5, 'emil', 'Laki-laki', 'X IPA 1', 'S5'),
-(6, 'emil', 'Laki-laki', 'X IPA 1', 'S6');
+(6, 'emil', 'Laki-laki', 'X IPA 1', 'S6'),
+(7, 'emil', 'Laki-laki', 'X IPA 1', 'S7');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_user`
+-- Struktur dari tabel `t_user`
 --
 
 CREATE TABLE `t_user` (
@@ -316,7 +340,7 @@ CREATE TABLE `t_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t_user`
+-- Dumping data untuk tabel `t_user`
 --
 
 INSERT INTO `t_user` (`id_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas_login`, `blokir`) VALUES
@@ -327,101 +351,113 @@ INSERT INTO `t_user` (`id_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas_
 --
 
 --
--- Indexes for table `t_admin`
+-- Indeks untuk tabel `t_admin`
 --
 ALTER TABLE `t_admin`
   ADD PRIMARY KEY (`id_login`);
 
 --
--- Indexes for table `t_bidang_masalah`
+-- Indeks untuk tabel `t_bidang_masalah`
 --
 ALTER TABLE `t_bidang_masalah`
   ADD PRIMARY KEY (`id_bidang_masalah`);
 
 --
--- Indexes for table `t_hasil`
+-- Indeks untuk tabel `t_detail_bidang_masalah`
+--
+ALTER TABLE `t_detail_bidang_masalah`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `t_hasil`
 --
 ALTER TABLE `t_hasil`
   ADD PRIMARY KEY (`kode_hasil`);
 
 --
--- Indexes for table `t_identifikasi`
+-- Indeks untuk tabel `t_identifikasi`
 --
 ALTER TABLE `t_identifikasi`
   ADD PRIMARY KEY (`kode_identifikasi`);
 
 --
--- Indexes for table `t_item_masalah`
+-- Indeks untuk tabel `t_item_masalah`
 --
 ALTER TABLE `t_item_masalah`
   ADD PRIMARY KEY (`id_item_masalah`);
 
 --
--- Indexes for table `t_pilihan_pengguna`
+-- Indeks untuk tabel `t_pilihan_pengguna`
 --
 ALTER TABLE `t_pilihan_pengguna`
   ADD PRIMARY KEY (`id_pilihan_pengguna`);
 
 --
--- Indexes for table `t_siswa`
+-- Indeks untuk tabel `t_siswa`
 --
 ALTER TABLE `t_siswa`
   ADD PRIMARY KEY (`id_siswa`);
 
 --
--- Indexes for table `t_user`
+-- Indeks untuk tabel `t_user`
 --
 ALTER TABLE `t_user`
   ADD PRIMARY KEY (`id_login`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `t_admin`
+-- AUTO_INCREMENT untuk tabel `t_admin`
 --
 ALTER TABLE `t_admin`
   MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `t_bidang_masalah`
+-- AUTO_INCREMENT untuk tabel `t_bidang_masalah`
 --
 ALTER TABLE `t_bidang_masalah`
   MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `t_hasil`
+-- AUTO_INCREMENT untuk tabel `t_detail_bidang_masalah`
+--
+ALTER TABLE `t_detail_bidang_masalah`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT untuk tabel `t_hasil`
 --
 ALTER TABLE `t_hasil`
   MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `t_identifikasi`
+-- AUTO_INCREMENT untuk tabel `t_identifikasi`
 --
 ALTER TABLE `t_identifikasi`
   MODIFY `kode_identifikasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT for table `t_item_masalah`
+-- AUTO_INCREMENT untuk tabel `t_item_masalah`
 --
 ALTER TABLE `t_item_masalah`
   MODIFY `id_item_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT for table `t_pilihan_pengguna`
+-- AUTO_INCREMENT untuk tabel `t_pilihan_pengguna`
 --
 ALTER TABLE `t_pilihan_pengguna`
   MODIFY `id_pilihan_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `t_siswa`
+-- AUTO_INCREMENT untuk tabel `t_siswa`
 --
 ALTER TABLE `t_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `t_user`
+-- AUTO_INCREMENT untuk tabel `t_user`
 --
 ALTER TABLE `t_user`
   MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;

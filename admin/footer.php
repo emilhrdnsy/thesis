@@ -1,25 +1,6 @@
   <div class="space-20"></div>
 
-  <div class="footer">
-    <div class="footer-inner">
-      <div class="footer-content">
-        <span class="bigger-120">
-          Sistem Pakar  Menggunakan Metode Certainty 
-		  &copy; <span class="blue bolder">Maisyarah 310115022745</span> (<?= date("Y") ?>)
-        </span>
-        
-       <!-- <span class="action-buttons">
-          <a href="https://facebook.com/azmijr">
-            <i class="ace-icon fa fa-instagram-square text-primary"></i> Adie
-          </a>
-
-          <a href="#">
-            <i class="ace-icon fa fa-phone orange"></i> 081228289766
-          </a>
-        </span>-->
-      </div>
-    </div>
-  </div>
+  
 
   <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>

@@ -60,29 +60,7 @@
     </li>
 
     <!-- Brand -->
-    <li <?php if ($page=='l_penyakit' or $page=='l_gejala' or $page=='l_dbp') {echo $open;}?>>
-      <a href="#" class="dropdown-toggle">
-        <i class="menu-icon fa fa-file"></i>
-        <span class="menu-text"> Laporan </span>
-        <b class="arrow fa fa-angle-down"></b>
-      </a>
-      <b class="arrow"></b>
-      <ul class="submenu">
-        
-         <li <?php if ($page=='l_penyakit' && $act1=='input') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=l_penyakit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Laporan Data Penyakit</a>
-          <b class="arrow"></b>
-        </li>
-		 <li <?php if ($page=='l_gejala' && $act1=='input') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=l_gejala&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Laporan Data Gejala</a>
-          <b class="arrow"></b>
-        </li>
-		 <li <?php if ($page=='l_dbp' && $act1=='input') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=l_dbp&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Lapoaran Data Basis Pengetahuan</a>
-          <b class="arrow"></b>
-        </li>
-      </ul>
-    </li>
+    
 
      <!-- Use -->
     <li <?php if ($page=='pengguna_unit') {echo $open;}?>>

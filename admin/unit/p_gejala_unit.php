@@ -2,13 +2,14 @@
 $act = $_GET['act'];
 switch($act){
     case "datagrid":
-	$id_siswa = $_GET['id_siswa'];
-        $qupdate = "SELECT * FROM t_siswa WHERE kode_siswa = '$id_siswa'";
-        $rupdate = mysqli_query($mysqli, $qupdate);
-        $dupdate = mysqli_fetch_assoc($rupdate);
-        ?>
+	    $id_siswa = $_GET['id_siswa'];
+      $qupdate = "SELECT * FROM t_siswa WHERE kode_siswa = '$id_siswa'";
+      $rupdate = mysqli_query($mysqli, $qupdate);
+      $dupdate = mysqli_fetch_assoc($rupdate);
+?>
+
 <?php
-include("../admin/leftbar.php");
+  include("../admin/leftbar.php");
 ?>
 
 
@@ -71,9 +72,11 @@ include("../admin/leftbar.php");
 								echo "<tr><td class=opsi>$i</td>";
                 echo "<td class=opsi > $ddatagrid[kode_item_masalah]</td>";
 								echo "<td class=gejala >$ddatagrid[nama_item_masalah]</td>";
-								echo '<td class="opsi" ><select name="kondisi[]" id="sl' . $i . '" class="opsikondisi col-sm-12"/><option data-id="0" value="0">Pilih jika sesuai</option>';
+								echo '<td class="opsi" >
+                  <select name="kondisi[]" id="sl' . $i . '" class="opsikondisi col-sm-12"/>
+                  <option data-id="0" value="0">Pilih jika sesuai</option>';
 
-									$qdatagridk ='  SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna ';
+									$qdatagridk =' SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna ';
 									$rdatagridk = mysqli_query($mysqli, $qdatagridk);
 									while($ddatagridk=mysqli_fetch_array($rdatagridk)) {
 									 ?>

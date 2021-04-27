@@ -11,13 +11,13 @@ include("../admin/leftbar.php");
 								<a href="#">Beranda</a>
 							</li>
               <li>Tentang</li>
-							<li>Penyakit</li>
+							<li>Bidang Masalah</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
 
 				<div class="page-content">
 					<div class="page-header">
-						<h1>Penyakit</h1>
+						<h1>Bidang Masalah</h1>
 					</div><!-- /.page-header -->
 
 					<div class="row">

@@ -40,10 +40,11 @@ include("../admin/leftbar.php");
                                 <table id="datatable" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="text-align: center; width: 7%">No.</th>
-                                            <th style="text-align: center; width: 15%">Kode Bidang Masalah</th>
-                                            <th style="text-align: center; width: 60%">Nama Bidang Masalah</th>
-                                            <th style="text-align: center; width: 18%">Aksi</th>
+                                            <th style="text-align: center; width: 6%">No.</th>
+                                            <th style="text-align: center; width: 14%">Kode Bidang Masalah</th>
+                                            <th style="text-align: center; width: 20%">Nama Bidang Masalah</th>
+                                            <th style="text-align: center; width: 50%">Detail</th>
+                                            <th style="text-align: center; width: 15%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,6 +58,7 @@ include("../admin/leftbar.php");
                                              <td style= text-align:center>$no</td>
                                              <td style= text-align:center>$ddatagrid[kode_bidang_masalah]</td>
                                              <td style= text-align:left>$ddatagrid[nama_bidang_masalah]</td>
+                                             <td style= text-align:left>$ddatagrid[detail_bidang_masalah]</td>
                                              <td style=text-align:center>
                                                  <a href=?unit=penyakit_unit&act=update&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
                                                  <a href=?unit=penyakit_unit&act=delete&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
@@ -128,7 +130,7 @@ include("../admin/leftbar.php");
                 <div class="col-xs-12">
 
                     <?php
-				$mysqli= mysqli_connect("localhost","root","","-thesisDB");
+				$mysqli= mysqli_connect("localhost","root","","thesisDB");
                 $qupdate = "SELECT max(id_bidang_masalah) as maxKode FROM t_bidang_masalah";
                 $rupdate = mysqli_query($mysqli, $qupdate);
                 $dupdate = mysqli_fetch_assoc($rupdate);
@@ -153,7 +155,14 @@ include("../admin/leftbar.php");
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">Nama Bidang Masalah</label>
                             <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="nm_penyakit"
+                                <input class="col-xs-10 col-sm-5" type="text" name="nama_bidang_masalah" id="nm_penyakit"
+                                    required="required" autofocus="autofocus" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right">Detail</label>
+                            <div class="col-sm-9">
+                                <input class="col-xs-10 col-sm-5" type="text" name="detail_bidang_masalah" id="dt_penyakit"
                                     required="required" autofocus="autofocus" />
                             </div>
                         </div>
@@ -204,11 +213,12 @@ include("../admin/leftbar.php");
       
              $kode_bidang_masalah = $_POST['kode_bidang_masalah'];
 			 $nama_bidang_masalah = $_POST['nama_bidang_masalah'];
+             $detail_bidang_masalah = $_POST['detail_bidang_masalah'];
              $qinput = "
           INSERT INTO t_bidang_masalah
-          (kode_bidang_masalah, nama_bidang_masalah)
+          (kode_bidang_masalah, nama_bidang_masalah, detail_bidang_masalah)
           VALUES
-          ('$kode_bidang_masalah', '$nama_bidang_masalah')
+          ('$kode_bidang_masalah', '$nama_bidang_masalah', '$detail_bidang_masalah')
         ";
 
         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_bidang_masalah WHERE nama_bidang_masalah = '$nama_bidang_masalah'"));
@@ -263,7 +273,7 @@ include("../admin/leftbar.php");
                         action="adminmainapp.php?unit=penyakit_unit&act=updateact">
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Kode Penyakit</label>
+                            <label class="col-sm-3 control-label no-padding-right">Kode Bidang Masalah</label>
                             <div class="col-sm-9">
                                 <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="kd_penyakit"
                                     required="required" value="<?php echo $dupdate['kode_bidang_masalah'] ?>"
@@ -271,10 +281,18 @@ include("../admin/leftbar.php");
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Nama Penyakit</label>
+                            <label class="col-sm-3 control-label no-padding-right">Nama Bidang Masalah</label>
                             <div class="col-sm-9">
                                 <input class="col-xs-10 col-sm-5" type="text" name="nama_bidang_masalah" id="nm_penyakit"
                                     required="required" value="<?php echo $dupdate['nama_bidang_masalah'] ?>"
+                                    autofocus="autofocus" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right">Detail</label>
+                            <div class="col-sm-9">
+                                <input class="col-xs-10 col-sm-5" type="text" name="detail_bidang_masalah" id="nm_penyakit"
+                                    required="required" value="<?php echo $dupdate['detail_bidang_masalah'] ?>"
                                     autofocus="autofocus" />
                             </div>
                         </div>
@@ -320,9 +338,11 @@ include("../admin/leftbar.php");
             case "updateact":
              $kode_bidang_masalah = $_POST['kode_bidang_masalah'];
 			 $nama_bidang_masalah = $_POST['nama_bidang_masalah'];
+             $detail_bidang_masalah = $_POST['detail_bidang_masalah'];
         $qupdate = "
           UPDATE t_bidang_masalah SET
-            nama_bidang_masalah = '$nama_bidang_masalah'
+            nama_bidang_masalah = '$nama_bidang_masalah',
+            detail_bidang_masalah = '$detail_bidang_masalah'
 			WHERE
             kode_bidang_masalah = '$kode_bidang_masalah'
         ";

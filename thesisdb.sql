@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Apr 2021 pada 05.14
+-- Waktu pembuatan: 27 Apr 2021 pada 07.08
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -52,19 +52,20 @@ INSERT INTO `t_admin` (`id_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas
 CREATE TABLE `t_bidang_masalah` (
   `id_bidang_masalah` int(11) NOT NULL,
   `kode_bidang_masalah` varchar(5) NOT NULL,
-  `nama_bidang_masalah` varchar(500) NOT NULL
+  `nama_bidang_masalah` varchar(500) NOT NULL,
+  `detail_bidang_masalah` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `t_bidang_masalah`
 --
 
-INSERT INTO `t_bidang_masalah` (`id_bidang_masalah`, `kode_bidang_masalah`, `nama_bidang_masalah`) VALUES
-(1, 'BM1', 'Prasyarat Penguasaan Materi'),
-(2, 'BM2', 'Keterampilan Belajar'),
-(3, 'BM3', 'Sarana Belajar'),
-(4, 'BM4', 'Diri Pribadi'),
-(5, 'BM5', 'Keadaan Lingkungan Fisik dan Lingkungan Sosio Emosional');
+INSERT INTO `t_bidang_masalah` (`id_bidang_masalah`, `kode_bidang_masalah`, `nama_bidang_masalah`, `detail_bidang_masalah`) VALUES
+(1, 'BM1', 'Penguasaan Materi Pelajaran', 'Masalah yang sering terjadi pada konten prasyarat penguasaan materi adalah ditemukan adanya siswa yang memiliki hambatan dan tidak menguasai materi pelajaran yang telah diberikan guru dan siswa yang tidak mampu menjawab soal-soal ulangan atau ujian karena kurangnya penguasaan materi pelajaran. '),
+(2, 'BM2', 'Keterampilan Belajar', 'Masalah yang sering terjadi pada konten keterampilan belajar adalah siwa yang tidak mencatat materi pelajaran yang telah diberikan guru, siswa mengalami kesulitan terhadap materi yang memuat kata-kata dalam bahasa asing, siswa yang memiliki kebiasaan mengganggu teman ketika belajar atau ribut ketika jam pelajaran berlangsung, siswa yang sering lupa atau tidak membawa peralatan yang diperlukan dalam belajar di sekolah, tidak menggunakan waktu luang untuk mendalami materi pelajaran, tidak terbiasa'),
+(3, 'BM3', 'Sarana Belajar', 'Masalah yang sering terjadi pada konten sarana dan prasarana belajar yaitu siswa merasa tidak nyaman didalam kelas karena terasa panas, sarana belajar yang tidak memadai di rumah dan ekonomi orang tua yang pas-pasan. '),
+(4, 'BM4', 'Diri Pribadi', 'Masalah yang sering terjadi pada konten diri sendiri atau masalah pribadi siswa yaitu siswa merasa tidak konsestrasi belajar dan motivasi belajarnya sangat rendah, merokok di sekolah supaya terlihat keren oleh teman-temannya dan Siswa yang tidak menghormati atau mengolok-olok gurunya. '),
+(5, 'BM5', 'Keadaan Lingkungan Fisik dan Lingkungan Sosio Emosional', 'Masalah yang sering terjadi pada konten lingkungan belajar dan sosio-emosional yaitu siswa sering terlambat ke sekolah karena jarak tempuh antara rumah siswa ke sekolah sangat jauh, Siswa yang tidak bisa bergaul dengan teman kelasnya, Sering bolos sekolah karena ingin main bersama teman dan siswa yang merasa rendah diri karena sering di bully.');
 
 -- --------------------------------------------------------
 
@@ -273,7 +274,7 @@ INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item
 (58, 'IM58', 'Kesulitan transportasi melemahkan semangat saya untuk belajar.'),
 (59, 'IM59', '\"Saya mengalami kesulitan dalam memahami materi pelajaran'),
 (60, 'IM60', 'Saya mengalami kesulitan untuk mengingat materi pelajaran tertentu.'),
-(61, 'IM61', 'Saya mengalami hambatan tertentu dalam belajar bersama karena suasana kelompok yang kurang menyenangkan.');
+(62, 'IM61', 'Saya mengalami hambatan tertentu dalam belajar bersama karena suasana kelompok yang kurang menyenangkan.');
 
 -- --------------------------------------------------------
 
@@ -418,7 +419,7 @@ ALTER TABLE `t_admin`
 -- AUTO_INCREMENT untuk tabel `t_bidang_masalah`
 --
 ALTER TABLE `t_bidang_masalah`
-  MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_detail_bidang_masalah`
@@ -442,7 +443,7 @@ ALTER TABLE `t_identifikasi`
 -- AUTO_INCREMENT untuk tabel `t_item_masalah`
 --
 ALTER TABLE `t_item_masalah`
-  MODIFY `id_item_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_item_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_pilihan_pengguna`

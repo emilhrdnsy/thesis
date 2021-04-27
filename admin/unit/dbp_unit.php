@@ -38,12 +38,13 @@ include("../admin/leftbar.php");
                       <table id="datatable" class="table table-striped table-bordered table-hover">
                         <thead>
                           <tr>
-                            <th style="text-align: center">No.</th>
-                            <th style="text-align: center; width: 20%">Penyakit</th>
-                            <th style="text-align: center; width: 45%">Gejala</th>
-                            
-                            <th style="text-align: center">CF(Pakar)</th>
-                            <th style="text-align: center">Aksi</th>
+                            <th style="text-align: center; width: 6%">No.</th>
+                            <th style="text-align: center; width: 10%">kode Bidang Masalah</th>
+                            <th style="text-align: center; width: 20%">Bidang Masalah</th>
+                            <th style="text-align: center; width: 10%">Kode Item Masalah</th>
+                            <th style="text-align: center; width: 40%">Item Masalah</th>
+                            <th style="text-align: center">CF (Pakar)</th>
+                            <th style="text-align: center; width: 14%">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -63,7 +64,9 @@ include("../admin/leftbar.php");
                                 echo "
                                 <tr>
                                      <td style= text-align:center>$no</td>
+                                     <td style= text-align:center>$ddatagrid[kode_bidang_masalah]</td>
                                      <td style= text-align:left>$ddatagrid[nama_bidang_masalah]</td>
+                                     <td style= text-align:center>$ddatagrid[kode_item_masalah]</td>
                                      <td style= text-align:left>$ddatagrid[nama_item_masalah]</td>
                                    
                                      <td style= text-align:center>$ddatagrid[cf_bidang_masalah]</td>

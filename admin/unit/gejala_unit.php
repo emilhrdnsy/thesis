@@ -15,12 +15,12 @@ include("../admin/leftbar.php");
                     <a href="adminmainapp.php?unit=dashboard">Beranda</a>
                 </li>
                 <li>Data Master</li>
-		<li>Data Gejala</li>
+		<li>Data Item Masalah</li>
             </ul><!-- /.breadcrumb -->
 	</div>
         <div class="page-content">
             <div class="page-header">
-                <h1>Data Gejala 
+                <h1>Data Item Masalah 
                 </h1>
             </div>
                 <h1>
@@ -108,19 +108,19 @@ include("../admin/leftbar.php");
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Beranda</a>
 							</li>
-              <li>Data Master</li>
-							<li>Tambah Data Gejala</li>
+                            <li>Data Master</li>
+							<li>Tambah Data Item Masalah</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
 
 					<div class="page-content">
-						<div class="page-header"><h1>Tambah Data Gejala</h1></div>
+						<div class="page-header"><h1>Tambah Data Item Masalah</h1></div>
 						<div class="row">
 							<div class="col-xs-12">
                                                             
                  <?php
 				$mysqli= mysqli_connect("localhost","root","","thesisDB");
-                $qupdate = "SELECT max(kode_item_masalah) as maxKode FROM t_item_masalah";
+                $qupdate = "SELECT max(id_item_masalah) as maxKode FROM t_item_masalah";
 
                 $rupdate = mysqli_query($mysqli, $qupdate);
                 $dupdate = mysqli_fetch_assoc($rupdate);
@@ -211,7 +211,7 @@ include("../admin/leftbar.php");
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Beranda</a>
 							</li>
-              <li>Data Master</li>
+                            <li>Data Master</li>
 							<li>Edit Data Item Masalah</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
@@ -227,13 +227,13 @@ include("../admin/leftbar.php");
 						<div class="form-group">
                           <label class="col-sm-3 control-label no-padding-right">Kode Item Masalah</label>
                             <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="kode_item_masalah" id="kode_item_masalah" required="required" value="<?php echo $dupdate['kd_gejala'] ?>"  readonly="" />
+                                <input class="col-xs-10 col-sm-5" type="text" name="kode_item_masalah" id="kode_item_masalah" required="required" value="<?php echo $dupdate['kode_item_masalah'] ?>"  readonly="" />
                             </div>
                        </div>
                       <div class="form-group">
                           <label class="col-sm-3 control-label no-padding-right">Nama Item Masalah</label>
                             <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="kode_item_masalah" id="kode_item_masalah" required="required" value="<?php echo $dupdate['nm_gejala'] ?>" autofocus="autofocus" />
+                                <input class="col-xs-10 col-sm-10" type="text" name="nama_item_masalah" id="nama_item_masalah" required="required" value="<?php echo $dupdate['nama_item_masalah'] ?>" autofocus="autofocus" />
                             </div>
                        </div>
 					   
@@ -272,25 +272,25 @@ include("../admin/leftbar.php");
         break;
     
             case "updateact":
-                $kd_gejala = $_POST['kd_gejala'];
-        $nm_gejala = $_POST['nm_gejala'];
+                $kode_item_masalah = $_POST['kode_item_masalah'];
+                $nama_item_masalah = $_POST['nama_item_masalah'];
         $qupdate = "
-          UPDATE t_gejala SET
-            nm_gejala = '$nm_gejala'
+          UPDATE t_item_masalah SET
+          nama_item_masalah = '$nama_item_masalah'
           WHERE
-            kd_gejala = '$kd_gejala'
+          kode_item_masalah = '$kode_item_masalah'
         ";
         $rupdate = mysqli_query($mysqli,$qupdate);
         header("location:?unit=gejala_unit&act=datagrid");
                  break;
     
         case "delete":
-              $kd_gejala = $_GET['kd_gejala'];
+              $kode_item_masalah = $_GET['kode_item_masalah'];
         $qdelete = "
-          DELETE  FROM t_gejala
+          DELETE  FROM t_item_masalah
        
           WHERE
-            kd_gejala = '$kd_gejala'
+            kode_item_masalah = '$kode_item_masalah'
         ";
 
         $rdelete = mysqli_query($mysqli,$qdelete);

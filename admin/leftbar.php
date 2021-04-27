@@ -31,10 +31,10 @@
           <a href="adminmainapp.php?unit=gejala_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Item Masalah</a>
           <b class="arrow"></b>
         </li>
-		<li <?php if ($page=='tentangbidangmasalah_unit' && $act1=='datagrid') {echo $active;}?>>
+		<!-- <li <?php if ($page=='tentangbidangmasalah_unit' && $act1=='datagrid') {echo $active;}?>>
           <a href="adminmainapp.php?unit=tentangbidangmasalah_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Tentang Bidang Masalah</a>
           <b class="arrow"></b>
-        </li>
+        </li> -->
       </ul>
     </li>
 

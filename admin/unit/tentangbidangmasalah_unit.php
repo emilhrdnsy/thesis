@@ -18,12 +18,12 @@ include("../admin/leftbar.php");
                     <a href="adminmainapp.php?unit=dashboard">Dashboard</a>
                 </li>
                 <li>Data Master</li>
-		<li>Data Penyakit</li>
+		<li>Data Tentang Bidang Masalah</li>
             </ul><!-- /.breadcrumb -->
 	</div>
         <div class="page-content">
             <div class="page-header">
-                <h1>Data Penyakit
+                <h1>Data Tentang Bidang Masalah
                 </h1>
             </div>
             <h1>
@@ -41,32 +41,32 @@ include("../admin/leftbar.php");
                                 <thead>
                                     <tr>
                                         <th style="text-align: center; width: 7%">No.</th>
-                                        <th style="text-align: center; width: 15%">Nama Penyakit</th>
+                                        <th style="text-align: center; width: 15%">Nama Bidang Masalah</th>
                                         <th style="text-align: center; width: 60%">Detail</th>
                                         <th style="text-align: center; width: 18%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no=1; 
-                                    $qdatagrid =" SELECT * FROM t_tentangpenyakit ";
+                                    $qdatagrid =" SELECT * FROM t_bidang_masalah ";
                                     $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                                     while($ddatagrid=mysqli_fetch_assoc($rdatagrid)) {
-										if (strlen($ddatagrid[det_tentangpenyakit]) > 150)
+										if (strlen($ddatagrid[detail_bidang_masalah]) > 150)
 										{
-											$maxLength = 140;
-											$ddatagrid[det_tentangpenyakit] = substr($ddatagrid[det_tentangpenyakit], 0, $maxLength);
+											$maxLength = 500;
+											$ddatagrid[detail_bidang_masalah] = substr($ddatagrid[detail_bidang_masalah], 0, $maxLength);
 											}
-										if (strlen($ddatagrid[srn_tentangpenyakit]) > 150)
-										{
-											$maxLength = 140;
-											$ddatagrid[srn_tentangpenyakit] = substr($ddatagrid[srn_tentangpenyakit], 0, $maxLength);
-											}
+										// if (strlen($ddatagrid[srn_tentangpenyakit]) > 150)
+										// {
+										// 	$maxLength = 500;
+										// 	$ddatagrid[srn_tentangpenyakit] = substr($ddatagrid[srn_tentangpenyakit], 0, $maxLength);
+										// 	}
 										
                                         echo "
                                         <tr>
                                              <td style= text-align:center>$no</td>
-                                             <td style= text-align:left  >$ddatagrid[nm_tentangpenyakit]</td>
-                                             <td style= text-align:left>$ddatagrid[det_tentangpenyakit]</td>
+                                             <td style= text-align:left  >$ddatagrid[nama_bidang_masalah]</td>
+                                             <td style= text-align:left>$ddatagrid[detail_bidang_masalah]</td>
                                              <td style= text-align:center>
                                                  <a href=?unit=tentangpenyakit_unit&act=update&kd_tentangpenyakit=$ddatagrid[kd_tentangpenyakit] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
                                                  <a href=?unit=tentangpenyakit_unit&act=delete&kd_tentangpenyakit=$ddatagrid[kd_tentangpenyakit] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
@@ -121,7 +121,7 @@ include("../admin/leftbar.php");
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Beranda</a>
 							</li>
-              <li>Data Master</li>
+                            <li>Data Master</li>
 							<li>Tambah Data Penyakit</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
@@ -152,9 +152,9 @@ include("../admin/leftbar.php");
 					   
 					   
 					   <div class="form-group">
-                   <label for="det_tentangpenyakit">Detail Penyakit :</label>	
+                   <label for="detail_bidang_masalah">Detail Penyakit :</label>	
                    <div >
-                   <textarea class="form-control limited" name="det_tentangpenyakit" id="det_tentangpenyakit"> </textarea>	
+                   <textarea class="form-control limited" name="detail_bidang_masalah" id="detail_bidang_masalah"> </textarea>	
                     </div>
                        </div>
 					   
@@ -239,7 +239,7 @@ include("../admin/leftbar.php");
         case "inputact":
       
 			 $nm_tentangpenyakit = $_POST['nm_tentangpenyakit'];
-			 $det_tentangpenyakit = $_POST['det_tentangpenyakit'];
+			 $detail_bidang_masalah = $_POST['detail_bidang_masalah'];
 			 $srn_tentangpenyakit = $_POST['srn_tentangpenyakit'];
 			  // menyimpan lokasi path file di variabel
             $lokasigambar = $_FILES['gambar']['tmp_name'];
@@ -248,9 +248,9 @@ include("../admin/leftbar.php");
 			
              $qinput = "
           INSERT INTO t_tentangpenyakit
-          ( nm_tentangpenyakit, det_tentangpenyakit, srn_tentangpenyakit, gambar)
+          ( nm_tentangpenyakit, detail_bidang_masalah, srn_tentangpenyakit, gambar)
           VALUES
-          ('$nm_tentangpenyakit', '$det_tentangpenyakit', '$srn_tentangpenyakit' , '$namagambar')
+          ('$nm_tentangpenyakit', '$detail_bidang_masalah', '$srn_tentangpenyakit' , '$namagambar')
         ";
 		move_uploaded_file($lokasigambar,"../gambar/$namagambar");		   
         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_tentangpenyakit WHERE nm_tentangpenyakit = '$nm_tentangpenyakit'"));
@@ -331,7 +331,7 @@ include("../admin/leftbar.php");
 					   <div class="form-group">
                    <label>Detail  Tentang Penyakit :</label>	
                    <div >
-                   <textarea class="form-control limited" name="det_tentangpenyakit" id="det_tentangpenyakit"><?php echo $dupdate['det_tentangpenyakit'] ?> </textarea>	
+                   <textarea class="form-control limited" name="detail_bidang_masalah" id="detail_bidang_masalah"><?php echo $dupdate['detail_bidang_masalah'] ?> </textarea>	
                     </div>
                        </div>
 					   
@@ -410,7 +410,7 @@ include("../admin/leftbar.php");
             case "updateact":
              $kd_tentangpenyakit = $_POST['kd_tentangpenyakit'];
 			 $nm_tentangpenyakit = $_POST['nm_tentangpenyakit'];
-			 $det_tentangpenyakit = $_POST['det_tentangpenyakit'];
+			 $detail_bidang_masalah = $_POST['detail_bidang_masalah'];
 			 $srn_tentangpenyakit = $_POST['srn_tentangpenyakit'];
 			  $lokasigambar = $_FILES['gambar']['tmp_name'];
             // menyimpan nama file di variabel
@@ -421,7 +421,7 @@ include("../admin/leftbar.php");
                 "
                 UPDATE t_tentangpenyakit SET
 				nm_tentangpenyakit = '$nm_tentangpenyakit',
-				det_tentangpenyakit = '$det_tentangpenyakit',
+				detail_bidang_masalah = '$detail_bidang_masalah',
 				srn_tentangpenyakit = '$srn_tentangpenyakit'
                 WHERE
                 kd_tentangpenyakit = '$kd_tentangpenyakit'
@@ -432,7 +432,7 @@ include("../admin/leftbar.php");
                 "
                 UPDATE t_tentangpenyakit SET
 				nm_tentangpenyakit = '$nm_tentangpenyakit',
-				det_tentangpenyakit = '$det_tentangpenyakit',
+				detail_bidang_masalah = '$detail_bidang_masalah',
 				srn_tentangpenyakit = '$srn_tentangpenyakit',
                 gambar ='$namagambar'
                 WHERE

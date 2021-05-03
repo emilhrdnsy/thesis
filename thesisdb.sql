@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Apr 2021 pada 07.08
+-- Waktu pembuatan: 03 Bulan Mei 2021 pada 03.55
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -222,21 +222,21 @@ INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item
 (6, 'IM6', 'Saya sulit menghindarkan diri dari melayani pertanyaan teman sewaktu ulangan/ujian berlangsung.'),
 (7, 'IM7', 'Saya mengalami kesulitan dalam membuat ringkasan bahan bacaan (misalnya dari buku pelajaran) untuk melengkapi catatan pelajaran.'),
 (8, 'IM8', 'Kegiatan belajar dan kegiatan sekolah lainnya terganggu karena saya harus membantu orang tua bekerja.'),
-(9, 'IM9', '\"Karena saya harus mempersiapkan biaya hidup dan lain-lainnya seperti pulang kampung untuk menjemput perbekalan'),
-(10, 'IM10', '\"Khayalan-khayalan dan lamunan-lamunan tentang sesuatu'),
+(9, 'IM9', 'Karena saya harus mempersiapkan biaya hidup dan lain-lainnya seperti pulang kampung untuk menjemput perbekalan, saya kehilangan banyak waktu untuk mengikuti pelajaran dan kegiatan sekolah lainnya.'),
+(10, 'IM10', 'Khayalan-khayalan dan lamunan-lamunan tentang sesuatu, mengganggu konsentrasi saya dalam bélajar.'),
 (11, 'IM11', 'Saya mengalami kesulitan dalam mengajukan pertanyaan kepada guru karena kurang baiknya hubungan saya dengan guru tersebut.'),
 (12, 'IM12', 'Ketidaksukaan saya kepada guru tertentu menyebabkan saya melalaikan tugas-tugas pelajaran.'),
 (13, 'IM13', 'Saya mengalami kesulitan dalam belajar karena materi pelajaran tidak berurutan. Sehingga materi pelajaran terdahulu tidak menunjang untuk mempelajari materi pelajaran berikutnya.'),
 (14, 'IM14', 'Saya mengalami kesulitan dalam menyelesaikan tugas pelajaran karena tidak meneliti petunjuk mengerjakan tugas tersebut.'),
 (15, 'IM15', 'Saya kehabisan waktu untuk mengoreksi kembali semua jawaban ulangan/ujian sebelum diserahkan kepada guru/pengawas'),
-(16, 'IM16', '\"Saya menghafal hukum-hukum'),
+(16, 'IM16', 'Saya menghafal hukum-hukum'),
 (17, 'IM17', 'Saya mengalami kesulitan memahami bahan bacaan (misalnya dari buku pelajaran) yang memuat istilah-istilah baru.'),
-(18, 'IM18', '\"Dalam mempelajari bahan bacaan'),
+(18, 'IM18', 'Dalam mempelajari bahan bacaan, saya melewatkan bagian-bagian tertentu seperti grafik, diagram dan tabel. Yang ternyata hal itu adalah penting.'),
 (19, 'IM19', 'Kegiatan belajar saya terganggu karena setiap kali harus memikirkan biaya untuk membayar SPP.'),
 (20, 'IM20', 'Kegiatan belajar saya terganggu karena setiap kali harus memikirkan biaya untuk membayar untuk hal-hal lainnya.'),
-(21, 'IM21', '\"Saya mengalami kesulitan bila tugas-tugas pelajaran diharuskan dibuat di buku tersendiri'),
+(21, 'IM21', 'Saya mengalami kesulitan bila tugas-tugas pelajaran diharuskan dibuat di buku tersendiri, misalnya lembaran kerja siswa (LKS) karena saya tidak memiliki biaya untuk membeli itu.'),
 (22, 'IM22', 'Saya kurang mampu tampil dengan kepercayaan diri yang tinggi di hadapan guru dan teman-teman karena kekurangan biaya hidup sehari-hari.'),
-(23, 'IM23', '\"Saya kurang semangat dalam mengikuti pelajaran sehingga sewaktu belajar saya membuat gambar'),
+(23, 'IM23', 'Saya kurang semangat dalam mengikuti pelajaran sehingga sewaktu belajar saya membuat gambar, coret-coretan pada buku catatan atau meja belajar, atau melakukan kegiatan-kegiatan yang tidak menentu lainnya.'),
 (24, 'IM24', 'Suara musik yang bergema di lingkungan rumah atau tetangga serta kebisingan lainnya mengakibatkan saya sukar berkonsentrasi dalam belajar.'),
 (25, 'IM25', 'Saya sulit belajar di rumah karena penghuni rumah terlalu banyak.'),
 (26, 'IM26', 'Saya sulit belajar di rumah karena tamu terlalu banyak.'),
@@ -245,34 +245,34 @@ INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item
 (29, 'IM29', 'Saya mengalami kesulitan memahami isi buku pelajaran karena materi yang terdahulu tidak mendasari pemahaman materi berikutnya.'),
 (30, 'IM30', 'Ketidakmampuan saya dalam menjawab soal-soal ulangan/ujian disebabkan karena kurangnya pengetahuan dasar yang menunjang.'),
 (31, 'IM31', 'Saya mengalami kesulitan dalam menentukan ide pokok/intisari dari bahan bacaan yang saya pelajari.'),
-(32, 'IM32', '\"Kesalahan saya dalam menjawab soal-soal ulangan/ujian'),
+(32, 'IM32', 'Kesalahan saya dalam menjawab soal-soal ulangan/ujian, ternyata disebabkan oleh kecerobohan saya dalam menjawab soal-soal tersebut.'),
 (33, 'IM33', 'Pemikiran saya untuk memperoleh beasiswa atau tunjangan belajar lainnya mengganggu saya berkonsentrasi dalam belajar.'),
-(34, 'IM34', '\"Ketidakmampuan saya untuk memenuhi tuntutan seperti pakaian seragam'),
-(35, 'IM35', '\"Ketidakmampuan saya untuk memenuhi tuntutan seperti pakaian seragam'),
+(34, 'IM34', 'Ketidakmampuan saya untuk memenuhi tuntutan seperti pakaian seragam, iuran dan sebagainya, membuat saya kesulitan dalam mengikuti pelajaran.'),
+(35, 'IM35', 'Ketidakmampuan saya untuk memenuhi tuntutan seperti pakaian seragam, iuran dan sebagainya, membuat saya kurang bersemangat dalam mengikuti pelajaran.'),
 (36, 'IM36', 'Ketidaksenangan saya terhadap guru tertentu tidak menjadikan saya mengabaikan mata pelajaran tersebut.'),
 (37, 'IM37', 'Ketidaksenangan saya terhadap mata pelajaran tertentu tidak menjadikan saya mengabaikan mata pelajaran tersebut.'),
-(38, 'IM38', '\"Perasaan gelisah'),
-(39, 'IM39', '\"Di rumah saya harus membantu adik-adik belajar'),
-(40, 'IM40', '\"Di rumah saya harus mengasuh adik-adik'),
-(41, 'IM41', '\"Di rumah saya harus membantu pekerjaan sehari-hari'),
+(38, 'IM38', 'Perasaan gelisah, murung atau pikiran kacau membuat saya tidak dapat belajar dengan baik.'),
+(39, 'IM39', 'Di rumah saya harus membantu adik-adik belajar, sehingga pelajaran saya terbengkalai.'),
+(40, 'IM40', 'Di rumah saya harus mengasuh adik-adik, sehingga pelajaran saya terbengkalai.'),
+(41, 'IM41', 'Di rumah saya harus membantu pekerjaan sehari-hari, sehingga pelajaran saya terbengkalai.'),
 (42, 'IM42', 'Saya tidak mau bertanya sewaktu pelajaran dalam kelas berlangsung karena takut ditertawakan oleh teman-teman jika ada yang salah.'),
 (43, 'IM43', 'Saya tidak mau memberikan tanggapan sewaktu pelajaran dalam kelas berlangsung karena takut ditertawakan oleh teman-teman jika ada yang salah.'),
-(44, 'IM44', '\"Kurikulum'),
-(45, 'IM45', '\"Saya kesulitan dalam memahami materi pelajaran'),
+(44, 'IM44', 'Kurikulum, urutan materi pelajaran dan buku-buku pelajaran kurang membantu saya dalam menguasai materi pelajaran.'),
+(45, 'IM45', 'Saya kesulitan dalam memahami materi pelajaran, disebabkan karena saya tidak memahami konsep-konsep dasar dan istilah-istilah yang harus dikuasai terlebih dahulu.'),
 (46, 'IM46', 'Rendahnya hasil ulangan/ujian yang saya peroleh disebabkan karena saya kurang menguasai materi pelajaran yang diajarkan oleh guru.'),
-(47, 'IM47', '\"Dalam mengerjakan tugas yang berupa makalah atau laporan tertulis saya mengalami kesulitan berkenaan dengan tata cara penulisan (ejaan'),
+(47, 'IM47', 'Dalam mengerjakan tugas yang berupa makalah atau laporan tertulis saya mengalami kesulitan berkenaan dengan tata cara penulisan (ejaan, tata bahasa, tanda baca), pengutipan, format dan sistematika penulisan.'),
 (48, 'IM48', 'Saya mengalami kesulitan memanfaatkan waktu luang untuk mendalami materi pelajaran.'),
 (49, 'IM49', 'Ketika hendak belajar saya merasa sangat lelah atau jenuh atau mengantuk sehingga tidak dapat belajar dengan baik.'),
-(50, 'IM50', '\"Saya membuang-buang waktu untuk mengobrol'),
+(50, 'IM50', 'Saya membuang-buang waktu untuk mengobrol, menonton televisi, mendengarkan musik, menonton di bioskop dan sebagainya. Yang sebenarnya waktu itu amat berguna untuk kegiatan belajar saya.'),
 (51, 'IM51', 'Kegiatan organisasi kesiswaan mengganggu kegiatan belajar saya.'),
 (52, 'IM52', 'Lingkungan sekolah yang kurang nyaman mengakibatkan proses belajar saya terganggu.'),
-(53, 'IM53', '\"Bila saya harus mengerjakan tugas-tugas pelajaran yang berat atau tidak menarik'),
+(53, 'IM53', 'Bila saya harus mengerjakan tugas-tugas pelajaran yang berat atau tidak menarik, maka tugas itu saya selesaikan seadanya untuk sekedar memenuhi tuntutan saja.'),
 (54, 'IM54', 'Saya kurang berminat dan cepat bosan dalam membaca buku pelajaran.'),
 (55, 'IM55', 'Saya kurang mampu memberikan sumbangan berupa ide atau pendapat kepada teman dalam kegiatan belajar kelompok.'),
-(56, 'IM56', '\"Pada waktu belajar saya mengalami kesulitan untuk menghindarkan diri dari gangguan-gangguan yang mungkin timbul seperti menonton televisi'),
+(56, 'IM56', 'Pada waktu belajar saya mengalami kesulitan untuk menghindarkan diri dari gangguan-gangguan yang mungkin timbul seperti menonton televisi, mendengarkan musik, ajakan teman, dan sebagainya.'),
 (57, 'IM57', 'Letak rumah yang jauh dari sekolah melemahkan semangat saya untuk belajar.'),
 (58, 'IM58', 'Kesulitan transportasi melemahkan semangat saya untuk belajar.'),
-(59, 'IM59', '\"Saya mengalami kesulitan dalam memahami materi pelajaran'),
+(59, 'IM59', 'Saya mengalami kesulitan dalam memahami materi pelajaran, terutama yang berbentuk grafik, gambar, dan tabel.'),
 (60, 'IM60', 'Saya mengalami kesulitan untuk mengingat materi pelajaran tertentu.'),
 (62, 'IM61', 'Saya mengalami hambatan tertentu dalam belajar bersama karena suasana kelompok yang kurang menyenangkan.');
 
@@ -323,7 +323,8 @@ INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode
 (4, 'qwe', 'Laki-laki', 'X IPA 1', 'S4'),
 (5, 'emil', 'Laki-laki', 'X IPA 1', 'S5'),
 (6, 'emil', 'Laki-laki', 'X IPA 1', 'S6'),
-(7, 'emil', 'Laki-laki', 'X IPA 1', 'S7');
+(7, 'emil', 'Laki-laki', 'X IPA 1', 'S7'),
+(8, 'qwe', 'Laki-laki', 'X IPA 1', 'S8');
 
 -- --------------------------------------------------------
 
@@ -455,7 +456,7 @@ ALTER TABLE `t_pilihan_pengguna`
 -- AUTO_INCREMENT untuk tabel `t_siswa`
 --
 ALTER TABLE `t_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_user`

@@ -141,19 +141,19 @@ include("../admin/leftbar.php");
 				
 
 				  <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right" for="kode_penyakit">Penyakit</label>
+                      <label class="col-sm-3 control-label no-padding-right" for="kode_penyakit">Bidang Masalah</label>
                      <div class="col-sm-9">
                         <select class="col-xs-10 col-sm-5" name="kode_penyakit" id="kode_penyakit" required>
-                        <option selected="selected">-Pilih Penyakit-</option>
+                        <option selected="selected">-Pilih Bidang Masalah-</option>
                       <?php
                         $qcombo = 
                         "
-                        SELECT * FROM t_penyakit
+                        SELECT * FROM t_bidang_masalah
                         ";
                         $rcombo = mysqli_query($mysqli,$qcombo);
                         while($dcombo = mysqli_fetch_assoc($rcombo)) {
                             echo "
-                            <option value=$dcombo[kode_penyakit]>$dcombo[nm_penyakit]</option> 
+                            <option value=$dcombo[kode_bidang_masalah]>$dcombo[nama_bidang_masalah]</option> 
                             ";
                         }
                         ?>
@@ -163,19 +163,19 @@ include("../admin/leftbar.php");
                 
               
 				  <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right" for="kode_gejala">Gejala</label>
+                      <label class="col-sm-3 control-label no-padding-right" for="kode_gejala">Item Masalah</label>
                      <div class="col-sm-9">
                         <select class="col-xs-10 col-sm-5" name="kode_gejala" id="kode_gejala" required>
-                        <option selected="selected">-Pilih Gejala-</option>
+                        <option selected="selected">-Pilih Item Masalah-</option>
                        <?php
                         $qcombo = 
                         "
-                        SELECT * FROM t_gejala
+                        SELECT * FROM t_item_masalah
                         ";
                         $rcombo = mysqli_query($mysqli,$qcombo);
                         while($dcombo = mysqli_fetch_assoc($rcombo)) {
                             echo "
-                            <option value=$dcombo[kode_gejala]>$dcombo[nm_gejala]</option> 
+                            <option value=$dcombo[kode_item_masalah]>$dcombo[nama_item_masalah]</option> 
                             ";
                         }
                         ?>

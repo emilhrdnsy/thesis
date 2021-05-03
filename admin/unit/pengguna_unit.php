@@ -66,7 +66,7 @@ include("../admin/leftbar.php");
                                 echo "
                                 <tr>
                                     <td style= text-align:center>$no</td>
-                                    <td style= text-align:left>$ddatagrid[nama]</td>
+                                    <td style= text-align:center>$ddatagrid[nama]</td>
                                     <td style= text-align:center>$ddatagrid[nama_pengguna]</td>
                                     <td style= text-align:center>$ddatagrid[kata_sandi]</td>
                                     <td style=text-align:center>

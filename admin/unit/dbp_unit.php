@@ -38,20 +38,22 @@ include("../admin/leftbar.php");
                       <table id="datatable" class="table table-striped table-bordered table-hover">
                         <thead>
                           <tr>
-                            <th style="text-align: center; width: 6%">No.</th>
+                            <th style="text-align: center; width: 7%">No.</th>
                             <th style="text-align: center; width: 10%">kode Bidang Masalah</th>
-                            <th style="text-align: center; width: 20%">Bidang Masalah</th>
+                            <th style="text-align: center; width: 15%">Bidang Masalah</th>
                             <th style="text-align: center; width: 10%">Kode Item Masalah</th>
-                            <th style="text-align: center; width: 40%">Item Masalah</th>
-                            <th style="text-align: center">CF (Pakar)</th>
-                            <th style="text-align: center; width: 14%">Aksi</th>
+                            <th style="text-align: center; width: 19%">Item Masalah</th>
+                            <th style="text-align: center; width: 7%">MB</th>
+                            <th style="text-align: center; width: 7%">MD</th>
+                            <th style="text-align: center; width: 10%">CF (Pakar)</th>
+                            <th style="text-align: center; width: 15%">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
                          <?php $no=1; 
                           $qdatagrid ="  SELECT 
                            t_identifikasi.kode_identifikasi, 
-                          --  t_diagnosa.mb, t_diagnosa.md, 
+                           t_identifikasi.mb, t_identifikasi.md, 
                            t_identifikasi.cf_bidang_masalah, 
 						   t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
 						   t_item_masalah.kode_item_masalah, t_item_masalah.nama_item_masalah
@@ -67,7 +69,9 @@ include("../admin/leftbar.php");
                                      <td style= text-align:center>$ddatagrid[kode_bidang_masalah]</td>
                                      <td style= text-align:left>$ddatagrid[nama_bidang_masalah]</td>
                                      <td style= text-align:center>$ddatagrid[kode_item_masalah]</td>
-                                     <td style= text-align:left>$ddatagrid[nama_item_masalah]</td>
+                                     <td style= text-align:justify>$ddatagrid[nama_item_masalah]</td>
+                                     <td style= text-align:center>$ddatagrid[mb]</td>
+                                     <td style= text-align:center>$ddatagrid[md]</td>
                                    
                                      <td style= text-align:center>$ddatagrid[cf_bidang_masalah]</td>
                                      <td style=text-align:center>

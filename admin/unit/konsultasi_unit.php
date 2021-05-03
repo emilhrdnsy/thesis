@@ -37,7 +37,7 @@ include("../admin/leftbar.php");
                             <th style="text-align: center">No.</th>
                             <th style="text-align: center">Tanggal</th>
                             <th style="text-align: center">Nama</th>
-                            <th style="text-align: center">Penyakit qwe</th>
+                            <th style="text-align: center">Masalah</th>
                             <th style="text-align: center">Nilai CF</th>
                             <th style="text-align: center">Aksi</th>
                           </tr>
@@ -45,13 +45,13 @@ include("../admin/leftbar.php");
                         <tbody>
                          <?php $no=1; 
                           $qdatagrid ="  SELECT 
-                           t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
-						   t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
-						   t_siswa.kode_siswa, t_siswa.nama_siswa
+                            t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
+                            t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
+                            t_siswa.kode_siswa, t_siswa.nama_siswa
                             FROM 
-                                t_hasil
-                                    JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
-									JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa";
+                              t_hasil
+                            JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
+									          JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa";
                             $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                             while($ddatagrid=mysqli_fetch_assoc($rdatagrid)) {
                                 echo "

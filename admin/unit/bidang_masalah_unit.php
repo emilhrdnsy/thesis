@@ -27,7 +27,7 @@ include("../admin/leftbar.php");
                 </h1>
             </div>
             <h1>
-                <a href="?unit=penyakit_unit&act=input">
+                <a href="?unit=bidang_masalah_unit&act=input">
                     <button class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Tambah Data</button>
                 </a>
             </h1>
@@ -41,9 +41,9 @@ include("../admin/leftbar.php");
                                     <thead>
                                         <tr>
                                             <th style="text-align: center; width: 6%">No.</th>
-                                            <th style="text-align: center; width: 14%">Kode Bidang Masalah</th>
+                                            <th style="text-align: center; width: 10%">Kode Bidang Masalah</th>
                                             <th style="text-align: center; width: 20%">Nama Bidang Masalah</th>
-                                            <th style="text-align: center; width: 50%">Detail</th>
+                                            <th style="text-align: center; width: 49%">Detail</th>
                                             <th style="text-align: center; width: 15%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -58,10 +58,10 @@ include("../admin/leftbar.php");
                                              <td style= text-align:center>$no</td>
                                              <td style= text-align:center>$ddatagrid[kode_bidang_masalah]</td>
                                              <td style= text-align:left>$ddatagrid[nama_bidang_masalah]</td>
-                                             <td style= text-align:left>$ddatagrid[detail_bidang_masalah]</td>
+                                             <td style= text-align:justify>$ddatagrid[detail_bidang_masalah]</td>
                                              <td style=text-align:center>
-                                                 <a href=?unit=penyakit_unit&act=update&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
-                                                 <a href=?unit=penyakit_unit&act=delete&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
+                                                 <a href=?unit=bidang_masalah_unit&act=update&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
+                                                 <a href=?unit=bidang_masalah_unit&act=delete&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
                                              </td>                
                                         </tr>
                                         ";
@@ -142,40 +142,58 @@ include("../admin/leftbar.php");
                     ?>
 
                     <form class="form-horizontal" id="tambah_kat" name="tambah_kat" method="post"
-                        action="?unit=penyakit_unit&act=inputact" enctype="multipart/form-data">
+                        action="?unit=bidang_masalah_unit&act=inputact" enctype="multipart/form-data">
 
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">Kode Bidang Masalah</label>
                             <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="kd_penyakit"
+                                <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="kode_bidang_masalah"
                                     required="required" value="<?php echo "$newID"; ?>" readonly="" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">Nama Bidang Masalah</label>
                             <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="nama_bidang_masalah" id="nm_penyakit"
+                                <input class="col-xs-10 col-sm-5" type="text" name="nama_bidang_masalah" id="nama_bidang_masalah"
                                     required="required" autofocus="autofocus" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Detail</label>
+                            <label for="detail_bidang_masalah">Detail :</label>	
                             <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="detail_bidang_masalah" id="dt_penyakit"
-                                    required="required" autofocus="autofocus" />
+                                <textarea class="form-control limited" name="detail_bidang_masalah" id="detail_bidang_masalah"> </textarea>	
+                            </div>
+                        </div> -->
+
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label"  >Kode Bidang Masalah :</label>
+                            <div class="col-sm-9">
+                                <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="kode_bidang_masalah" required="required" autofocus="autofocus" value="<?php echo "$newID"; ?>" readonly=""/>
                             </div>
                         </div>
-
-                    
-
-
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label">Nama Bidang Masalah :</label>
+                            <div class="col-sm-9">
+                                <input class="col-xs-10 col-sm-5" type="text" name="nama_bidang_masalah" id="nama_bidang_masalah" required="required" autofocus="autofocus" />
+                            </div>
+                        </div>
+							   
+					   
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Detail :</label>	
+                            <div class="col-sm-7">
+                                <textarea class="form-control limited" name="detail_bidang_masalah" id="detail_bidang_masalah"> </textarea>	
+                            </div>
+                        </div>
+                        
+                      
                         <div class="clearfix form-actions">
                             <div class="col-md-offset-3 col-md-9">
                                 <button type="submit" name="submit" class="btn btn-success">Simpan</button>
                                 <button type="reset" name="reset" class="btn btn-danger">Batal</button>
                                 <button type="button" name="kembali" class="btn btn-info"
-                                    onclick="window.location='adminmainapp.php?unit=penyakit_unit&act=datagrid'">kembali</button>
+                                    onclick="window.location='adminmainapp.php?unit=bidang_masalah_unit&act=datagrid'">kembali</button>
                             </div>
                         </div>
 
@@ -225,12 +243,12 @@ include("../admin/leftbar.php");
         
         if ($cek > 0) {
           echo "<script> alert('Nama Bidang Masalah Sudah Ada');
-              document.location='adminmainapp.php?unit=penyakit_unit&act=input';
+              document.location='adminmainapp.php?unit=bidang_masalah_unit&act=input';
               </script>";
           } else {
           mysqli_query($mysqli,$qinput);
           echo "<script> alert('Data Tersimpan');
-              document.location='adminmainapp.php?unit=penyakit_unit&act=datagrid';
+              document.location='adminmainapp.php?unit=bidang_masalah_unit&act=datagrid';
               </script>";
           exit();
          }
@@ -256,46 +274,46 @@ include("../admin/leftbar.php");
                     <a href="#">Beranda</a>
                 </li>
                 <li>Data Master</li>
-                <li>Edit Data Penyakit</li>
+                <li>Edit Data Bidang Masalah</li>
             </ul><!-- /.breadcrumb -->
         </div>
 
         <div class="page-content">
             <div class="page-header">
-                <h1>Edit Data Penyakit</h1>
+                <h1>Edit Data Bidang Masalah</h1>
             </div>
             <div class="row">
                 <div class="col-xs-12">
 
-
-
                     <form class="form-horizontal" id="tambah_kat" name="tambah_kat" method="post"
-                        action="adminmainapp.php?unit=penyakit_unit&act=updateact">
+                        action="adminmainapp.php?unit=bidang_masalah_unit&act=updateact">
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">Kode Bidang Masalah</label>
                             <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="kd_penyakit"
+                                <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="kode_bidang_masalah"
                                     required="required" value="<?php echo $dupdate['kode_bidang_masalah'] ?>"
                                     readonly="readonly" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Nama Bidang Masalah</label>
+                            <label class="col-sm-3 control-label no-padding-right">Nama Bidang Masalah: </label>
                             <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="nama_bidang_masalah" id="nm_penyakit"
+                                <input class="col-xs-10 col-sm-5" type="text" name="nama_bidang_masalah" id="nama_bidang_masalah"
                                     required="required" value="<?php echo $dupdate['nama_bidang_masalah'] ?>"
                                     autofocus="autofocus" />
                             </div>
                         </div>
+                       
+
                         <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Detail</label>
+                            <label class="col-sm-3 control-label no-padding-right" for="detail_bidang_masalah">Detail :</label>	
                             <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="detail_bidang_masalah" id="nm_penyakit"
-                                    required="required" value="<?php echo $dupdate['detail_bidang_masalah'] ?>"
-                                    autofocus="autofocus" />
+                                <textarea class="form-control limited" name="detail_bidang_masalah" id="detail_bidang_masalah" 
+                                required="required"  autofocus="autofocus"><?php echo $dupdate['detail_bidang_masalah'] ?>  
+                                </textarea>	
                             </div>
-                        </div>
+                        </div>   
 
 
                         <div class="clearfix form-actions">
@@ -303,7 +321,7 @@ include("../admin/leftbar.php");
                                 <button type="submit" name="submit" class="btn btn-success">Simpan</button>
                                 <button type="reset" name="reset" class="btn btn-danger">Batal</button>
                                 <button type="button" name="kembali" class="btn btn-info"
-                                    onclick="window.location='adminmainapp.php?unit=penyakit_unit&act=datagrid'">kembali</button>
+                                    onclick="window.location='adminmainapp.php?unit=bidang_masalah_unit&act=datagrid'">kembali</button>
                             </div>
                         </div>
 
@@ -347,7 +365,7 @@ include("../admin/leftbar.php");
             kode_bidang_masalah = '$kode_bidang_masalah'
         ";
         $rupdate = mysqli_query($mysqli,$qupdate);
-        header("location:?unit=penyakit_unit&act=datagrid");
+        header("location:?unit=bidang_masalah_unit&act=datagrid");
                  break;
     
         case "delete":
@@ -359,6 +377,6 @@ include("../admin/leftbar.php");
         ";
 
         $rdelete = mysqli_query($mysqli,$qdelete);
-        header("location:?unit=penyakit_unit&act=datagrid");
+        header("location:?unit=bidang_masalah_unit&act=datagrid");
         break;
 }

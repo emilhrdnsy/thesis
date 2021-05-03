@@ -22,11 +22,11 @@ else if($unit == "p_cf_unit") {
 else if($unit == "l_penyakit") {
     require_once 'unit/l_penyakit.php';
 }
-else if($unit == "penyakit_unit") {
-    require_once 'unit/penyakit_unit.php';
+else if($unit == "bidang_masalah_unit") {
+    require_once 'unit/bidang_masalah_unit.php';
 }
-else if($unit == "gejala_unit") {
-    require_once 'unit/gejala_unit.php';
+else if($unit == "item_masalah_unit") {
+    require_once 'unit/item_masalah_unit.php';
 }
 else if($unit == "dbp_unit") {
     require_once 'unit/dbp_unit.php';

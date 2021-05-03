@@ -24,7 +24,7 @@ include("../admin/leftbar.php");
                 </h1>
             </div>
                 <h1>
-                    <a href="?unit=gejala_unit&act=input">
+                    <a href="?unit=item_masalah_unit&act=input">
                         <button class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Tambah Data</button>
                     </a>
                 </h1>
@@ -53,10 +53,10 @@ include("../admin/leftbar.php");
                                         <tr>
                                              <td style= text-align:center>$no</td>
                                              <td style= text-align:center >$ddatagrid[kode_item_masalah]</td>
-                                             <td style= text-align:left >$ddatagrid[nama_item_masalah]</td>
+                                             <td style= text-align:justify >$ddatagrid[nama_item_masalah]</td>
                                              <td style=text-align:center>
-                                                 <a href=?unit=gejala_unit&act=update&kode_item_masalah=$ddatagrid[kode_item_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
-                                                 <a href=?unit=gejala_unit&act=delete&kode_item_masalah=$ddatagrid[kode_item_masalah] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
+                                                 <a href=?unit=item_masalah_unit&act=update&kode_item_masalah=$ddatagrid[kode_item_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
+                                                 <a href=?unit=item_masalah_unit&act=delete&kode_item_masalah=$ddatagrid[kode_item_masalah] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
                                              </td>                
                                         </tr>
                                         ";
@@ -130,7 +130,7 @@ include("../admin/leftbar.php");
                 $newID = $char.sprintf("%01s",$no_urut);
                     ?>
                                   
-                  <form class="form-horizontal" id="tambah_brand" name="tambah_brand" method="post" action="?unit=gejala_unit&act=inputact" enctype="multipart/form-data"  >                         
+                  <form class="form-horizontal" id="tambah_brand" name="tambah_brand" method="post" action="?unit=item_masalah_unit&act=inputact" enctype="multipart/form-data"  >                         
 						<div class="form-group">
                           <label class="col-sm-3 control-label no-padding-right">Kode Item Masalah</label>
                             <div class="col-sm-9">
@@ -147,7 +147,7 @@ include("../admin/leftbar.php");
                             <div class="col-md-offset-3 col-md-9">
                         <button type="submit" name="submit" class="btn btn-success">Simpan</button>
                         <button type="reset" name="reset" class="btn btn-danger">Batal</button>
-                        <button type="button" name="kembali" class="btn btn-info" onclick="window.location='adminmainapp.php?unit=gejala_unit&act=datagrid'">kembali</button>
+                        <button type="button" name="kembali" class="btn btn-info" onclick="window.location='adminmainapp.php?unit=item_masalah_unit&act=datagrid'">kembali</button>
                          </div>
 			</div> 
 					</form>					
@@ -181,12 +181,12 @@ include("../admin/leftbar.php");
         
         if ($cek > 0) {
           echo "<script> alert('Data Item Masalah Sudah Ada');
-              document.location='adminmainapp.php?unit=gejala_unit&act=input';
+              document.location='adminmainapp.php?unit=item_masalah_unit&act=input';
               </script>";
           } else {
           mysqli_query($mysqli,$qinput);
           echo "<script> alert('Data Tersimpan');
-              document.location='adminmainapp.php?unit=gejala_unit&act=datagrid';
+              document.location='adminmainapp.php?unit=item_masalah_unit&act=datagrid';
               </script>";
           exit();
          }
@@ -221,35 +221,27 @@ include("../admin/leftbar.php");
 						<div class="row">
 							<div class="col-xs-12">
                                                             
-                 <form class="form-horizontal" id="tambah_brand" nama="tambah_brand"  method="post" action="adminmainapp.php?unit=gejala_unit&act=updateact" enctype="multipart/form-data"  >    
-                      
-                       
-						<div class="form-group">
-                          <label class="col-sm-3 control-label no-padding-right">Kode Item Masalah</label>
-                            <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="kode_item_masalah" id="kode_item_masalah" required="required" value="<?php echo $dupdate['kode_item_masalah'] ?>"  readonly="" />
-                            </div>
-                       </div>
-                      <div class="form-group">
-                          <label class="col-sm-3 control-label no-padding-right">Nama Item Masalah</label>
-                            <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-10" type="text" name="nama_item_masalah" id="nama_item_masalah" required="required" value="<?php echo $dupdate['nama_item_masalah'] ?>" autofocus="autofocus" />
-                            </div>
-                       </div>
-					   
-                     
-                      <div class="clearfix form-actions">
-                            <div class="col-md-offset-3 col-md-9">
-                        <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                        <button type="reset" name="reset" class="btn btn-danger">Batal</button>
-                        <button type="button" name="kembali" class="btn btn-info" onclick="window.location='adminmainapp.php?unit=gejala_unit&act=datagrid'">kembali</button>
-                         </div>
-			</div> 
-										
-               </form>
-             
-
-                   
+                 <form class="form-horizontal" id="tambah_brand" nama="tambah_brand"  method="post" action="adminmainapp.php?unit=item_masalah_unit&act=updateact" enctype="multipart/form-data"  >    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right">Kode Item Masalah</label>
+                        <div class="col-sm-9">
+                            <input class="col-xs-10 col-sm-5" type="text" name="kode_item_masalah" id="kode_item_masalah" required="required" value="<?php echo $dupdate['kode_item_masalah'] ?>"  readonly="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right">Nama Item Masalah</label>
+                        <div class="col-sm-9">
+                            <input class="col-xs-10 col-sm-10" type="text" name="nama_item_masalah" id="nama_item_masalah" required="required" value="<?php echo $dupdate['nama_item_masalah'] ?>" autofocus="autofocus" />
+                        </div>
+                    </div>                  
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" name="submit" class="btn btn-success">Simpan</button>
+                            <button type="reset" name="reset" class="btn btn-danger">Batal</button>
+                            <button type="button" name="kembali" class="btn btn-info" onclick="window.location='adminmainapp.php?unit=item_masalah_unit&act=datagrid'">kembali</button>
+                        </div>
+			        </div> 					
+               </form>      
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
@@ -281,7 +273,7 @@ include("../admin/leftbar.php");
           kode_item_masalah = '$kode_item_masalah'
         ";
         $rupdate = mysqli_query($mysqli,$qupdate);
-        header("location:?unit=gejala_unit&act=datagrid");
+        header("location:?unit=item_masalah_unit&act=datagrid");
                  break;
     
         case "delete":
@@ -294,6 +286,6 @@ include("../admin/leftbar.php");
         ";
 
         $rdelete = mysqli_query($mysqli,$qdelete);
-        header("location:?unit=gejala_unit&act=datagrid");
+        header("location:?unit=item_masalah_unit&act=datagrid");
         break;
 }

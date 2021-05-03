@@ -15,7 +15,7 @@
    
 
     <!-- kategori -->
-    <li  <?php if ($page=='penyakit_unit' or $page=='gejala_unit' or $page=='tentangbidangmasalah_unit') {echo $open;}?>>
+    <li  <?php if ($page=='bidang_masalah_unit' or $page=='item_masalah_unit' or $page=='tentangbidangmasalah_unit') {echo $open;}?>>
       <a href="#" class="dropdown-toggle">
         <i class="menu-icon fa fa-table"></i>
         <span class="menu-text"> Data Master </span>
@@ -23,18 +23,15 @@
       </a>
       <b class="arrow"></b>
       <ul class="submenu">
-        <li <?php if ($page=='penyakit_unit' && $act1=='datagrid') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=penyakit_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Bidang Masalah</a>
+        <li <?php if ($page=='bidang_masalah_unit' && $act1=='datagrid') {echo $active;}?>>
+          <a href="adminmainapp.php?unit=bidang_masalah_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Bidang Masalah</a>
           <b class="arrow"></b>
         </li>
-		<li <?php if ($page=='gejala_unit' && $act1=='datagrid') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=gejala_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Item Masalah</a>
+		<li <?php if ($page=='item_masalah_unit' && $act1=='datagrid') {echo $active;}?>>
+          <a href="adminmainapp.php?unit=item_masalah_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Item Masalah</a>
           <b class="arrow"></b>
         </li>
-		<!-- <li <?php if ($page=='tentangbidangmasalah_unit' && $act1=='datagrid') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=tentangbidangmasalah_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Tentang Bidang Masalah</a>
-          <b class="arrow"></b>
-        </li> -->
+	
       </ul>
     </li>
 
@@ -47,15 +44,14 @@
       </a>
       <b class="arrow"></b>
       <ul class="submenu">
-        
-        <li <?php if ($page=='konsultasi_unit' && $act1=='datagrid') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=konsultasi_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Konsultasi</a>
-          <b class="arrow"></b>
-		  <li <?php if ($page=='dbp_unit' && $act1=='datagrid') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=dbp_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Basis Pengetahuan</a>
-          <b class="arrow"></b>
-        </li>
-		 </li>
+          <li <?php if ($page=='konsultasi_unit' && $act1=='datagrid') {echo $active;}?>>
+            <a href="adminmainapp.php?unit=konsultasi_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Konsultasi</a>
+            <b class="arrow"></b>
+          </li>  
+          <li <?php if ($page=='dbp_unit' && $act1=='datagrid') {echo $active;}?>>
+            <a href="adminmainapp.php?unit=dbp_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Data Basis Pengetahuan</a>
+            <b class="arrow"></b>
+          </li>
       </ul>
     </li>
 
@@ -96,9 +92,9 @@
 	
 
     <?php
-                                }
-                                else {
-                                     ?>
+      }
+      else {
+    ?>
 <li <?php if ($page=='p_dashboard') {echo $active;}?>>
         <a href="adminmainapp.php?unit=p_dashboard">
         <i class="menu-icon fa fa-home"></i>

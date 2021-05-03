@@ -68,12 +68,11 @@ include("../admin/leftbar.php");
                             }
                                 echo "
                                 <tr>
-                                    <td style= text-align:center >$no</td>
-                                    <td style= text-align:left  >$ddatagrid[nama]</td>
+                                    <td style= text-align:center>$no</td>
+                                    <td style= text-align:center>$ddatagrid[nama]</td>
                                     <td style= text-align:center>$ddatagrid[nama_pengguna]</td>
                                     <td style= text-align:center>$ddatagrid[kata_sandi]</td>	
-                                  
-                                    
+                                                                      
                                     <td style=text-align:center>
                                         <a href=?unit=admin_unit&act=update&id_login=$ddatagrid[id_login] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
                                         <a href=?unit=admin_unit&act=delete&id_login=$ddatagrid[id_login] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    

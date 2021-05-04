@@ -44,6 +44,8 @@ include("../admin/leftbar.php");
                                             <th style="text-align: center; width: 10%">Kode Bidang Masalah</th>
                                             <th style="text-align: center; width: 20%">Nama Bidang Masalah</th>
                                             <th style="text-align: center; width: 49%">Detail</th>
+                                            <th style="text-align: center; width: 49%">Layanan</th>
+
                                             <th style="text-align: center; width: 15%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -59,6 +61,7 @@ include("../admin/leftbar.php");
                                              <td style= text-align:center>$ddatagrid[kode_bidang_masalah]</td>
                                              <td style= text-align:left>$ddatagrid[nama_bidang_masalah]</td>
                                              <td style= text-align:justify>$ddatagrid[detail_bidang_masalah]</td>
+                                             <td style= text-align:justify>$ddatagrid[layanan]</td>
                                              <td style=text-align:center>
                                                  <a href=?unit=bidang_masalah_unit&act=update&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
                                                  <a href=?unit=bidang_masalah_unit&act=delete&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    

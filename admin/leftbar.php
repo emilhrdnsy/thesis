@@ -104,7 +104,7 @@
       <b class="arrow"></b>
     </li>
 	
-<li <?php if ($page=='p_gejala_unit') {echo $open;}?>>
+<li <?php if ($page=='p_item_masalah_unit') {echo $open;}?>>
       <a href="#" class="dropdown-toggle">
         <i class="menu-icon fa fa-search-plus"></i>
         <span class="menu-text"> Konsultasi </span>
@@ -112,8 +112,8 @@
       </a>
       <b class="arrow"></b>
       <ul class="submenu">
-       <li <?php if ($page=='p_gejala_unit' && $act1=='input') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=p_gejala_unit&act=input"><i class="menu-icon fa fa-caret-right"></i>Konsultasi</a>
+       <li <?php if ($page=='p_item_masalah_unit' && $act1=='input') {echo $active;}?>>
+          <a href="adminmainapp.php?unit=p_item_masalah_unit&act=input"><i class="menu-icon fa fa-caret-right"></i>Konsultasi</a>
           <b class="arrow"></b>
         </li>
         </ul>

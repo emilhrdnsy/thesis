@@ -38,7 +38,7 @@ switch($act){
           <div class="row">
 
             <form name="p_gejala" id="p_gejala" method="post"
-              action="?unit=p_gejala_unit&act=proses&id_siswa=<?php echo $dupdate['kode_siswa']; ?>"
+              action="?unit=p_item_masalah_unit&act=proses&id_siswa=<?php echo $dupdate['kode_siswa']; ?>"
               enctype="multipart/form-data">
 
               <div class="widget-box widget-color-red" id="widget-box-2">
@@ -140,7 +140,7 @@ switch($act){
     case "proses":
 	
       $arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
-      date_default_timezone_set("Asia/Jakarta");
+      date_default_timezone_set("Asia/Makassar");
       $inptanggal = date('Y-m-d H:i:s');
 
       $arbobot = array('0', '0.3', '0.7', '1.0');
@@ -191,7 +191,7 @@ switch($act){
           $arkondisi = explode("_", $_POST['kondisi'][0]);
           $gejala = $arkondisi[0];
 
-          print_r($arkondisi);
+          // print_r($arkondisi);
           // print_r($_POST['kondisi']);
           for ($i = 0; $i < count($_POST['kondisi']); $i++) {
             $arkondisi = explode("_", $_POST['kondisi'][$i]);
@@ -258,12 +258,12 @@ switch($act){
         
        if ($cek > 0) {
           echo "<script> alert('Anda Belum Memilh Gejala');
-              document.location='adminmainapp.php?unit=p_gejala_unit&act=datagrid&id_siswa=$kd_daftar';
+              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
               </script>";
           } else {
           mysqli_query($mysqli,$qinput);
           echo "<script> alert('Data Tersimpan');
-              document.location='adminmainapp.php?unit=p_gejala_unit&act=update&id_siswa=$kd_daftar';
+              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=update&id_siswa=$kd_daftar';
               </script>";
           exit();
          }
@@ -313,7 +313,7 @@ include("../admin/leftbar.php");
 
                     ?>
           <form class="form-horizontal" name="tambah_subkat" id="tambah_subkat" method="post"
-            action="?unit=p_gejala_unit&act=inputact" enctype="multipart/form-data">
+            action="?unit=p_item_masalah_unit&act=inputact" enctype="multipart/form-data">
 
 
 
@@ -364,9 +364,9 @@ include("../admin/leftbar.php");
                 <select class="form-select col-xs-10 col-sm-5 " name="kelas" id="kelas"
                   aria-label="Default select example" required>
                   <option value="X IPA 1">X IPA 1</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
+                  <option value="X IPA 1">X IPA 2</option>
+                  <option value="X IPA 1">X IPA 3</option>
+                 
                 </select>
               </div>
             </div>
@@ -426,12 +426,12 @@ include("../admin/leftbar.php");
         
         if ($cek > 0) {
           echo "<script> alert('Kode Sudah Ada');
-              document.location='adminmainapp.php?unit=p_gejala_unit&act=input';
+              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=input';
               </script>";
           } else {
           mysqli_query($mysqli,$qinput);
           echo "<script> alert('Data Tersimpan');
-              document.location='adminmainapp.php?unit=p_gejala_unit&act=datagrid&id_siswa=$id_siswa';
+              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$id_siswa';
               </script>";
           exit();
          }
@@ -442,17 +442,17 @@ include("../admin/leftbar.php");
         $qupdate = "SELECT 
                t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,t_hasil.kode_siswa,
 						   t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
+               t_bidang_masalah.layanan,
               --  t_penyakit.penyebab, t_penyakit.pencegahan, t_penyakit.penanganan,
 						   t_siswa.kode_siswa, t_siswa.nama_siswa
                             FROM 
-                                t_hasil
-                                    JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
+                                t_hasil JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
 									JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
 									WHERE t_hasil.kode_siswa ='$id_siswa'";
         $rupdate = mysqli_query($mysqli, $qupdate);
         $dupdate = mysqli_fetch_assoc($rupdate);
 		
-		$arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
+  $arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
   date_default_timezone_set("Asia/Jakarta");
   $inptanggal = date('Y-m-d H:i:s');
 
@@ -466,7 +466,7 @@ include("../admin/leftbar.php");
         }
       }
 
-	  $sqlkondisi =(" SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna+0");
+	$sqlkondisi =(" SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna+0");
 	$rdatagridk = mysqli_query($mysqli, $sqlkondisi);
 	while($rkondisi=mysqli_fetch_array($rdatagridk)) {
         $arkondisitext[$rkondisi['id_pilihan_pengguna']] = $rkondisi['kondisi'];
@@ -485,6 +485,7 @@ include("../admin/leftbar.php");
               t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,t_hasil.kode_siswa,
               t_hasil.bidang_masalah, t_hasil.item_masalah,
               t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, 
+              t_bidang_masalah.layanan,
               t_siswa.kode_siswa, t_siswa.nama_siswa
               FROM 
                                 t_hasil
@@ -565,7 +566,7 @@ include("../admin/leftbar.php");
 							echo '<tr><td>' . $ig . '</td>';
 							echo "<td> $ddatagrid[kode_item_masalah]</td>";
 							echo "<td> $ddatagrid[nama_item_masalah]</td>";
-                           echo '<td><span class="kondisipilih">' . $arkondisitext[$kondisi] . "</span></td>";
+              echo '<td><span class="kondisipilih">' . $arkondisitext[$kondisi] . "</span></td>";
   
 						}
                              ?>
@@ -639,15 +640,12 @@ include("../admin/leftbar.php");
           <div class="widget-body">
             <div class="widget-main">
 
-              <!-- <p class="alert alert-danger">
-                Penyebab : <?php echo $dupdate['penyebab']; ?>
-              </p>
               <p class="alert alert-danger">
-                Penceggahan : <?php echo $dupdate['pencegahan']; ?>
+                Layanan : <?php echo $dupdate['layanan']; ?>
               </p>
-              <p class="alert alert-danger">
-                Penanganan : <?php echo $dupdate['penanganan']; ?>
-              </p> -->
+
+              
+          
 
             </div>
           </div>
@@ -655,7 +653,7 @@ include("../admin/leftbar.php");
             <div class="col-md-offset-3 col-md-9">
               <a href="adminmainapp.php?unit=l_konsultasi&kd_daftar=<?php echo $kd_daftar; ?>"
                 class='btn btn-sm btn-danger glyphicon glyphicon-print'> Print</a>
-              <a href="adminmainapp.php?unit=p_gejala_unit&act=datagrid&kd_daftar=<?php echo $kd_daftar; ?>"
+              <a href="adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&kd_daftar=<?php echo $kd_daftar; ?>"
                 class='btn btn-sm btn-info glyphicon'>Kembali</a> <br><br><br>
             </div>
           </div>

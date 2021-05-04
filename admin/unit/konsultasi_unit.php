@@ -62,8 +62,8 @@ include("../admin/leftbar.php");
                                      <td style= text-align:center>$ddatagrid[nama_bidang_masalah]</td>
                                      <td style= text-align:center>$ddatagrid[nilai_cf]</td>
                                      <td style=text-align:center>
-                                         <a href=?unit=konsultasi_unit&act=update&kd_hasil=$ddatagrid[kd_hasil] class='btn btn-sm btn-info glyphicon glyphicon-eye-open' > Detail</a> 
-                                         <a href=?unit=konsultasi_unit&act=delete&kd_hasil=$ddatagrid[kd_hasil] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'> Hapus</a>    
+                                         <a href=?unit=konsultasi_unit&act=update&kode_hasil=$ddatagrid[kode_hasil] class='btn btn-sm btn-info glyphicon glyphicon-eye-open' > Detail</a> 
+                                         <a href=?unit=konsultasi_unit&act=delete&kode_hasil=$ddatagrid[kode_hasil] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'> Hapus</a>    
                                      </td>                
                                 </tr>
                                 ";
@@ -132,9 +132,9 @@ include("../admin/leftbar.php");
 
 
 				  <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right" for="kd_penyakit">Penyakit</label>
+                      <label class="col-sm-3 control-label no-padding-right" for="kode_bidang_masalah">Penyakit</label>
                      <div class="col-sm-9">
-                        <select class="col-xs-10 col-sm-5" name="kd_penyakit" id="kd_penyakit" required>
+                        <select class="col-xs-10 col-sm-5" name="kode_bidang_masalah" id="kode_bidang_masalah" required>
                         <option selected="selected">-Pilih Penyakit-</option>
                       <?php
                         $qcombo = 
@@ -144,7 +144,7 @@ include("../admin/leftbar.php");
                         $rcombo = mysqli_query($mysqli,$qcombo);
                         while($dcombo = mysqli_fetch_assoc($rcombo)) {
                             echo "
-                            <option value=$dcombo[kd_penyakit]>$dcombo[nm_penyakit]</option> 
+                            <option value=$dcombo[kode_bidang_masalah]>$dcombo[nm_penyakit]</option> 
                             ";
                         }
                         ?>
@@ -154,19 +154,19 @@ include("../admin/leftbar.php");
                 
               
 				  <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right" for="kd_gejala">Gejala</label>
+                      <label class="col-sm-3 control-label no-padding-right" for="kode_item_masalah">Item Masalah</label>
                      <div class="col-sm-9">
-                        <select class="col-xs-10 col-sm-5" name="kd_gejala" id="kd_gejala" required>
-                        <option selected="selected">-Pilih Gejala-</option>
+                        <select class="col-xs-10 col-sm-5" name="kode_item_masalah" id="kode_item_masalah" required>
+                        <option selected="selected">-Pilih Item-</option>
                        <?php
                         $qcombo = 
                         "
-                        SELECT * FROM t_gejala
+                        SELECT * FROM t_item_masalah
                         ";
                         $rcombo = mysqli_query($mysqli,$qcombo);
                         while($dcombo = mysqli_fetch_assoc($rcombo)) {
                             echo "
-                            <option value=$dcombo[kd_gejala]>$dcombo[nm_gejala]</option> 
+                            <option value=$dcombo[kode_item_masalah]>$dcombo[nama_item_masalah]</option> 
                             ";
                         }
                         ?>
@@ -212,7 +212,7 @@ include("../admin/leftbar.php");
  <script  type="text/javascript">
  var frmvalidator = new Validator("tambah_subkat");
  
- frmvalidator.addValidation("kd_penyakit","req","Silakan Pilih kategori");
+ frmvalidator.addValidation("kode_bidang_masalah","req","Silakan Pilih kategori");
  frmvalidator.addValidation("namasubkategori","req","Silakan Masukkan Nama Subkategori");
  frmvalidator.addValidation("namasubkategori","maxlen=35","Maksimal Karakter Nama 35 digit");
  frmvalidator.addValidation("namasubkategori","alpha_s","Hanya Huruf Saja");
@@ -226,23 +226,23 @@ include("../admin/leftbar.php");
         break;
     
         case "inputact":
-       $qupdate = "SELECT max(kd_hasil) as maxKode FROM t_diagnosa";
+       $qupdate = "SELECT max(kode_hasil) as maxKode FROM t_identifikasi";
                 $rupdate = mysqli_query($mysqli, $qupdate);
                 $dupdate = mysqli_fetch_assoc($rupdate);
                 $subkode_kategori = $dupdate['maxKode'];
                 $no_urut = (int) substr($subkode_kategori, 3, 3);
                 $no_urut++;
                 $newID = $char.sprintf("%03s",$no_urut);  
-                $new = $_POST['kd_penyakit'].sprintf($newID);
+                $new = $_POST['kode_bidang_masalah'].sprintf($newID);
             $namasubkategori = $_POST['namasubkategori'];
-            $kd_penyakit = $_POST['kd_penyakit'];
+            $kd_bidang_masalah = $_POST['kode_bidang_masalah'];
              $qinput = 
         "
-        INSERT INTO t_diagnosa
-        (kd_hasil,kd_penyakit,namasubkategori)
-        VALUES ('$new','$kd_penyakit','$namasubkategori')";
+        INSERT INTO t_identifikasi
+        (kode_hasil,kode_bidang_masalah,namasubkategori)
+        VALUES ('$new','$kd_bidang_masalah','$namasubkategori')";
          	
-         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_diagnosa WHERE namasubkategori = '$namasubkategori'"));
+         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_identifikasi WHERE namasubkategori = '$namasubkategori'"));
         
         if ($cek > 0) {
           echo "<script> alert('Data SubKategori Sudah Ada');
@@ -258,64 +258,62 @@ include("../admin/leftbar.php");
         break;
     
         case "update":
-        $kd_hasil = $_GET['kd_hasil'];
+        $kd_hasil = $_GET['kode_hasil'];
         $qupdate = "SELECT 
-                           t_hasil.kd_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
-						   t_penyakit.kode_penyakit, t_penyakit.nm_penyakit, t_penyakit.penyebab,
-						   t_penyakit.pencegahan, t_penyakit.penanganan,
-						   t_daftar.kd_daftar, t_daftar.nm_pasien
+                          t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
+                          t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, 
+                          t_bidang_masalah.layanan,
+                          t_siswa.kode_siswa, t_siswa.nama_siswa
                             FROM 
-                                t_hasil
-                                    JOIN t_penyakit ON t_hasil.hasil_id = t_penyakit.kode_penyakit
-									JOIN t_daftar ON t_hasil.kd_daftar = t_daftar.kd_daftar
-									WHERE t_hasil.kd_hasil = '$kd_hasil'";
+                                t_hasil JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
+									JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
+									WHERE t_hasil.kode_hasil = '$kd_hasil'";
         $rupdate = mysqli_query($mysqli, $qupdate);
         $dupdate = mysqli_fetch_assoc($rupdate);
 		
 		$arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
-  date_default_timezone_set("Asia/Jakarta");
+  date_default_timezone_set("Asia/Makassar");
   $inptanggal = date('Y-m-d H:i:s');
 
-  $arbobot = array('0', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1.0');
-  $argejala = array();
+  $arbobot = array('0', '0.3', '0.7', '1.0');
+  $ar_item_masalah = array();
  
  for ($i = 0; $i < count($_POST['kondisi']); $i++) {
         $arkondisi = explode("_", $_POST['kondisi'][$i]);
         if (strlen($_POST['kondisi'][$i]) > 1) {
-          $argejala += array($arkondisi[0] => $arkondisi[1]);
+          $ar_item_masalah += array($arkondisi[0] => $arkondisi[1]);
         }
       }
 
-	  $sqlkondisi =(" SELECT * FROM t_kondisi ORDER by id+0");
+	  $sqlkondisi =(" SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna+0");
 	$rdatagridk = mysqli_query($mysqli, $sqlkondisi);
 	while($rkondisi=mysqli_fetch_array($rdatagridk)) {
-        $arkondisitext[$rkondisi['id']] = $rkondisi['kondisi'];
+        $arkondisitext[$rkondisi['id_pilihan_pengguna']] = $rkondisi['kondisi'];
       }
-  $sqlpkt =(" SELECT * FROM t_penyakit ORDER by kode_penyakit+0");
+  $sqlpkt =(" SELECT * FROM t_bidang_masalah ORDER by kode_bidang_masalah+0");
 	$rdatagridp = mysqli_query($mysqli, $sqlpkt);
 	while($rpkt=mysqli_fetch_array($rdatagridp)) {
-        $arpkt[$rpkt['kode_penyakit']] = $rpkt['nm_penyakit'];
-        $ardpkt[$rpkt['kode_penyakit']] = $rpkt['penyebab'];
-        $arspkt[$rpkt['kode_penyakit']] = $rpkt['pencegahan'];
-        $argpkt[$rpkt['kode_penyakit']] = $rpkt['penanganan'];
+        $arpkt[$rpkt['kode_bidang_masalah']] = $rpkt['nama_bidang_masalah'];
+
       }
 
-	  $kd_hasil = $_GET['kd_hasil'];
+	  $kd_hasil = $_GET['kode_hasil'];
         $sqlhasil = "SELECT 
-                           t_hasil.kd_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
-						   t_hasil.penyakit, t_hasil.gejala,
-						   t_penyakit.kode_penyakit, t_penyakit.nm_penyakit, t_penyakit.penyebab,
-						   t_penyakit.pencegahan, t_penyakit.penanganan,
-						   t_daftar.kd_daftar, t_daftar.nm_pasien
+                            t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
+                            t_hasil.bidang_masalah, t_hasil.item_masalah,
+                            t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, 
+                            t_bidang_masalah.layanan,
+                            
+                            t_siswa.kode_siswa, t_siswa.nama_siswa
                             FROM 
                                 t_hasil
-                                    JOIN t_penyakit ON t_hasil.hasil_id = t_penyakit.kode_penyakit
-									JOIN t_daftar ON t_hasil.kd_daftar = t_daftar.kd_daftar
-									WHERE t_hasil.kd_hasil = '$kd_hasil'";
+                                    JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
+									JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
+									WHERE t_hasil.kode_hasil = '$kd_hasil'";
 	$rdatagridp = mysqli_query($mysqli, $sqlhasil);
   while ($rhasil = mysqli_fetch_array($rdatagridp)) {
-    $arpenyakit = unserialize($rhasil['penyakit']);
-    $argejala = unserialize($rhasil['gejala']);
+    $arpenyakit = unserialize($rhasil['bidang_masalah']);
+    $ar_item_masalah = unserialize($rhasil['item_masalah']);
   }
 
   $np1 = 0;
@@ -352,7 +350,7 @@ include("../admin/leftbar.php");
 				   												<div class="widget-header">
 													<h5 class="widget-title bigger lighter">
 														<i class=""></i>
-														Gejala Yang Dipilih
+														Item Masalah Yang Dipilih
 													</h5>
 
 											</div>
@@ -363,26 +361,26 @@ include("../admin/leftbar.php");
 																
                           <tr>
                             <th style="text-align: center">No.</th>
-                            <th style="text-align: center">Kode Gejala</th>
-                            <th style="text-align: center">Nama Gejala</th>
-                            <th style="text-align: center">Nilai CF (Kondsi)</th>
+                            <th style="text-align: center">Kode Item Masalah</th>
+                            <th style="text-align: center">Nama Item Masalah</th>
+                            <th style="text-align: center">Nilai CF (Kondisi)</th>
                           </tr>
                         </thead>
                         <tbody>
                          <?php  
 						 
 						$ig = 0;
-						foreach ($argejala as $key => $value) {
+						foreach ($ar_item_masalah as $key => $value) {
 						$kondisi = $value;
 						$ig++;
-						$gejala = $key;
-                        $qdatagrid =" SELECT * FROM t_gejala where kode_gejala = '$key'";
-                        $rdatagrid = mysqli_query($mysqli, $qdatagrid);
-                        $ddatagrid=mysqli_fetch_array($rdatagrid);
+						$item_masalah = $key;
+            $qdatagrid =" SELECT * FROM t_item_masalah where kode_item_masalah = '$key'";
+            $rdatagrid = mysqli_query($mysqli, $qdatagrid);
+            $ddatagrid=mysqli_fetch_array($rdatagrid);
 							echo '<tr><td>' . $ig . '</td>';
-							echo "<td> $ddatagrid[kd_gejala]</td>";
-							echo "<td> $ddatagrid[nm_gejala]</td>";
-                           echo '<td><span class="kondisipilih">' . $arkondisitext[$kondisi] . "</span></td>";
+							echo "<td> $ddatagrid[kode_item_masalah]</td>";
+							echo "<td> $ddatagrid[nama_item_masalah]</td>";
+              echo '<td><span class="kondisipilih">' . $arkondisitext[$kondisi] . "</span></td>";
   
 						}
                              ?>
@@ -400,7 +398,7 @@ include("../admin/leftbar.php");
 				   												<div class="widget-header">
 													<h5 class="widget-title bigger lighter">
 														<i class=""></i>
-														Hasil Konsultasi Penyakit
+														Hasil Konsultasi Bidang Masalah
 													</h5>
 
 											</div>
@@ -411,7 +409,7 @@ include("../admin/leftbar.php");
 																<tr>
                             <th style="text-align: center">No.</th>
                             <th style="text-align: center">Kode</th>
-                            <th style="text-align: center">Penyakit</th>
+                            <th style="text-align: center">Bidang Masalah</th>
                             <th style="text-align: center">Nilai CF</th>
                             <th style="text-align: center">Persen</th>
                           </tr>
@@ -426,13 +424,13 @@ include("../admin/leftbar.php");
 						$nmpkt[$np] = $arpkt[$key];
 						$vlpkt[$np] = $value;
 						
-                        $qdatagrid =" SELECT * FROM t_penyakit where kode_penyakit = '$key'";
+                        $qdatagrid =" SELECT * FROM t_bidang_masalah where kode_bidang_masalah = '$key'";
                         $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                         $ddatagrid=mysqli_fetch_array($rdatagrid);
 						for ($ipl = 1; $ipl < count($idpkt); $ipl++) ;
-							echo '<tr><td>' . $np . '</td>';
-                            echo "<td class=opsi > $ddatagrid[kd_penyakit]</td>";
-                            echo "<td class=opsi > $ddatagrid[nm_penyakit]</td>";
+							echo '<tr><td >' . $np . '</td>';
+              echo "<td class=opsi > $ddatagrid[kode_bidang_masalah]</td>";
+              echo "<td class=opsi > $ddatagrid[nama_bidang_masalah]</td>";
 							echo '<td>' . $vlpkt[$ipl] . '</td>';
 							echo "<td> " . round($vlpkt[$ipl], 2) . " %</td></tr>";
 							
@@ -451,26 +449,21 @@ include("../admin/leftbar.php");
 											
 											<div class="page-header"></div>
 											<h5>Hasil Diagnosa</h5>
-											<h6>Hasil Dari Diagnosa Penyakit Yang Paling Mungkin adalah : <?php echo $dupdate['nm_penyakit']; ?></h6>
+											<h6>Hasil Dari Diagnosa Bidang Masalah Yang Paling Mungkin adalah : <b><?php echo $dupdate['nama_bidang_masalah']; ?></b></h6>
 													
 												<div class="widget-body">
 													<div class="widget-main">
 														
 														<p class="alert alert-danger">
-															Penyebab	: <?php echo $dupdate['penyebab']; ?>
+															Layanan	: <?php echo $dupdate['layanan']; ?>
 														</p>
-														<p class="alert alert-danger">
-															Penceggahan	: <?php echo $dupdate['pencegahan']; ?>
-														</p>
-														<p class="alert alert-danger">
-															Penanganan	: <?php echo $dupdate['penanganan']; ; ?>
-														</p
+													
 														
 													</div>
 												</div>
 											<div class="clearfix form-actions">
                             <div class="col-md-offset-3 col-md-9">
-                         <a href="adminmainapp.php?unit=l_konsultasi_d&kd_hasil=<?php echo $kd_hasil; ?>" class='btn btn-sm btn-danger glyphicon glyphicon-print' > Print</a> 
+                         <a href="adminmainapp.php?unit=l_konsultasi_d&kode_hasil=<?php echo $kd_hasil; ?>" class='btn btn-sm btn-danger glyphicon glyphicon-print' > Print</a> 
 						 <a href="adminmainapp.php?unit=konsultasi_unit&act=datagrid" class='btn btn-sm btn-info glyphicon' >Kembali</a> <br><br><br>
                          </div>
 			</div> 
@@ -492,30 +485,30 @@ include("../admin/leftbar.php");
         break;
     
             case "updateact":
-                $kd_hasil = $_POST['kd_hasil'];
-                 $kd_penyakit = $_POST['kd_penyakit'];
-            $namasubkategori = $_POST['namasubkategori'];
+                $kd_hasil = $_POST['kode_hasil'];
+                $kd_bidang_masalah = $_POST['kode_bidang_masalah'];
+                $namasubkategori = $_POST['namasubkategori'];
              $qinput = 
         
        "
-                UPDATE t_diagnosa SET
+                UPDATE t_identifikasi SET
                 namasubkategori= '$namasubkategori',			
-                kd_penyakit = '$kd_penyakit'
+                kode_bidang_masalah = '$kd_bidang_masalah'
                
                 WHERE
-                kd_hasil = '$kd_hasil'";			
+                kode_hasil = '$kd_hasil'";			
          $rinput = mysqli_query($mysqli,$qinput);
          	
         header("location:?unit=konsultasi_unit&act=datagrid");     
                  break;
     
         case "delete":
-               $kd_hasil = $_GET['kd_hasil'];
+               $kd_hasil = $_GET['kode_hasil'];
         $qdelete = "
-          DELETE  FROM t_diagnosa
+          DELETE  FROM t_identifikasi
        
           WHERE
-            kd_hasil = '$kd_hasil'
+            kode_hasil = '$kd_hasil'
         ";
 
         $rdelete = mysqli_query($mysqli,$qdelete);

@@ -49,8 +49,8 @@ else if($unit == "l_konsultasi_d") {
 else if($unit == "konsultasi_unit") {
     require_once 'unit/konsultasi_unit.php';
 }
-else if($unit == "p_gejala_unit") {
-    require_once 'unit/p_gejala_unit.php';
+else if($unit == "p_item_masalah_unit") {
+    require_once 'unit/p_item_masalah_unit.php';
 }
 else if($unit == "l_konsultasi") {
     require_once 'unit/l_konsultasi.php';

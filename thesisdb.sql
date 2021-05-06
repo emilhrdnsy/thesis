@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Bulan Mei 2021 pada 17.13
+-- Waktu pembuatan: 06 Bulan Mei 2021 pada 16.00
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -71,29 +71,6 @@ INSERT INTO `t_bidang_masalah` (`id_bidang_masalah`, `kode_bidang_masalah`, `nam
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_detail_bidang_masalah`
---
-
-CREATE TABLE `t_detail_bidang_masalah` (
-  `id` int(11) NOT NULL,
-  `nama_item_masalah` varchar(100) NOT NULL,
-  `detail` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `t_detail_bidang_masalah`
---
-
-INSERT INTO `t_detail_bidang_masalah` (`id`, `nama_item_masalah`, `detail`) VALUES
-(1, 'Prasyarat penguasaan materi pelajaran', 'Masalah yang sering terjadi pada konten prasyarat penguasaan materi adalah ditemukan adanya siswa yang memiliki hambatan dan tidak menguasai materi pelajaran yang telah diberikan guru dan siswa yang tidak mampu menjawab soal-soal ulangan atau ujian karena kurangnya penguasaan materi pelajaran. '),
-(2, 'Ketrampilan belajar ', 'Masalah yang sering terjadi pada konten keterampilan belajar adalah siwa yang tidak mencatat materi pelajaran yang telah diberikan guru, siswa mengalami kesulitan terhadap materi yang memuat kata-kata dalam bahasa asing, siswa yang memiliki kebiasaan mengganggu teman ketika belajar atau ribut ketika jam pelajaran berlangsung, siswa yang sering lupa atau tidak membawa peralatan yang diperlukan dalam belajar di sekolah, tidak menggunakan waktu luang untuk mendalami materi pelajaran, tidak terbiasa'),
-(3, 'Sarana belajar', 'Masalah yang sering terjadi pada konten sarana dan prasarana belajar yaitu siswa merasa tidak nyaman didalam kelas karena terasa panas, sarana belajar yang tidak memadai di rumah dan ekonomi orang tua yang pas-pasan. '),
-(4, 'Keadaan diri pribadi', 'Masalah yang sering terjadi pada konten diri sendiri atau masalah pribadi siswa yaitu siswa merasa tidak konsestrasi belajar dan motivasi belajarnya sangat rendah, merokok di sekolah supaya terlihat keren oleh teman-temannya dan Siswa yang tidak menghormati atau mengolok-olok gurunya. '),
-(5, 'Lingkungan belajar dan sosio emosional', 'Masalah yang sering terjadi pada konten lingkungan belajar dan sosio-emosional yaitu siswa sering terlambat ke sekolah karena jarak tempuh antara rumah siswa ke sekolah sangat jauh, Siswa yang tidak bisa bergaul dengan teman kelasnya, Sering bolos sekolah karena ingin main bersama teman dan siswa yang merasa rendah diri karena sering di bully.');
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `t_hasil`
 --
 
@@ -140,7 +117,7 @@ CREATE TABLE `t_identifikasi` (
 --
 
 INSERT INTO `t_identifikasi` (`kode_identifikasi`, `mb`, `md`, `cf_bidang_masalah`, `cf_item_masalah`, `kode_bidang_masalah`, `kode_item_masalah`) VALUES
-(1, 0.584301, 0, 0.584301, 0, 'BM1', 'IM1'),
+(1, 0.584301, 0.4, 0.184301, 0, 'BM1', 'IM1'),
 (2, 0.0646766, 0, 0.0646766, 0, 'BM1', 'IM2'),
 (3, 0.910731, 0, 0.910731, 0, 'BM2', 'IM3'),
 (4, 0.910731, 0, 0.910731, 0, 'BM2', 'IM4'),
@@ -279,7 +256,8 @@ INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item
 (58, 'IM58', 'Kesulitan transportasi melemahkan semangat saya untuk belajar.'),
 (59, 'IM59', 'Saya mengalami kesulitan dalam memahami materi pelajaran, terutama yang berbentuk grafik, gambar, dan tabel.'),
 (60, 'IM60', 'Saya mengalami kesulitan untuk mengingat materi pelajaran tertentu.'),
-(61, 'IM61', 'Saya mengalami hambatan tertentu dalam belajar bersama karena suasana kelompok yang kurang menyenangkan.');
+(61, 'IM61', 'Saya mengalami hambatan tertentu dalam belajar bersama karena suasana kelompok yang kurang menyenangkan.'),
+(65, 'IM62', 'a');
 
 -- --------------------------------------------------------
 
@@ -386,12 +364,6 @@ ALTER TABLE `t_bidang_masalah`
   ADD PRIMARY KEY (`id_bidang_masalah`);
 
 --
--- Indeks untuk tabel `t_detail_bidang_masalah`
---
-ALTER TABLE `t_detail_bidang_masalah`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeks untuk tabel `t_hasil`
 --
 ALTER TABLE `t_hasil`
@@ -444,12 +416,6 @@ ALTER TABLE `t_bidang_masalah`
   MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `t_detail_bidang_masalah`
---
-ALTER TABLE `t_detail_bidang_masalah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT untuk tabel `t_hasil`
 --
 ALTER TABLE `t_hasil`
@@ -459,13 +425,13 @@ ALTER TABLE `t_hasil`
 -- AUTO_INCREMENT untuk tabel `t_identifikasi`
 --
 ALTER TABLE `t_identifikasi`
-  MODIFY `kode_identifikasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `kode_identifikasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_item_masalah`
 --
 ALTER TABLE `t_item_masalah`
-  MODIFY `id_item_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id_item_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_pilihan_pengguna`

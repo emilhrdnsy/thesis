@@ -13,14 +13,11 @@ else if($unit == "tentangbidangmasalah_unit") {
 else if($unit == "p_dashboard") {
     require_once 'unit/p_dashboard.php';
 }
-else if($unit == "p_penyakit_unit") {
-    require_once 'unit/p_penyakit_unit.php';
+else if($unit == "p_bidang_masalah_unit") {
+    require_once 'unit/p_bidang_masalah_unit.php';
 }
 else if($unit == "p_cf_unit") {
     require_once 'unit/p_cf_unit.php';
-}
-else if($unit == "l_penyakit") {
-    require_once 'unit/l_penyakit.php';
 }
 else if($unit == "bidang_masalah_unit") {
     require_once 'unit/bidang_masalah_unit.php';
@@ -37,21 +34,11 @@ else if($unit == "admin_unit") {
 else if($unit == "pengguna_unit") {
     require_once 'unit/pengguna_unit.php';
 }
-else if($unit == "l_gejala") {
-    require_once 'unit/l_gejala.php';
-}
-else if($unit == "l_dbp") {
-    require_once 'unit/l_dbp.php';
-}
-else if($unit == "l_konsultasi_d") {
-    require_once 'unit/l_konsultasi_d.php';
-}
+
 else if($unit == "konsultasi_unit") {
     require_once 'unit/konsultasi_unit.php';
 }
 else if($unit == "p_item_masalah_unit") {
     require_once 'unit/p_item_masalah_unit.php';
 }
-else if($unit == "l_konsultasi") {
-    require_once 'unit/l_konsultasi.php';
-}
+

@@ -119,7 +119,7 @@
         </ul>
     </li>
 	
-	 <li <?php if ($page=='p_penyakit_unit' or $page=='p_cf_unit') {echo $open;}?>>
+	 <li <?php if ($page=='p_bidang_masalah_unit' or $page=='p_cf_unit') {echo $open;}?>>
       <a href="#" class="dropdown-toggle">
         <i class="menu-icon fa fa-info"></i>
         <span class="menu-text"> Tentang </span>
@@ -127,8 +127,8 @@
       </a>
       <b class="arrow"></b>
       <ul class="submenu">
-       <li <?php if ($page=='p_penyakit_unit' && $act1=='datagrid') {echo $active;}?>>
-          <a href="adminmainapp.php?unit=p_penyakit_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Penyakit</a>
+       <li <?php if ($page=='p_bidang_masalah_unit' && $act1=='datagrid') {echo $active;}?>>
+          <a href="adminmainapp.php?unit=p_bidang_masalah_unit&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Bidang Masalah</a>
           <b class="arrow"></b>
         </li>
 		<li <?php if ($page=='p_cf_unit' && $act1=='datagrid') {echo $active;}?>>

@@ -219,10 +219,10 @@ include("../admin/leftbar.php");
 
 <script type="text/javascript">
     var frmvalidator = new Validator("tambah_kat");
-    frmvalidator.addValidation("nm_penyakit", "req", "Silakan Masukkan Nama Penyakit");
-    frmvalidator.addValidation("nm_penyakit", "maxlen=35", "Maksimal Karakter Nama 35 digit");
-    frmvalidator.addValidation("nm_penyakit", "alpha_s", "Hanya Huruf Saja");
-    frmvalidator.addValidation("nm_penyakit", "simbol", "Hanya Huruf Saja");
+    frmvalidator.addValidation("nama_bidang_masalah", "req", "Silakan Masukkan Nama Bidang Masalah");
+    frmvalidator.addValidation("nama_bidang_masalah", "maxlen=35", "Maksimal Karakter Nama 35 digit");
+    frmvalidator.addValidation("nama_bidang_masalah", "alpha_s", "Hanya Huruf Saja");
+    frmvalidator.addValidation("nama_bidang_masalah", "simbol", "Hanya Huruf Saja");
 </script>
 </body>
 
@@ -345,10 +345,10 @@ include("../admin/leftbar.php");
 
 <script type="text/javascript">
     var frmvalidator = new Validator("tambah_kat");
-    frmvalidator.addValidation("nm_penyakit", "req", "Silakan Masukkan Nama Penyakit");
-    frmvalidator.addValidation("nm_penyakit", "maxlen=35", "Maksimal Karakter Nama 35 digit");
-    frmvalidator.addValidation("nm_penyakit", "alpha_s", "Hanya Huruf Saja");
-    frmvalidator.addValidation("nm_penyakit", "simbol", "Hanya Huruf Saja");
+    frmvalidator.addValidation("nama_bidang_masalah", "req", "Silakan Masukkan Nama Bidang Masalah");
+    frmvalidator.addValidation("nama_bidang_masalah", "maxlen=35", "Maksimal Karakter Nama 35 digit");
+    frmvalidator.addValidation("nama_bidang_masalah", "alpha_s", "Hanya Huruf Saja");
+    frmvalidator.addValidation("nama_bidang_masalah", "simbol", "Hanya Huruf Saja");
 </script>
 </body>
 

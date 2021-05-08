@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Bulan Mei 2021 pada 16.00
+-- Waktu pembuatan: 08 Bulan Mei 2021 pada 11.21
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -54,7 +54,7 @@ CREATE TABLE `t_bidang_masalah` (
   `kode_bidang_masalah` varchar(5) NOT NULL,
   `nama_bidang_masalah` varchar(500) NOT NULL,
   `detail_bidang_masalah` varchar(500) NOT NULL,
-  `layanan` varchar(500) NOT NULL
+  `layanan` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -62,11 +62,11 @@ CREATE TABLE `t_bidang_masalah` (
 --
 
 INSERT INTO `t_bidang_masalah` (`id_bidang_masalah`, `kode_bidang_masalah`, `nama_bidang_masalah`, `detail_bidang_masalah`, `layanan`) VALUES
-(1, 'BM1', 'Penguasaan Materi Pelajaran', 'Masalah yang sering terjadi pada konten prasyarat penguasaan materi adalah ditemukan adanya siswa yang memiliki hambatan dan tidak menguasai materi pelajaran yang telah diberikan guru dan siswa yang tidak mampu menjawab soal-soal ulangan atau ujian karena kurangnya penguasaan materi pelajaran.   \r\n                                  \r\n                                ', 'lorem 1'),
-(2, 'BM2', 'Keterampilan Belajar', 'Masalah yang sering terjadi pada konten keterampilan belajar adalah siwa yang tidak mencatat materi pelajaran yang telah diberikan guru, siswa mengalami kesulitan terhadap materi yang memuat kata-kata dalam bahasa asing, siswa yang memiliki kebiasaan mengganggu teman ketika belajar atau ribut ketika jam pelajaran berlangsung, siswa yang sering lupa atau tidak membawa peralatan yang diperlukan dalam belajar di sekolah, tidak menggunakan waktu luang untuk mendalami materi pelajaran, tidak terbiasa', 'lorem 2'),
-(3, 'BM3', 'Sarana Belajar', 'Masalah yang sering terjadi pada konten sarana dan prasarana belajar yaitu siswa merasa tidak nyaman didalam kelas karena terasa panas, sarana belajar yang tidak memadai di rumah dan ekonomi orang tua yang pas-pasan. ', 'lorem 3'),
-(4, 'BM4', 'Diri Pribadi', 'Masalah yang sering terjadi pada konten diri sendiri atau masalah pribadi siswa yaitu siswa merasa tidak konsestrasi belajar dan motivasi belajarnya sangat rendah, merokok di sekolah supaya terlihat keren oleh teman-temannya dan Siswa yang tidak menghormati atau mengolok-olok gurunya. ', 'lorem 4'),
-(5, 'BM5', 'Keadaan Lingkungan Fisik dan Lingkungan Sosio Emosional', 'Masalah yang sering terjadi pada konten lingkungan belajar dan sosio-emosional yaitu siswa sering terlambat ke sekolah karena jarak tempuh antara rumah siswa ke sekolah sangat jauh, Siswa yang tidak bisa bergaul dengan teman kelasnya, Sering bolos sekolah karena ingin main bersama teman dan siswa yang merasa rendah diri karena sering di bully.  \r\n                                  \r\n                                ', 'lorem 5');
+(1, 'BM1', 'Penguasaan Materi Pelajaran', 'Masalah yang sering terjadi pada konten prasyarat penguasaan materi adalah ditemukan adanya siswa yang memiliki hambatan dan tidak menguasai materi pelajaran yang telah diberikan guru dan siswa yang tidak mampu menjawab soal-soal ulangan atau ujian karena kurangnya penguasaan materi pelajaran.   \r\n                                  \r\n                                ', 'Layanan Pembelajaran'),
+(2, 'BM2', 'Keterampilan Belajar', 'Masalah yang sering terjadi pada konten keterampilan belajar adalah siwa yang tidak mencatat materi pelajaran yang telah diberikan guru, siswa mengalami kesulitan terhadap materi yang memuat kata-kata dalam bahasa asing, siswa yang memiliki kebiasaan mengganggu teman ketika belajar atau ribut ketika jam pelajaran berlangsung, siswa yang sering lupa atau tidak membawa peralatan yang diperlukan dalam belajar di sekolah, tidak menggunakan waktu luang untuk mendalami materi pelajaran, tidak terbiasa', 'Layanan Pembelajaran'),
+(3, 'BM3', 'Sarana Belajar', 'Masalah yang sering terjadi pada konten sarana dan prasarana belajar yaitu siswa merasa tidak nyaman didalam kelas karena terasa panas, sarana belajar yang tidak memadai di rumah dan ekonomi orang tua yang pas-pasan. ', ''),
+(4, 'BM4', 'Diri Pribadi', 'Masalah yang sering terjadi pada konten diri sendiri atau masalah pribadi siswa yaitu siswa merasa tidak konsestrasi belajar dan motivasi belajarnya sangat rendah, merokok di sekolah supaya terlihat keren oleh teman-temannya dan Siswa yang tidak menghormati atau mengolok-olok gurunya. ', 'Layanan Konseling Perorangan '),
+(5, 'BM5', 'Keadaan Lingkungan Fisik dan Lingkungan Sosio Emosional', 'Masalah yang sering terjadi pada konten lingkungan belajar dan sosio-emosional yaitu siswa sering terlambat ke sekolah karena jarak tempuh antara rumah siswa ke sekolah sangat jauh, Siswa yang tidak bisa bergaul dengan teman kelasnya, Sering bolos sekolah karena ingin main bersama teman dan siswa yang merasa rendah diri karena sering di bully.  \r\n                                  \r\n                                ', '');
 
 -- --------------------------------------------------------
 
@@ -256,8 +256,7 @@ INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item
 (58, 'IM58', 'Kesulitan transportasi melemahkan semangat saya untuk belajar.'),
 (59, 'IM59', 'Saya mengalami kesulitan dalam memahami materi pelajaran, terutama yang berbentuk grafik, gambar, dan tabel.'),
 (60, 'IM60', 'Saya mengalami kesulitan untuk mengingat materi pelajaran tertentu.'),
-(61, 'IM61', 'Saya mengalami hambatan tertentu dalam belajar bersama karena suasana kelompok yang kurang menyenangkan.'),
-(65, 'IM62', 'a');
+(61, 'IM61', 'Saya mengalami hambatan tertentu dalam belajar bersama karena suasana kelompok yang kurang menyenangkan.');
 
 -- --------------------------------------------------------
 
@@ -268,8 +267,16 @@ INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item
 CREATE TABLE `t_layanan` (
   `id_layanan` int(11) NOT NULL,
   `nama_bidang_masalah` varchar(100) NOT NULL,
-  `layanan` varchar(500) NOT NULL
+  `layanan` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `t_layanan`
+--
+
+INSERT INTO `t_layanan` (`id_layanan`, `nama_bidang_masalah`, `layanan`) VALUES
+(1, 'Layanan Pembelajaran', 'Layanan ini untuk membantu siswa dalam mengembangkan keterampilan belajar dan penguasaan terhadap materi pelajaran.\r\n\r\nLayanan bimbingan dan konseling yang memungkinkan peserta didik (klien) mengembangkan diri berkenaan dengan sikap dan kebiasaan belajar yang baik, materi belajar yang cocok dengan kecepatan dan kesulitan belajarnya, serta berbagai aspek tujuan dan kegiatan belajar lainnya. \r\n\r\nLayanan diberikan pada peserta didik dengan tujuan memungkinkan siswa memahami dan mengembangkan sikap dan kebiasaan belajar yang baik. Keterampilan dan materi belajar yang diberikan cocok dengan kecepatan dan kesulitan belajarnya, serta tuntutan kemampuan yang berguna dalam kehidupan dan perkembangan dirinya.\r\n'),
+(2, 'Layanan Konseling Perorangan ', 'Konseling Perorangan (KP) merupakan layanan konseling yang diselenggarakan oleh seorang konselor terhadap seorang klien dalam rangka pengentasan masalah pribadi klien. Dalam suasana tatap muka dilaksanakan interaksi langsung antara klien dan Konselor, membahas berbagai hal tentang masalah yang dialami klien. Pembahasan tersebut bersifat mendalam menyentuh hal-hal penting tentang diri klien (bahkan sangat penting yang boleh jadi penyangkut rahasia pribadi klien); bersifat meluas meliputi berbagai sisi yang menyangkut permasalahan klien; namun juga bersifat spesifik menuju ke arah pengentasan masalah');
 
 -- --------------------------------------------------------
 
@@ -382,6 +389,12 @@ ALTER TABLE `t_item_masalah`
   ADD PRIMARY KEY (`id_item_masalah`);
 
 --
+-- Indeks untuk tabel `t_layanan`
+--
+ALTER TABLE `t_layanan`
+  ADD PRIMARY KEY (`id_layanan`);
+
+--
 -- Indeks untuk tabel `t_pilihan_pengguna`
 --
 ALTER TABLE `t_pilihan_pengguna`
@@ -432,6 +445,12 @@ ALTER TABLE `t_identifikasi`
 --
 ALTER TABLE `t_item_masalah`
   MODIFY `id_item_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT untuk tabel `t_layanan`
+--
+ALTER TABLE `t_layanan`
+  MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_pilihan_pengguna`

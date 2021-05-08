@@ -43,8 +43,8 @@ include("../admin/leftbar.php");
                                             <th style="text-align: center; width: 6%">No.</th>
                                             <th style="text-align: center; width: 10%">Kode Bidang Masalah</th>
                                             <th style="text-align: center; width: 20%">Nama Bidang Masalah</th>
-                                            <th style="text-align: center; width: 49%">Detail</th>
-                                            <th style="text-align: center; width: 49%">Layanan</th>
+                                            <th style="text-align: center; width: 34%">Detail</th>
+                                            <th style="text-align: center; width: 15%">Layanan</th>
 
                                             <th style="text-align: center; width: 15%">Aksi</th>
                                         </tr>

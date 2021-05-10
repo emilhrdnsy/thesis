@@ -145,11 +145,11 @@ include("../admin/leftbar.php");
                        </div>                   
                       <div class="clearfix form-actions">
                             <div class="col-md-offset-3 col-md-9">
-                        <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                        <button type="reset" name="reset" class="btn btn-danger">Batal</button>
-                        <button type="button" name="kembali" class="btn btn-info" onclick="window.location='adminmainapp.php?unit=item_masalah_unit&act=datagrid'">kembali</button>
-                         </div>
-			</div> 
+                                <button type="submit" name="submit" class="btn btn-success">Simpan</button>
+                                <button type="reset" name="reset" class="btn btn-danger">Batal</button>
+                                <button type="button" name="kembali" class="btn btn-info" onclick="window.location='adminmainapp.php?unit=item_masalah_unit&act=datagrid'">kembali</button>
+                            </div>
+			            </div> 
 					</form>					
                   
 							</div><!-- /.col -->

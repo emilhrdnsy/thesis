@@ -364,8 +364,8 @@ include("../admin/leftbar.php");
                 <select class="form-select col-xs-10 col-sm-5 " name="kelas" id="kelas"
                   aria-label="Default select example" required>
                   <option value="X IPA 1">X IPA 1</option>
-                  <option value="X IPA 1">X IPA 2</option>
-                  <option value="X IPA 1">X IPA 3</option>
+                  <option value="X IPA 2">X IPA 2</option>
+                  <option value="X IPA 3">X IPA 3</option>
                  
                 </select>
               </div>

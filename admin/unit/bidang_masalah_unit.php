@@ -148,28 +148,7 @@ include("../admin/leftbar.php");
                         action="?unit=bidang_masalah_unit&act=inputact" enctype="multipart/form-data">
 
 
-                        <!-- <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Kode Bidang Masalah</label>
-                            <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="kode_bidang_masalah"
-                                    required="required" value="<?php echo "$newID"; ?>" readonly="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Nama Bidang Masalah</label>
-                            <div class="col-sm-9">
-                                <input class="col-xs-10 col-sm-5" type="text" name="nama_bidang_masalah" id="nama_bidang_masalah"
-                                    required="required" autofocus="autofocus" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="detail_bidang_masalah">Detail :</label>	
-                            <div class="col-sm-9">
-                                <textarea class="form-control limited" name="detail_bidang_masalah" id="detail_bidang_masalah"> </textarea>	
-                            </div>
-                        </div> -->
-
-                        <div class="form-group">
+                                                <div class="form-group">
                           <label class="col-sm-3 control-label"  >Kode Bidang Masalah :</label>
                             <div class="col-sm-9">
                                 <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="kode_bidang_masalah" required="required" autofocus="autofocus" value="<?php echo "$newID"; ?>" readonly=""/>
@@ -189,6 +168,19 @@ include("../admin/leftbar.php");
                                 <textarea class="form-control limited" name="detail_bidang_masalah" id="detail_bidang_masalah"> </textarea>	
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="layanan">Layanan :</label>
+                            <div class="col-sm-9">
+                                <select class="form-select col-xs-10 col-sm-5 " name="layanan" id="layanan"
+                                aria-label="Default select example">
+                                    <option value="">--Pilih Layanan--</option>
+                                    <option value="Layanan Pembelajaran">Layanan Pembelajaran</option>
+                                    <option value="Layanan Konseling Perorangan">Layanan Konseling Perorangan</option>
+                                </select>
+                            </div>
+                        </div>
+
                         
                       
                         <div class="clearfix form-actions">
@@ -220,9 +212,9 @@ include("../admin/leftbar.php");
 <script type="text/javascript">
     var frmvalidator = new Validator("tambah_kat");
     frmvalidator.addValidation("nama_bidang_masalah", "req", "Silakan Masukkan Nama Bidang Masalah");
-    frmvalidator.addValidation("nama_bidang_masalah", "maxlen=35", "Maksimal Karakter Nama 35 digit");
-    frmvalidator.addValidation("nama_bidang_masalah", "alpha_s", "Hanya Huruf Saja");
-    frmvalidator.addValidation("nama_bidang_masalah", "simbol", "Hanya Huruf Saja");
+    frmvalidator.addValidation("nama_bidang_masalah", "maxlen=50", "Maksimal Karakter Nama 50 digit");
+    frmvalidator.addValidation("nama_bidang_masalah", "alpha_s", "Nama Bidang Masalah Terdiri dari huruf Saja");
+    frmvalidator.addValidation("nama_bidang_masalah", "simbol", "Nama Bidang Masalah Terdiri dari huruf Saja");
 </script>
 </body>
 
@@ -232,15 +224,17 @@ include("../admin/leftbar.php");
     
         case "inputact":
       
-             $kode_bidang_masalah = $_POST['kode_bidang_masalah'];
-			 $nama_bidang_masalah = $_POST['nama_bidang_masalah'];
-             $detail_bidang_masalah = $_POST['detail_bidang_masalah'];
-             $qinput = "
-          INSERT INTO t_bidang_masalah
-          (kode_bidang_masalah, nama_bidang_masalah, detail_bidang_masalah)
-          VALUES
-          ('$kode_bidang_masalah', '$nama_bidang_masalah', '$detail_bidang_masalah')
-        ";
+            $kode_bidang_masalah = $_POST['kode_bidang_masalah'];
+            $nama_bidang_masalah = $_POST['nama_bidang_masalah'];
+            $detail_bidang_masalah = $_POST['detail_bidang_masalah'];
+            $layanan = $_POST['layanan'];
+            
+            $qinput = "
+                INSERT INTO t_bidang_masalah
+                (kode_bidang_masalah, nama_bidang_masalah, detail_bidang_masalah, layanan)
+                VALUES
+                ('$kode_bidang_masalah', '$nama_bidang_masalah', '$detail_bidang_masalah', '$layanan)
+            ";
 
         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_bidang_masalah WHERE nama_bidang_masalah = '$nama_bidang_masalah'"));
         
@@ -318,6 +312,19 @@ include("../admin/leftbar.php");
                             </div>
                         </div>   
 
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="layanan">Layanan :</label>
+                            <div class="col-sm-9">
+                                <!-- <input class="col-xs-10 col-sm-5" type="text" name="usia" id="usia" required    /> -->
+                                <select class="form-select col-xs-10 col-sm-5 " name="layanan" id="layanan"
+                                aria-label="Default select example">
+                                    <option value="">--Pilih Layanan--</option>
+                                    <option value="Layanan Pembelajaran">Layanan Pembelajaran</option>
+                                    <option value="Layanan Konseling Perorangan">Layanan Konseling Perorangan</option>
+                                </select>
+                            </div>
+                        </div>
+
 
                         <div class="clearfix form-actions">
                             <div class="col-md-offset-3 col-md-9">
@@ -357,19 +364,21 @@ include("../admin/leftbar.php");
         break;
     
             case "updateact":
-             $kode_bidang_masalah = $_POST['kode_bidang_masalah'];
-			 $nama_bidang_masalah = $_POST['nama_bidang_masalah'];
-             $detail_bidang_masalah = $_POST['detail_bidang_masalah'];
-        $qupdate = "
-          UPDATE t_bidang_masalah SET
-            nama_bidang_masalah = '$nama_bidang_masalah',
-            detail_bidang_masalah = '$detail_bidang_masalah'
-			WHERE
-            kode_bidang_masalah = '$kode_bidang_masalah'
-        ";
-        $rupdate = mysqli_query($mysqli,$qupdate);
-        header("location:?unit=bidang_masalah_unit&act=datagrid");
-                 break;
+            $kode_bidang_masalah = $_POST['kode_bidang_masalah'];
+            $nama_bidang_masalah = $_POST['nama_bidang_masalah'];
+            $detail_bidang_masalah = $_POST['detail_bidang_masalah'];
+            $layanan = $_POST['layanan'];
+            $qupdate = "
+            UPDATE t_bidang_masalah SET
+                nama_bidang_masalah = '$nama_bidang_masalah',
+                detail_bidang_masalah = '$detail_bidang_masalah',
+                layanan = '$layanan'
+                WHERE
+                kode_bidang_masalah = '$kode_bidang_masalah'
+            ";
+            $rupdate = mysqli_query($mysqli,$qupdate);
+            header("location:?unit=bidang_masalah_unit&act=datagrid");
+                    break;
     
         case "delete":
               $kode_bidang_masalah = $_GET['kode_bidang_masalah'];

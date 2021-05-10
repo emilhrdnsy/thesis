@@ -45,7 +45,7 @@ switch($act){
                 <div class="widget-header">
                   <h5 class="widget-title bigger lighter">
                     <i class=""></i>
-                    Pilih Gejala
+                    Pilih Item
                   </h5>
 
                 </div>
@@ -99,7 +99,7 @@ switch($act){
               </div>
               <div class="clearfix form-actions">
                 <div class="col-md-offset-3 col-md-9">
-                  <button type="submit" name="submit" class="btn btn-danger">Proses Gejala</button>
+                  <button type="submit" name="submit" class="btn btn-danger">Proses</button>
                 </div>
               </div>
             </form>

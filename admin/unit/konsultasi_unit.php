@@ -37,6 +37,8 @@ include("../admin/leftbar.php");
                             <th style="text-align: center">No.</th>
                             <th style="text-align: center">Tanggal</th>
                             <th style="text-align: center">Nama</th>
+                            <th style="text-align: center">Kelas</th>
+                            <th style="text-align: center">Jenis Kelamin</th>
                             <th style="text-align: center">Masalah</th>
                             <th style="text-align: center">Nilai CF</th>
                             <th style="text-align: center">Aksi</th>
@@ -47,7 +49,7 @@ include("../admin/leftbar.php");
                           $qdatagrid ="  SELECT 
                             t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
                             t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
-                            t_siswa.kode_siswa, t_siswa.nama_siswa
+                            t_siswa.kode_siswa, t_siswa.nama_siswa, t_siswa.kelas, t_siswa.jenis_kelamin
                             FROM 
                               t_hasil
                             JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
@@ -59,7 +61,9 @@ include("../admin/leftbar.php");
                                      <td style= text-align:center>$no</td>
                                      <td style= text-align:center>$ddatagrid[tanggal]</td>
                                      <td style= text-align:center>".ucwords("$ddatagrid[nama_siswa]")."</td>
-                                     <td style= text-align:center>$ddatagrid[nama_bidang_masalah]</td>
+                                     <td style= text-align:center>$ddatagrid[kelas]</td>
+                                     <td style= text-align:center>$ddatagrid[jenis_kelamin]</td>
+                                     <td style= text-align:left>$ddatagrid[nama_bidang_masalah]</td>
                                      <td style= text-align:center>$ddatagrid[nilai_cf]</td>
                                      <td style=text-align:center>
                                          <a href=?unit=konsultasi_unit&act=update&kode_hasil=$ddatagrid[kode_hasil] class='btn btn-sm btn-info glyphicon glyphicon-eye-open' > Detail</a> 
@@ -132,19 +136,19 @@ include("../admin/leftbar.php");
 
 
 				  <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right" for="kode_bidang_masalah">Penyakit</label>
+                      <label class="col-sm-3 control-label no-padding-right" for="kode_bidang_masalah">Bidang Masalah</label>
                      <div class="col-sm-9">
                         <select class="col-xs-10 col-sm-5" name="kode_bidang_masalah" id="kode_bidang_masalah" required>
-                        <option selected="selected">-Pilih Penyakit-</option>
+                        <option selected="selected">-Pilih Bidang Masalah-</option>
                       <?php
                         $qcombo = 
                         "
-                        SELECT * FROM t_penyakit
+                        SELECT * FROM t_bidang_masalah
                         ";
                         $rcombo = mysqli_query($mysqli,$qcombo);
                         while($dcombo = mysqli_fetch_assoc($rcombo)) {
                             echo "
-                            <option value=$dcombo[kode_bidang_masalah]>$dcombo[nm_penyakit]</option> 
+                            <option value=$dcombo[kode_bidang_masalah]>$dcombo[nama_bidang_masalah]</option> 
                             ";
                         }
                         ?>
@@ -182,7 +186,7 @@ include("../admin/leftbar.php");
                        </div>
 					   
 					    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="md">DM</label>
+                      <label class="col-sm-3 control-label no-padding-right"for="md">MD</label>
                       <div class="col-sm-9">
                        <input class="col-xs-10 col-sm-5" type="text" name="md" id="md" required    />
                        </div>
@@ -263,7 +267,7 @@ include("../admin/leftbar.php");
                           t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
                           t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, 
                           t_bidang_masalah.layanan,
-                          t_siswa.kode_siswa, t_siswa.nama_siswa
+                          t_siswa.kode_siswa, t_siswa.nama_siswa t_siswa.kelas t_siswa.jenis_kelamin
                             FROM 
                                 t_hasil JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
 									JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
@@ -302,9 +306,9 @@ include("../admin/leftbar.php");
                             t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
                             t_hasil.bidang_masalah, t_hasil.item_masalah,
                             t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, 
-                            t_bidang_masalah.layanan,
+                            t_bidang_masalah.layanan, 
                             
-                            t_siswa.kode_siswa, t_siswa.nama_siswa
+                            t_siswa.kode_siswa, t_siswa.nama_siswa t_siswa
                             FROM 
                                 t_hasil
                                     JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
@@ -340,7 +344,7 @@ include("../admin/leftbar.php");
 					</div>
 
 					<div class="page-content">
-						<div class="page-header"><h1>Data Hasil Konsultasi<small> <?php echo $dupdate['nm_pasien']; ?> Pada Tanggal <?php echo $dupdate['tanggal']; ?></h1>
+						<div class="page-header"><h1>Data Hasil Konsultasi<small> <?php echo $dupdate['nama_siswa']; ?> Pada Tanggal <?php echo $dupdate['tanggal']; ?></h1>
 						</div>
 						
 						<div class="row">

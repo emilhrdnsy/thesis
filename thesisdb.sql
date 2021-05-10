@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Bulan Mei 2021 pada 04.57
+-- Waktu pembuatan: 10 Bulan Mei 2021 pada 16.34
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -52,7 +52,7 @@ INSERT INTO `t_admin` (`id_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas
 CREATE TABLE `t_bidang_masalah` (
   `id_bidang_masalah` int(11) NOT NULL,
   `kode_bidang_masalah` varchar(5) NOT NULL,
-  `nama_bidang_masalah` varchar(500) NOT NULL,
+  `nama_bidang_masalah` varchar(50) NOT NULL,
   `detail_bidang_masalah` varchar(500) NOT NULL,
   `layanan` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -62,11 +62,11 @@ CREATE TABLE `t_bidang_masalah` (
 --
 
 INSERT INTO `t_bidang_masalah` (`id_bidang_masalah`, `kode_bidang_masalah`, `nama_bidang_masalah`, `detail_bidang_masalah`, `layanan`) VALUES
-(1, 'BM1', 'Penguasaan Materi Pelajaran', 'Masalah yang sering terjadi pada konten prasyarat penguasaan materi adalah ditemukan adanya siswa yang memiliki hambatan dan tidak menguasai materi pelajaran yang telah diberikan guru dan siswa yang tidak mampu menjawab soal-soal ulangan atau ujian karena kurangnya penguasaan materi pelajaran.   \r\n                                  \r\n                                ', 'Layanan Pembelajaran'),
+(1, 'BM1', 'Penguasaan Materi Pelajaran', 'Masalah yang sering terjadi pada konten prasyarat penguasaan materi adalah ditemukan adanya siswa yang memiliki hambatan dan tidak menguasai materi pelajaran yang telah diberikan guru dan siswa yang tidak mampu menjawab soal-soal ulangan atau ujian karena kurangnya penguasaan materi pelajaran.   \r\n                                  \r\n                                  \r\n                                ', 'Layanan Pembelajaran'),
 (2, 'BM2', 'Keterampilan Belajar', 'Masalah yang sering terjadi pada konten keterampilan belajar adalah siwa yang tidak mencatat materi pelajaran yang telah diberikan guru, siswa mengalami kesulitan terhadap materi yang memuat kata-kata dalam bahasa asing, siswa yang memiliki kebiasaan mengganggu teman ketika belajar atau ribut ketika jam pelajaran berlangsung, siswa yang sering lupa atau tidak membawa peralatan yang diperlukan dalam belajar di sekolah, tidak menggunakan waktu luang untuk mendalami materi pelajaran, tidak terbiasa', 'Layanan Pembelajaran'),
 (3, 'BM3', 'Sarana Belajar', 'Masalah yang sering terjadi pada konten sarana dan prasarana belajar yaitu siswa merasa tidak nyaman didalam kelas karena terasa panas, sarana belajar yang tidak memadai di rumah dan ekonomi orang tua yang pas-pasan. ', ''),
-(4, 'BM4', 'Diri Pribadi', 'Masalah yang sering terjadi pada konten diri sendiri atau masalah pribadi siswa yaitu siswa merasa tidak konsestrasi belajar dan motivasi belajarnya sangat rendah, merokok di sekolah supaya terlihat keren oleh teman-temannya dan Siswa yang tidak menghormati atau mengolok-olok gurunya. ', 'Layanan Konseling Perorangan '),
-(5, 'BM5', 'Keadaan Lingkungan Fisik dan Lingkungan Sosio Emosional', 'Masalah yang sering terjadi pada konten lingkungan belajar dan sosio-emosional yaitu siswa sering terlambat ke sekolah karena jarak tempuh antara rumah siswa ke sekolah sangat jauh, Siswa yang tidak bisa bergaul dengan teman kelasnya, Sering bolos sekolah karena ingin main bersama teman dan siswa yang merasa rendah diri karena sering di bully.  \r\n                                  \r\n                                ', '');
+(4, 'BM4', 'Diri Pribadi', 'Masalah yang sering terjadi pada konten diri sendiri atau masalah pribadi siswa yaitu siswa merasa tidak konsestrasi belajar dan motivasi belajarnya sangat rendah, merokok di sekolah supaya terlihat keren oleh teman-temannya dan Siswa yang tidak menghormati atau mengolok-olok gurunya.   \r\n                                ', 'Layanan Konseling Perorangan'),
+(5, 'BM5', 'Keadaan Lingkungan Fisik dan Lingkungan Sosio Emos', 'Masalah yang sering terjadi pada konten lingkungan belajar dan sosio-emosional yaitu siswa sering terlambat ke sekolah karena jarak tempuh antara rumah siswa ke sekolah sangat jauh, Siswa yang tidak bisa bergaul dengan teman kelasnya, Sering bolos sekolah karena ingin main bersama teman dan siswa yang merasa rendah diri karena sering di bully.  \r\n                                  \r\n                                ', '');
 
 -- --------------------------------------------------------
 
@@ -94,7 +94,10 @@ INSERT INTO `t_hasil` (`kode_hasil`, `bidang_masalah`, `item_masalah`, `nilai_cf
 (7, 'a:4:{s:3:\"BM2\";s:6:\"0.9013\";s:3:\"BM5\";s:6:\"0.3837\";s:3:\"BM4\";s:6:\"0.2286\";s:3:\"BM1\";s:6:\"0.0647\";}', 'a:7:{s:3:\"IM2\";s:1:\"3\";s:3:\"IM4\";s:1:\"4\";s:3:\"IM7\";s:1:\"2\";s:4:\"IM23\";s:1:\"1\";s:4:\"IM25\";s:1:\"2\";s:4:\"IM47\";s:1:\"2\";s:4:\"IM60\";s:1:\"3\";}', '0.9013', '2021-05-04 21:12:12', 'BM2', 'S9'),
 (8, 'a:3:{s:3:\"BM2\";s:6:\"0.9621\";s:3:\"BM3\";s:6:\"0.6763\";s:3:\"BM1\";s:6:\"0.1686\";}', 'a:6:{s:3:\"IM3\";s:1:\"3\";s:3:\"IM5\";s:1:\"4\";s:3:\"IM6\";s:1:\"2\";s:3:\"IM9\";s:1:\"3\";s:4:\"IM14\";s:1:\"3\";s:4:\"IM19\";s:1:\"2\";}', '0.9621', '2021-05-04 21:17:14', 'BM2', 'S10'),
 (9, 'a:1:{s:3:\"BM1\";s:6:\"0.0453\";}', 'a:1:{s:3:\"IM2\";s:1:\"2\";}', '0.0453', '2021-05-04 22:20:32', 'BM1', 'S11'),
-(10, 'a:1:{s:3:\"BM1\";s:6:\"0.0194\";}', 'a:1:{s:3:\"IM2\";s:1:\"1\";}', '0.0194', '2021-05-04 22:55:17', 'BM1', 'S12');
+(10, 'a:1:{s:3:\"BM1\";s:6:\"0.0194\";}', 'a:1:{s:3:\"IM2\";s:1:\"1\";}', '0.0194', '2021-05-04 22:55:17', 'BM1', 'S12'),
+(11, 'a:2:{s:3:\"BM2\";s:6:\"0.5121\";s:3:\"BM1\";s:6:\"0.3000\";}', 'a:4:{s:3:\"IM2\";s:1:\"3\";s:3:\"IM5\";s:1:\"1\";s:3:\"IM6\";s:1:\"1\";s:3:\"IM7\";s:1:\"3\";}', '0.5121', '2021-05-10 21:27:24', 'BM2', 'S16'),
+(12, 'a:1:{s:3:\"BM1\";s:6:\"0.3000\";}', 'a:1:{s:3:\"IM2\";s:1:\"3\";}', '0.3000', '2021-05-10 22:17:22', 'BM1', 'S17'),
+(13, 'a:2:{s:3:\"BM2\";s:6:\"0.5940\";s:3:\"BM1\";s:6:\"0.2100\";}', 'a:3:{s:3:\"IM2\";s:1:\"2\";s:3:\"IM5\";s:1:\"2\";s:3:\"IM7\";s:1:\"3\";}', '0.5940', '2021-05-10 22:27:20', 'BM2', 'S18');
 
 -- --------------------------------------------------------
 
@@ -333,7 +336,10 @@ INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode
 (12, 'new', 'Laki-laki', 'X IPA 1', 'S12'),
 (13, 'Emil', 'Laki-laki', 'X IPA 1', 'S13'),
 (14, 'emil', 'Laki-laki', 'X IPA 1', 'S14'),
-(15, 'aa', 'Laki-laki', 'X IPA 1', 'S15');
+(15, 'aa', 'Laki-laki', 'X IPA 1', 'S15'),
+(16, 'a16', 'Laki-laki', 'X IPA 3', 'S16'),
+(17, 'aa', 'Laki-laki', 'X IPA 2', 'S17'),
+(18, 'aaaaa', 'Laki-laki', 'X IPA 2', 'S18');
 
 -- --------------------------------------------------------
 
@@ -429,13 +435,13 @@ ALTER TABLE `t_admin`
 -- AUTO_INCREMENT untuk tabel `t_bidang_masalah`
 --
 ALTER TABLE `t_bidang_masalah`
-  MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_hasil`
 --
 ALTER TABLE `t_hasil`
-  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_identifikasi`
@@ -465,7 +471,7 @@ ALTER TABLE `t_pilihan_pengguna`
 -- AUTO_INCREMENT untuk tabel `t_siswa`
 --
 ALTER TABLE `t_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_user`

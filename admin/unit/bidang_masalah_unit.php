@@ -148,8 +148,8 @@ include("../admin/leftbar.php");
                         action="?unit=bidang_masalah_unit&act=inputact" enctype="multipart/form-data">
 
 
-                                                <div class="form-group">
-                          <label class="col-sm-3 control-label"  >Kode Bidang Masalah :</label>
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label">Kode Bidang Masalah :</label>
                             <div class="col-sm-9">
                                 <input class="col-xs-10 col-sm-5" type="text" name="kode_bidang_masalah" id="kode_bidang_masalah" required="required" autofocus="autofocus" value="<?php echo "$newID"; ?>" readonly=""/>
                             </div>
@@ -173,16 +173,17 @@ include("../admin/leftbar.php");
                             <label class="col-sm-3 control-label" for="layanan">Layanan :</label>
                             <div class="col-sm-9">
                                 <select class="form-select col-xs-10 col-sm-5 " name="layanan" id="layanan"
-                                aria-label="Default select example">
+                                aria-label="Default select example" required>
                                     <option value="">--Pilih Layanan--</option>
-                                    <option value="Layanan Pembelajaran">Layanan Pembelajaran</option>
-                                    <option value="Layanan Konseling Perorangan">Layanan Konseling Perorangan</option>
+                                    <option value="Layanan Pembelajaran" >Layanan Pembelajaran</option>
+                                    <option value="Layanan Konseling Perorangan" >Layanan Konseling Perorangan</option>
+                                    
+
                                 </select>
                             </div>
                         </div>
 
                         
-                      
                         <div class="clearfix form-actions">
                             <div class="col-md-offset-3 col-md-9">
                                 <button type="submit" name="submit" class="btn btn-success">Simpan</button>
@@ -233,7 +234,7 @@ include("../admin/leftbar.php");
                 INSERT INTO t_bidang_masalah
                 (kode_bidang_masalah, nama_bidang_masalah, detail_bidang_masalah, layanan)
                 VALUES
-                ('$kode_bidang_masalah', '$nama_bidang_masalah', '$detail_bidang_masalah', '$layanan)
+                ('$kode_bidang_masalah', '$nama_bidang_masalah', '$detail_bidang_masalah', '$layanan')
             ";
 
         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_bidang_masalah WHERE nama_bidang_masalah = '$nama_bidang_masalah'"));

@@ -366,7 +366,6 @@ include("../admin/leftbar.php");
                   <option value="X IPA 1">X IPA 1</option>
                   <option value="X IPA 2">X IPA 2</option>
                   <option value="X IPA 3">X IPA 3</option>
-                 
                 </select>
               </div>
             </div>
@@ -440,11 +439,9 @@ include("../admin/leftbar.php");
         case "update":
         $id_siswa = $_GET['id_siswa'];
         $qupdate = "SELECT 
-               t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,t_hasil.kode_siswa,
-						   t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
-               t_bidang_masalah.layanan,
-              --  t_penyakit.penyebab, t_penyakit.pencegahan, t_penyakit.penanganan,
-						   t_siswa.kode_siswa, t_siswa.nama_siswa
+                t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,t_hasil.kode_siswa,
+						    t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, t_bidang_masalah.layanan,
+                t_siswa.kode_siswa, t_siswa.nama_siswa 
                             FROM 
                                 t_hasil JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
 									JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
@@ -475,23 +472,18 @@ include("../admin/leftbar.php");
 	$rdatagridp = mysqli_query($mysqli, $sqlpkt);
 	while($rpkt=mysqli_fetch_array($rdatagridp)) {
         $arpkt[$rpkt['kode_bidang_masalah']] = $rpkt['nama_bidang_masalah'];
-        // $ardpkt[$rpkt['kode_penyakit']] = $rpkt['penyebab'];
-        // $arspkt[$rpkt['kode_penyakit']] = $rpkt['pencegahan'];
-        // $argpkt[$rpkt['kode_penyakit']] = $rpkt['penanganan'];
       }
 
 	  $kd_daftar = $_GET['id_siswa'];
         $sqlhasil = "SELECT 
-              t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,t_hasil.kode_siswa,
-              t_hasil.bidang_masalah, t_hasil.item_masalah,
-              t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, 
-              t_bidang_masalah.layanan,
-              t_siswa.kode_siswa, t_siswa.nama_siswa
+              t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id, t_hasil.kode_siswa, t_hasil.bidang_masalah, t_hasil.item_masalah,
+              t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, t_bidang_masalah.layanan,
+              t_siswa.kode_siswa, t_siswa.nama_siswa 
               FROM 
-                                t_hasil
-                                    JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
-									JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
-									WHERE t_hasil.kode_siswa = '$kd_daftar'";
+                t_hasil
+              JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
+              JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
+              WHERE t_hasil.kode_siswa = '$kd_daftar'";
 	$rdatagridp = mysqli_query($mysqli, $sqlhasil);
   while ($rhasil = mysqli_fetch_array($rdatagridp)) {
     $arpenyakit = unserialize($rhasil['bidang_masalah']);

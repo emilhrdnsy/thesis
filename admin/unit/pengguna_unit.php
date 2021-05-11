@@ -38,11 +38,11 @@ include("../admin/leftbar.php");
                       <table id="datatable" class="table table-striped table-bordered table-hover">
                         <thead>
                           <tr>
-                            <th style="text-align: center; width: 7%">No</th>
-                            <th style="text-align: center">Nama</th>
-                            <th style="text-align: center">Nama Pengguna</th>
-                            <th style="text-align: center">Kata Sandi</th>
-                            <th style="text-align: center">Aksi</th>
+                            <th style="text-align: center; width: 10%">No</th>
+                            <th style="text-align: center; width: 20%">Nama</th>
+                            <th style="text-align: center;width: 30%">Nama Pengguna</th>
+                            <th style="text-align: center;width: 20%">Kata Sandi</th>
+                            <th style="text-align: center;width: 20%">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -65,11 +65,11 @@ include("../admin/leftbar.php");
                             }
                                 echo "
                                 <tr>
-                                    <td style= text-align:center>$no</td>
-                                    <td style= text-align:center>$ddatagrid[nama]</td>
-                                    <td style= text-align:center>$ddatagrid[nama_pengguna]</td>
-                                    <td style= text-align:center>$ddatagrid[kata_sandi]</td>
-                                    <td style=text-align:center>
+                                    <td style= text-align:center;vertical-align:middle>$no</td>
+                                    <td style= text-align:center;vertical-align:middle>$ddatagrid[nama]</td>
+                                    <td style= text-align:center;vertical-align:middle>$ddatagrid[nama_pengguna]</td>
+                                    <td style= text-align:center;vertical-align:middle>$ddatagrid[kata_sandi]</td>
+                                    <td style=text-align:center;vertical-align:middle>
                                       <a href=?unit=pengguna_unit&act=update&id_login=$ddatagrid[id_login] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
                                       <a href=?unit=pengguna_unit&act=delete&id_login=$ddatagrid[id_login] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
                                     </td>                

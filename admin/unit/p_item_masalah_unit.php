@@ -450,7 +450,7 @@ include("../admin/leftbar.php");
         $dupdate = mysqli_fetch_assoc($rupdate);
 		
   $arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
-  date_default_timezone_set("Asia/Jakarta");
+  date_default_timezone_set("Asia/Makassar");
   $inptanggal = date('Y-m-d H:i:s');
 
   $arbobot = array('0', '0.3', '0.7', '1.0');
@@ -519,7 +519,7 @@ include("../admin/leftbar.php");
       <div class="page-header">
         <h1>Data Hasil Konsultasi</h1>
       </div>
-      <h7>Berikut adalah hasil Konsultasi <?php echo $dupdate['nama_siswa']; ?>, Pada Tanggal
+      <h7>Berikut adalah hasil Konsultasi <?php echo ucwords($dupdate['nama_siswa']); ?>, Pada Tanggal
         <?php echo $dupdate['tanggal']; ?></h7>
       <div class="row">
         <div class="col-xs-12">
@@ -528,7 +528,7 @@ include("../admin/leftbar.php");
             <div class="widget-header">
               <h5 class="widget-title bigger lighter">
                 <i class=""></i>
-                Gejala Yang Dipilih
+                Item Masalah Yang Dipilih
               </h5>
 
             </div>
@@ -538,10 +538,10 @@ include("../admin/leftbar.php");
                   <thead class="thin-border-bottom">
 
                     <tr>
-                      <th style="text-align: center">No.</th>
-                      <th style="text-align: center">Kode Item Masalah</th>
-                      <th style="text-align: center">Nama Item Masalah</th>
-                      <th style="text-align: center">Kondisi</th>
+                      <th style="text-align: center; width: 8%">No.</th>
+                      <th style="text-align: center; width: 13%">Kode Item Masalah</th>
+                      <th style="text-align: center; width: 60%">Item Masalah</th>
+                      <th style="text-align: center; width: 20%">Kondisi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -555,8 +555,8 @@ include("../admin/leftbar.php");
                         $qdatagrid =" SELECT * FROM t_item_masalah where kode_item_masalah = '$key'";
                         $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                         $ddatagrid=mysqli_fetch_array($rdatagrid);
-							echo '<tr><td>' . $ig . '</td>';
-							echo "<td> $ddatagrid[kode_item_masalah]</td>";
+							echo '<tr><td style=text-align:center>' . $ig . '</td>';
+							echo "<td style=text-align:center> $ddatagrid[kode_item_masalah]</td>";
 							echo "<td> $ddatagrid[nama_item_masalah]</td>";
               echo '<td><span class="kondisipilih">' . $arkondisitext[$kondisi] . "</span></td>";
   
@@ -586,7 +586,7 @@ include("../admin/leftbar.php");
                   <thead class="thin-border-bottom">
                     <tr>
                       <th style="text-align: center">No.</th>
-                      <th style="text-align: center">Kode</th>
+                      <th style="text-align: center">Kode Bidang Masalah</th>
                       <th style="text-align: center">Bidang Masalah</th>
                       <th style="text-align: center">Nilai CF</th>
                       <th style="text-align: center">Persen</th>
@@ -606,11 +606,11 @@ include("../admin/leftbar.php");
                         $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                         $ddatagrid=mysqli_fetch_array($rdatagrid);
 						for ($ipl = 1; $ipl < count($idpkt); $ipl++) ;
-							echo '<tr><td>' . $np . '</td>';
-                            echo "<td class=opsi > $ddatagrid[kode_bidang_masalah]</td>";
-                            echo "<td class=opsi > $ddatagrid[nama_bidang_masalah]</td>";
-							echo '<td>' . $vlpkt[$ipl] . '</td>';
-							echo "<td> " . round($vlpkt[$ipl], 2) * 100 . "%</td></tr>";
+							echo '<tr><td style=text-align:center>' . $np . '</td>';
+              echo "<td class=opsi style=text-align:center> $ddatagrid[kode_bidang_masalah]</td>";
+              echo "<td class=opsi > $ddatagrid[nama_bidang_masalah]</td>";
+							echo '<td style=text-align:center>' . $vlpkt[$ipl] . '</td>';
+							echo "<td style=text-align:center> " . round($vlpkt[$ipl], 2) * 100 . "%</td></tr>";
 							
 						 }
 						

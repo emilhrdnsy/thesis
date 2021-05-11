@@ -57,13 +57,13 @@ include("../admin/leftbar.php");
 										
                                         echo "
                                         <tr>
-                                             <td style= text-align:center>$no</td>
-                                             <td style= text-align:center>$ddatagrid[kode_bidang_masalah]</td>
-                                             <td style= text-align:left>$ddatagrid[nama_bidang_masalah]</td>
-                                             <td style= text-align:justify>$ddatagrid[detail_bidang_masalah]</td>
-                                             <td style= text-align:justify>$ddatagrid[layanan]</td>
-                                             <td style=text-align:center>
-                                                 <a href=?unit=bidang_masalah_unit&act=update&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
+                                             <td style= text-align:center;vertical-align:middle>$no</td>
+                                             <td style= text-align:center;vertical-align:middle>$ddatagrid[kode_bidang_masalah]</td>
+                                             <td style= text-align:left;vertical-align:middle>$ddatagrid[nama_bidang_masalah]</td>
+                                             <td style= text-align:justify;vertical-align:middle>$ddatagrid[detail_bidang_masalah]</td>
+                                             <td style= text-align:justify;vertical-align:middle>$ddatagrid[layanan]</td>
+                                             <td style=text-align:center;vertical-align:middle>
+                                                 <a href=?unit=bidang_masalah_unit&act=update&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' > </a> 
                                                  <a href=?unit=bidang_masalah_unit&act=delete&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
                                              </td>                
                                         </tr>
@@ -174,7 +174,7 @@ include("../admin/leftbar.php");
                             <div class="col-sm-9">
                                 <select class="form-select col-xs-10 col-sm-5 " name="layanan" id="layanan"
                                 aria-label="Default select example" required>
-                                    <option value="">--Pilih Layanan--</option>
+                                    <option value="" style="color: #c0c0c0">--Pilih Layanan--</option>
                                     <option value="Layanan Pembelajaran" >Layanan Pembelajaran</option>
                                     <option value="Layanan Konseling Perorangan" >Layanan Konseling Perorangan</option>
                                     

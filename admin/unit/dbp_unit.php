@@ -65,16 +65,16 @@ include("../admin/leftbar.php");
                             while($ddatagrid=mysqli_fetch_assoc($rdatagrid)) {
                                 echo "
                                 <tr>
-                                  <td style= text-align:center>$no</td>
-                                  <td style= text-align:center>$ddatagrid[kode_bidang_masalah]</td>
-                                  <td style= text-align:left>$ddatagrid[nama_bidang_masalah]</td>
-                                  <td style= text-align:center>$ddatagrid[kode_item_masalah]</td>
-                                  <td style= text-align:justify>$ddatagrid[nama_item_masalah]</td>
-                                  <td style= text-align:center>$ddatagrid[mb]</td>
-                                  <td style= text-align:center>$ddatagrid[md]</td>
+                                  <td style= text-align:center;vertical-align:middle>$no</td>
+                                  <td style= text-align:center;vertical-align:middle>$ddatagrid[kode_bidang_masalah]</td>
+                                  <td style= text-align:left;vertical-align:middle>$ddatagrid[nama_bidang_masalah]</td>
+                                  <td style= text-align:center;vertical-align:middle>$ddatagrid[kode_item_masalah]</td>
+                                  <td style= text-align:justify;vertical-align:middle>$ddatagrid[nama_item_masalah]</td>
+                                  <td style= text-align:center;vertical-align:middle>$ddatagrid[mb]</td>
+                                  <td style= text-align:center;vertical-align:middle>$ddatagrid[md]</td>
                                    
-                                  <td style= text-align:center>$ddatagrid[cf_bidang_masalah]</td>
-                                  <td style=text-align:center>
+                                  <td style= text-align:center;vertical-align:middle>$ddatagrid[cf_bidang_masalah]</td>
+                                  <td style=text-align:center;vertical-align:middle>
                                     <a href=?unit=dbp_unit&act=update&kode_identifikasi=$ddatagrid[kode_identifikasi] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
                                     <a href=?unit=dbp_unit&act=delete&kode_identifikasi=$ddatagrid[kode_identifikasi] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
                                   </td>                

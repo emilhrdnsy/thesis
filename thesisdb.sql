@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Bulan Mei 2021 pada 16.34
+-- Waktu pembuatan: 14 Bulan Mei 2021 pada 15.26
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -52,7 +52,7 @@ INSERT INTO `t_admin` (`id_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas
 CREATE TABLE `t_bidang_masalah` (
   `id_bidang_masalah` int(11) NOT NULL,
   `kode_bidang_masalah` varchar(5) NOT NULL,
-  `nama_bidang_masalah` varchar(50) NOT NULL,
+  `nama_bidang_masalah` varchar(100) NOT NULL,
   `detail_bidang_masalah` varchar(500) NOT NULL,
   `layanan` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -66,7 +66,7 @@ INSERT INTO `t_bidang_masalah` (`id_bidang_masalah`, `kode_bidang_masalah`, `nam
 (2, 'BM2', 'Keterampilan Belajar', 'Masalah yang sering terjadi pada konten keterampilan belajar adalah siwa yang tidak mencatat materi pelajaran yang telah diberikan guru, siswa mengalami kesulitan terhadap materi yang memuat kata-kata dalam bahasa asing, siswa yang memiliki kebiasaan mengganggu teman ketika belajar atau ribut ketika jam pelajaran berlangsung, siswa yang sering lupa atau tidak membawa peralatan yang diperlukan dalam belajar di sekolah, tidak menggunakan waktu luang untuk mendalami materi pelajaran, tidak terbiasa', 'Layanan Pembelajaran'),
 (3, 'BM3', 'Sarana Belajar', 'Masalah yang sering terjadi pada konten sarana dan prasarana belajar yaitu siswa merasa tidak nyaman didalam kelas karena terasa panas, sarana belajar yang tidak memadai di rumah dan ekonomi orang tua yang pas-pasan. ', ''),
 (4, 'BM4', 'Diri Pribadi', 'Masalah yang sering terjadi pada konten diri sendiri atau masalah pribadi siswa yaitu siswa merasa tidak konsestrasi belajar dan motivasi belajarnya sangat rendah, merokok di sekolah supaya terlihat keren oleh teman-temannya dan Siswa yang tidak menghormati atau mengolok-olok gurunya.   \r\n                                ', 'Layanan Konseling Perorangan'),
-(5, 'BM5', 'Keadaan Lingkungan Fisik dan Lingkungan Sosio Emos', 'Masalah yang sering terjadi pada konten lingkungan belajar dan sosio-emosional yaitu siswa sering terlambat ke sekolah karena jarak tempuh antara rumah siswa ke sekolah sangat jauh, Siswa yang tidak bisa bergaul dengan teman kelasnya, Sering bolos sekolah karena ingin main bersama teman dan siswa yang merasa rendah diri karena sering di bully.  \r\n                                  \r\n                                ', '');
+(5, 'BM5', 'Keadaan Lingkungan Fisik dan Lingkungan Sosio Emosional', 'Masalah yang sering terjadi pada konten lingkungan belajar dan sosio-emosional yaitu siswa sering terlambat ke sekolah karena jarak tempuh antara rumah siswa ke sekolah sangat jauh, Siswa yang tidak bisa bergaul dengan teman kelasnya, Sering bolos sekolah karena ingin main bersama teman dan siswa yang merasa rendah diri karena sering di bully.  \r\n                                  \r\n                                ', '');
 
 -- --------------------------------------------------------
 
@@ -89,15 +89,12 @@ CREATE TABLE `t_hasil` (
 --
 
 INSERT INTO `t_hasil` (`kode_hasil`, `bidang_masalah`, `item_masalah`, `nilai_cf`, `tanggal`, `hasil_id`, `kode_siswa`) VALUES
-(1, 'a:2:{s:3:\"BM2\";s:6:\"0.5534\";s:3:\"BM4\";s:6:\"0.5334\";}', 'a:3:{s:4:\"IM59\";s:1:\"3\";s:4:\"IM60\";s:1:\"1\";s:4:\"IM61\";s:1:\"2\";}', '0.5534', '2021-04-18 11:30:27', 'BM2', 'S4'),
-(2, 'a:1:{s:3:\"BM1\";s:6:\"0.4358\";}', 'a:3:{s:3:\"IM1\";s:1:\"2\";s:3:\"IM2\";s:1:\"2\";s:3:\"IM3\";s:1:\"4\";}', '0.4358', '2021-04-18 14:11:16', 'BM1', 'S6'),
-(7, 'a:4:{s:3:\"BM2\";s:6:\"0.9013\";s:3:\"BM5\";s:6:\"0.3837\";s:3:\"BM4\";s:6:\"0.2286\";s:3:\"BM1\";s:6:\"0.0647\";}', 'a:7:{s:3:\"IM2\";s:1:\"3\";s:3:\"IM4\";s:1:\"4\";s:3:\"IM7\";s:1:\"2\";s:4:\"IM23\";s:1:\"1\";s:4:\"IM25\";s:1:\"2\";s:4:\"IM47\";s:1:\"2\";s:4:\"IM60\";s:1:\"3\";}', '0.9013', '2021-05-04 21:12:12', 'BM2', 'S9'),
-(8, 'a:3:{s:3:\"BM2\";s:6:\"0.9621\";s:3:\"BM3\";s:6:\"0.6763\";s:3:\"BM1\";s:6:\"0.1686\";}', 'a:6:{s:3:\"IM3\";s:1:\"3\";s:3:\"IM5\";s:1:\"4\";s:3:\"IM6\";s:1:\"2\";s:3:\"IM9\";s:1:\"3\";s:4:\"IM14\";s:1:\"3\";s:4:\"IM19\";s:1:\"2\";}', '0.9621', '2021-05-04 21:17:14', 'BM2', 'S10'),
-(9, 'a:1:{s:3:\"BM1\";s:6:\"0.0453\";}', 'a:1:{s:3:\"IM2\";s:1:\"2\";}', '0.0453', '2021-05-04 22:20:32', 'BM1', 'S11'),
-(10, 'a:1:{s:3:\"BM1\";s:6:\"0.0194\";}', 'a:1:{s:3:\"IM2\";s:1:\"1\";}', '0.0194', '2021-05-04 22:55:17', 'BM1', 'S12'),
-(11, 'a:2:{s:3:\"BM2\";s:6:\"0.5121\";s:3:\"BM1\";s:6:\"0.3000\";}', 'a:4:{s:3:\"IM2\";s:1:\"3\";s:3:\"IM5\";s:1:\"1\";s:3:\"IM6\";s:1:\"1\";s:3:\"IM7\";s:1:\"3\";}', '0.5121', '2021-05-10 21:27:24', 'BM2', 'S16'),
-(12, 'a:1:{s:3:\"BM1\";s:6:\"0.3000\";}', 'a:1:{s:3:\"IM2\";s:1:\"3\";}', '0.3000', '2021-05-10 22:17:22', 'BM1', 'S17'),
-(13, 'a:2:{s:3:\"BM2\";s:6:\"0.5940\";s:3:\"BM1\";s:6:\"0.2100\";}', 'a:3:{s:3:\"IM2\";s:1:\"2\";s:3:\"IM5\";s:1:\"2\";s:3:\"IM7\";s:1:\"3\";}', '0.5940', '2021-05-10 22:27:20', 'BM2', 'S18');
+(14, 'a:2:{s:3:\"BM2\";s:6:\"0.6100\";s:3:\"BM3\";s:6:\"0.1000\";}', 'a:3:{s:3:\"IM4\";s:1:\"3\";s:3:\"IM6\";s:1:\"2\";s:3:\"IM9\";s:1:\"3\";}', '0.6100', '2021-05-11 09:39:22', 'BM2', 'S19'),
+(15, 'a:1:{s:3:\"BM1\";s:6:\"0.3000\";}', 'a:1:{s:3:\"IM2\";s:1:\"3\";}', '0.3000', '2021-05-11 09:56:24', 'BM1', 'S20'),
+(16, 'a:0:{}', 'a:0:{}', '', '2021-05-14 21:06:03', '', 'S21'),
+(17, 'a:3:{s:3:\"BM4\";s:6:\"0.5000\";s:3:\"BM2\";s:6:\"0.3500\";s:3:\"BM3\";s:6:\"0.2800\";}', 'a:4:{s:3:\"IM5\";s:1:\"4\";s:3:\"IM6\";s:1:\"2\";s:3:\"IM8\";s:1:\"2\";s:4:\"IM10\";s:1:\"3\";}', '0.5000', '2021-05-14 21:06:19', 'BM4', 'S22'),
+(18, 'a:5:{s:3:\"BM2\";s:6:\"0.3500\";s:3:\"BM1\";s:6:\"0.3000\";s:3:\"BM3\";s:6:\"0.2800\";s:3:\"BM5\";s:6:\"0.1800\";s:3:\"BM4\";s:6:\"0.1400\";}', 'a:5:{s:3:\"IM6\";s:1:\"2\";s:4:\"IM21\";s:1:\"2\";s:4:\"IM28\";s:1:\"3\";s:4:\"IM39\";s:1:\"1\";s:4:\"IM49\";s:1:\"2\";}', '0.3500', '2021-05-14 21:11:49', 'BM2', 'S23'),
+(19, 'a:4:{s:3:\"BM5\";s:6:\"0.4200\";s:3:\"BM2\";s:6:\"0.1500\";s:3:\"BM3\";s:6:\"0.1200\";s:3:\"BM4\";s:6:\"0.0600\";}', 'a:5:{s:3:\"IM6\";s:1:\"2\";s:4:\"IM21\";s:1:\"2\";s:4:\"IM28\";s:1:\"3\";s:4:\"IM39\";s:1:\"1\";s:4:\"IM49\";s:1:\"2\";}', '0.4200', '2021-05-14 21:21:35', 'BM5', 'S24');
 
 -- --------------------------------------------------------
 
@@ -339,7 +336,13 @@ INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode
 (15, 'aa', 'Laki-laki', 'X IPA 1', 'S15'),
 (16, 'a16', 'Laki-laki', 'X IPA 3', 'S16'),
 (17, 'aa', 'Laki-laki', 'X IPA 2', 'S17'),
-(18, 'aaaaa', 'Laki-laki', 'X IPA 2', 'S18');
+(18, 'aaaaa', 'Laki-laki', 'X IPA 2', 'S18'),
+(19, 'emil', 'Laki-laki', 'X IPA 1', 'S19'),
+(20, 'aaa', 'Laki-laki', 'X IPA 1', 'S20'),
+(21, 'emil', 'Laki-laki', 'X IPA 1', 'S21'),
+(22, 'aaa', 'Laki-laki', 'X IPA 1', 'S22'),
+(23, 'emil', 'Laki-laki', 'X IPA 1', 'S23'),
+(24, 'emil', 'Laki-laki', 'X IPA 1', 'S24');
 
 -- --------------------------------------------------------
 
@@ -435,13 +438,13 @@ ALTER TABLE `t_admin`
 -- AUTO_INCREMENT untuk tabel `t_bidang_masalah`
 --
 ALTER TABLE `t_bidang_masalah`
-  MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_hasil`
 --
 ALTER TABLE `t_hasil`
-  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_identifikasi`
@@ -471,7 +474,7 @@ ALTER TABLE `t_pilihan_pengguna`
 -- AUTO_INCREMENT untuk tabel `t_siswa`
 --
 ALTER TABLE `t_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_user`

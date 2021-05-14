@@ -55,24 +55,24 @@ switch($act){
                       <thead class="thin-border-bottom">
 
                         <tr>
-                          <th style="width:100px; center">No.</th>
-                          <th style="width:100px; text-align:center">Kode Item</th>
-                          <th style="text-align: center">Nama Item</th>
-                          <th style="width:300px; text-align:center">Pilih Kondisi</th>
+                          <th style="width:100px;text-align:center;font-size:12px">No.</th>
+                          <th style="width:100px;text-align:center;font-size:12px">Kode Item</th>
+                          <th style="text-align: center;font-size:12px">Nama Item</th>
+                          <th style="width:300px; text-align:center;font-size:12px">Pilih Kondisi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
-                          $qdatagrid ="  SELECT * FROM t_item_masalah ORDER by id_item_masalah ";
-                            $rdatagrid = mysqli_query($mysqli, $qdatagrid);
+                    $qdatagrid ="  SELECT * FROM t_item_masalah ORDER by id_item_masalah ";
+                    $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                             
 							$i = 0;
                 while($ddatagrid=mysqli_fetch_array($rdatagrid)) {
 								$i++;
-								echo "<tr><td class=opsi>$i</td>";
-                echo "<td class=opsi > $ddatagrid[kode_item_masalah]</td>";
-								echo "<td class=gejala >$ddatagrid[nama_item_masalah]</td>";
-								echo '<td class="opsi" >
+								echo "<tr><td class=opsi style=text-align:center;vertical-align:middle;font-size:12px>$i</td>";
+                echo "<td class=opsi style=text-align:center;vertical-align:middle;font-size:12px> $ddatagrid[kode_item_masalah]</td>";
+								echo "<td class=gejala style=vertical-align:middle;font-size:12px;text-align:justify>$ddatagrid[nama_item_masalah]</td>";
+								echo '<td class="opsi" style=vertical-align:middle;font-size:12px>
                   <select name="kondisi[]" id="sl' . $i . '" class="opsikondisi col-sm-12"/>
                   <option data-id="0" value="0">Pilih jika sesuai</option>';
 
@@ -98,8 +98,8 @@ switch($act){
                 </div>
               </div>
               <div class="clearfix form-actions">
-                <div class="col-md-offset-3 col-md-9">
-                  <button type="submit" name="submit" class="btn btn-danger">Proses</button>
+                <div class="" >
+                  <button type="submit" name="submit" class="btn btn-danger" style="width: 20%; margin-left: auto">Proses</button>
                 </div>
               </div>
             </form>
@@ -143,7 +143,7 @@ switch($act){
       date_default_timezone_set("Asia/Makassar");
       $inptanggal = date('Y-m-d H:i:s');
 
-      $arbobot = array('0', '0.3', '0.7', '1.0');
+      $arbobot = array('1.0', '0.7', '0.3', '0');
       $argejala = array();
 
       // print_r($_POST['kondisi']);
@@ -453,7 +453,7 @@ include("../admin/leftbar.php");
   date_default_timezone_set("Asia/Makassar");
   $inptanggal = date('Y-m-d H:i:s');
 
-  $arbobot = array('0', '0.3', '0.7', '1.0');
+  $arbobot = array('1.0', '0.7', '0.3', '0');
   $argejala = array();
  
  for ($i = 0; $i < count($_POST['kondisi']); $i++) {
@@ -627,7 +627,7 @@ include("../admin/leftbar.php");
 
           <div class="page-header"></div>
           <h5>DIAGNOSA</h5>
-          <h6>Hasil Dari Diagnosa Penyakit Yang Paling Mungkin adalah : <b><?php echo $dupdate['nama_bidang_masalah']; ?></b></h6>
+          <h6>Hasil Dari Identifikasi Bidang Masalah Yang Paling Mungkin adalah : <b><?php echo $dupdate['nama_bidang_masalah']; ?></b></h6>
 
           <div class="widget-body">
             <div class="widget-main">

@@ -31,7 +31,7 @@ switch($act){
         <h1>Konsultasi<small> Nama : <?php echo ucwords($dupdate['nama_siswa']); ?></h1>
 
       </div>
-      <h6>Silahkan Pilih Kondisi Gejala Seusai Yang Dialami:</h6>
+      <h6>Silahkan Pilih Kondisi Item Seusai Yang Dialami:</h6>
       <div class="row">
         <div class="col-xs-12">
           <!-- PAGE CONTENT BEGINS -->
@@ -74,7 +74,7 @@ switch($act){
 								echo "<td class=gejala style=vertical-align:middle;font-size:12px;text-align:justify>$ddatagrid[nama_item_masalah]</td>";
 								echo '<td class="opsi" style=vertical-align:middle;font-size:12px>
                   <select name="kondisi[]" id="sl' . $i . '" class="opsikondisi col-sm-12"/>
-                  <option data-id="0" value="0">Pilih jika sesuai</option>';
+                  <option data-id="0" value="0" style="color:silver">--Pilih jika sesuai--</option>';
 
 									$qdatagridk =' SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna ';
 									$rdatagridk = mysqli_query($mysqli, $qdatagridk);
@@ -143,7 +143,7 @@ switch($act){
       date_default_timezone_set("Asia/Makassar");
       $inptanggal = date('Y-m-d H:i:s');
 
-      $arbobot = array('1.0', '0.7', '0.3', '0');
+      $arbobot = array('0', '0.3', '0.7', '1.0');
       $argejala = array();
 
       // print_r($_POST['kondisi']);
@@ -326,7 +326,7 @@ include("../admin/leftbar.php");
             </div>
 
             <div class="form-group">
-              <label class="col-sm-3 control-label no-padding-right" for="nm_pasien">Nama</label>
+              <label class="col-sm-3 control-label no-padding-right" for="nama_siswa">Nama</label>
               <div class="col-sm-9">
                 <input class="col-xs-10 col-sm-5" type="text" name="nama_siswa" id="nama_siswa" required />
               </div>
@@ -453,7 +453,7 @@ include("../admin/leftbar.php");
   date_default_timezone_set("Asia/Makassar");
   $inptanggal = date('Y-m-d H:i:s');
 
-  $arbobot = array('1.0', '0.7', '0.3', '0');
+  $arbobot = array('0', '0.3', '0.7', '1.0');
   $argejala = array();
  
  for ($i = 0; $i < count($_POST['kondisi']); $i++) {
@@ -555,10 +555,10 @@ include("../admin/leftbar.php");
                         $qdatagrid =" SELECT * FROM t_item_masalah where kode_item_masalah = '$key'";
                         $rdatagrid = mysqli_query($mysqli, $qdatagrid);
                         $ddatagrid=mysqli_fetch_array($rdatagrid);
-							echo '<tr><td style=text-align:center>' . $ig . '</td>';
-							echo "<td style=text-align:center> $ddatagrid[kode_item_masalah]</td>";
-							echo "<td> $ddatagrid[nama_item_masalah]</td>";
-              echo '<td><span class="kondisipilih">' . $arkondisitext[$kondisi] . "</span></td>";
+							echo '<tr><td style=text-align:center;vertical-align:middle>' . $ig . '</td>';
+							echo "<td style=text-align:center;vertical-align:middle> $ddatagrid[kode_item_masalah]</td>";
+							echo "<td style=text-align:justify;vertical-align:middle> $ddatagrid[nama_item_masalah]</td>";
+              echo '<td style=text-align:left;vertical-align:middle><span class="kondisipilih">' . $arkondisitext[$kondisi] . "</span></td>";
   
 						}
                              ?>
@@ -602,9 +602,9 @@ include("../admin/leftbar.php");
 						$nmpkt[$np] = $arpkt[$key];
 						$vlpkt[$np] = $value;
 						
-                        $qdatagrid =" SELECT * FROM t_bidang_masalah where kode_bidang_masalah = '$key'";
-                        $rdatagrid = mysqli_query($mysqli, $qdatagrid);
-                        $ddatagrid=mysqli_fetch_array($rdatagrid);
+            $qdatagrid =" SELECT * FROM t_bidang_masalah where kode_bidang_masalah = '$key'";
+            $rdatagrid = mysqli_query($mysqli, $qdatagrid);
+            $ddatagrid=mysqli_fetch_array($rdatagrid);
 						for ($ipl = 1; $ipl < count($idpkt); $ipl++) ;
 							echo '<tr><td style=text-align:center>' . $np . '</td>';
               echo "<td class=opsi style=text-align:center> $ddatagrid[kode_bidang_masalah]</td>";
@@ -626,8 +626,8 @@ include("../admin/leftbar.php");
 
 
           <div class="page-header"></div>
-          <h5>DIAGNOSA</h5>
-          <h6>Hasil Dari Identifikasi Bidang Masalah Yang Paling Mungkin adalah : <b><?php echo $dupdate['nama_bidang_masalah']; ?></b></h6>
+          <h5>IDENTIFIKASI</h5>
+          <h6>Hasil Dari Identifikasi Bidang Masalah Yang Paling Mungkin adalah: <b><?php echo $dupdate['nama_bidang_masalah']; ?></b></h6>
 
           <div class="widget-body">
             <div class="widget-main">

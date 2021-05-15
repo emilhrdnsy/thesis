@@ -233,7 +233,9 @@ include("../admin/leftbar.php");
 						$ig++;
 						$item_masalah = $key;
             $qdatagrid =" SELECT * FROM t_item_masalah where kode_item_masalah = '$key'";
+
             $rdatagrid = mysqli_query($mysqli, $qdatagrid);
+
             $ddatagrid=mysqli_fetch_array($rdatagrid);
 							echo '<tr><td style=text-align:center;vertical-align:middle>' .$ig. '</td>';
 							echo "<td style=text-align:center;vertical-align:middle> $ddatagrid[kode_item_masalah]</td>";

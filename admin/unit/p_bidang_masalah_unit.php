@@ -32,7 +32,7 @@ include("../admin/leftbar.php");
         <div class="card text-center">
           <div class="card-block">
             <h4 class="card-title"><h3 class="bg-keterangan"><?php echo $r['nama_bidang_masalah']; ?></h3>
-              <a class="btn bg-maroon btn-flat margin" href="#" data-toggle="modal" data-target="#modal<?php echo $r['kode_bidang_masalah']; ?>"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Detail</a>
+              <a class="btn btn-primary btn-flat margin" href="#" data-toggle="modal" data-target="#modal<?php echo $r['kode_bidang_masalah']; ?>"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Detail</a>
               <a class="btn bg-olive btn-flat margin" href="#" data-toggle="modal" data-target="#modaltindakan<?php echo $r['kode_bidang_masalah']; ?>"><i class="fa fa-quote-right" aria-hidden="true"></i> Saran</a>
           </div>
         </div>

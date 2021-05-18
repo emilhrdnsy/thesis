@@ -114,8 +114,8 @@ switch($act){
 </div><!-- /.main-content -->
 
 <?php
-            include("../admin/footer.php");
-            ?>
+ include("../admin/footer.php");
+?>
 <!-- DATA TABLES SCRIPT -->
 <script src="../css/backend/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="../css/backend/js/jquery.dataTables.bootstrap.min.js" type="text/javascript"></script>
@@ -143,10 +143,12 @@ switch($act){
       date_default_timezone_set("Asia/Makassar");
       $inptanggal = date('Y-m-d H:i:s');
 
-      $arbobot = array('0', '0.3', '0.7', '1.0');
+      $arbobot = array('0', '0', '0.3', '0.7', '1.0');
+
+     
       $argejala = array();
 
-      // print_r($_POST['kondisi']);
+      print_r($_POST['kondisi']);
 
       for ($i = 0; $i < count($_POST['kondisi']); $i++) {
         $arkondisi = explode("_", $_POST['kondisi'][$i]);
@@ -192,9 +194,11 @@ switch($act){
           $gejala = $arkondisi[0];
 
           // print_r($arkondisi);
-          // print_r($_POST['kondisi']);
+          print_r($_POST['kondisi']);
           for ($i = 0; $i < count($_POST['kondisi']); $i++) {
+            
             $arkondisi = explode("_", $_POST['kondisi'][$i]);
+
             $gejala = $arkondisi[0];
             if ($rgejala['kode_item_masalah'] == $gejala) {
               $cf = ($rgejala['mb'] - $rgejala['md']) * $arbobot[$arkondisi[1]];

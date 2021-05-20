@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Bulan Mei 2021 pada 09.20
+-- Waktu pembuatan: 20 Bulan Mei 2021 pada 10.52
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -89,15 +89,16 @@ CREATE TABLE `t_hasil` (
 --
 
 INSERT INTO `t_hasil` (`kode_hasil`, `bidang_masalah`, `item_masalah`, `nilai_cf`, `tanggal`, `hasil_id`, `kode_siswa`) VALUES
-(14, 'a:2:{s:3:\"BM2\";s:6:\"0.6100\";s:3:\"BM3\";s:6:\"0.1000\";}', 'a:3:{s:3:\"IM4\";s:1:\"3\";s:3:\"IM6\";s:1:\"2\";s:3:\"IM9\";s:1:\"3\";}', '0.6100', '2021-05-11 09:39:22', 'BM2', 'S19'),
-(15, 'a:1:{s:3:\"BM1\";s:6:\"0.3000\";}', 'a:1:{s:3:\"IM2\";s:1:\"3\";}', '0.3000', '2021-05-11 09:56:24', 'BM1', 'S20'),
 (16, 'a:0:{}', 'a:0:{}', '', '2021-05-14 21:06:03', '', 'S21'),
 (17, 'a:3:{s:3:\"BM4\";s:6:\"0.5000\";s:3:\"BM2\";s:6:\"0.3500\";s:3:\"BM3\";s:6:\"0.2800\";}', 'a:4:{s:3:\"IM5\";s:1:\"4\";s:3:\"IM6\";s:1:\"2\";s:3:\"IM8\";s:1:\"2\";s:4:\"IM10\";s:1:\"3\";}', '0.5000', '2021-05-14 21:06:19', 'BM4', 'S22'),
 (18, 'a:5:{s:3:\"BM2\";s:6:\"0.3500\";s:3:\"BM1\";s:6:\"0.3000\";s:3:\"BM3\";s:6:\"0.2800\";s:3:\"BM5\";s:6:\"0.1800\";s:3:\"BM4\";s:6:\"0.1400\";}', 'a:5:{s:3:\"IM6\";s:1:\"2\";s:4:\"IM21\";s:1:\"2\";s:4:\"IM28\";s:1:\"3\";s:4:\"IM39\";s:1:\"1\";s:4:\"IM49\";s:1:\"2\";}', '0.3500', '2021-05-14 21:11:49', 'BM2', 'S23'),
 (19, 'a:4:{s:3:\"BM5\";s:6:\"0.4200\";s:3:\"BM2\";s:6:\"0.1500\";s:3:\"BM3\";s:6:\"0.1200\";s:3:\"BM4\";s:6:\"0.0600\";}', 'a:5:{s:3:\"IM6\";s:1:\"2\";s:4:\"IM21\";s:1:\"2\";s:4:\"IM28\";s:1:\"3\";s:4:\"IM39\";s:1:\"1\";s:4:\"IM49\";s:1:\"2\";}', '0.4200', '2021-05-14 21:21:35', 'BM5', 'S24'),
-(20, 'a:4:{s:3:\"BM4\";s:6:\"0.8267\";s:3:\"BM1\";s:6:\"0.5363\";s:3:\"BM2\";s:6:\"0.3048\";s:3:\"BM5\";s:6:\"0.2450\";}', 'a:61:{s:3:\"IM1\";s:1:\"2\";s:3:\"IM2\";s:1:\"4\";s:3:\"IM3\";s:1:\"3\";s:3:\"IM4\";s:1:\"3\";s:3:\"IM5\";s:1:\"3\";s:3:\"IM6\";s:1:\"3\";s:3:\"IM7\";s:1:\"4\";s:3:\"IM8\";s:1:\"4\";s:3:\"IM9\";s:1:\"4\";s:4:\"IM10\";s:1:\"4\";s:4:\"IM11\";s:1:\"4\";s:4:\"IM12\";s:1:\"1\";s:4:\"IM13\";s:1:\"3\";s:4:\"IM14\";s:1:\"4\";s:4:\"IM15\";s:1:\"3\";s:4:\"IM16\";s:1:\"4\";s:4:\"IM17\";s:1:\"4\";s:4:\"IM18\";s:1:\"4\";s:4:\"IM19\";s:1:\"4\";s:4:\"IM20\";s:1:\"4\";s:4:\"IM21\";s:1:\"4\";s:4:\"IM22\";s:1:\"4\";s:4:\"IM23\";s:1:\"1\";s:4:\"IM24\";s:1:\"3\";s:4:\"IM25\";s:1:\"4\";s:4:\"IM26\";s:1:\"4\";s:4:\"IM27\";s:1:\"1\";s:4:\"IM28\";s:1:\"4\";s:4:\"IM29\";s:1:\"4\";s:4:\"IM30\";s:1:\"4\";s:4:\"IM31\";s:1:\"4\";s:4:\"IM32\";s:1:\"2\";s:4:\"IM33\";s:1:\"3\";s:4:\"IM34\";s:1:\"4\";s:4:\"IM35\";s:1:\"4\";s:4:\"IM36\";s:1:\"1\";s:4:\"IM37\";s:1:\"1\";s:4:\"IM38\";s:1:\"1\";s:4:\"IM39\";s:1:\"4\";s:4:\"IM40\";s:1:\"4\";s:4:\"IM41\";s:1:\"4\";s:4:\"IM42\";s:1:\"4\";s:4:\"IM43\";s:1:\"4\";s:4:\"IM44\";s:1:\"4\";s:4:\"IM45\";s:1:\"3\";s:4:\"IM46\";s:1:\"3\";s:4:\"IM47\";s:1:\"4\";s:4:\"IM48\";s:1:\"4\";s:4:\"IM49\";s:1:\"4\";s:4:\"IM50\";s:1:\"4\";s:4:\"IM51\";s:1:\"4\";s:4:\"IM52\";s:1:\"4\";s:4:\"IM53\";s:1:\"4\";s:4:\"IM54\";s:1:\"1\";s:4:\"IM55\";s:1:\"4\";s:4:\"IM56\";s:1:\"4\";s:4:\"IM57\";s:1:\"4\";s:4:\"IM58\";s:1:\"4\";s:4:\"IM59\";s:1:\"4\";s:4:\"IM60\";s:1:\"3\";s:4:\"IM61\";s:1:\"4\";}', '0.8267', '2021-05-15 20:33:39', 'BM4', 'S20'),
-(21, 'a:4:{s:3:\"BM2\";s:6:\"0.9735\";s:3:\"BM1\";s:6:\"0.8596\";s:3:\"BM5\";s:6:\"0.4340\";s:3:\"BM3\";s:6:\"0.2170\";}', 'a:20:{s:3:\"IM1\";s:1:\"3\";s:3:\"IM3\";s:1:\"2\";s:3:\"IM4\";s:1:\"2\";s:3:\"IM5\";s:1:\"2\";s:3:\"IM6\";s:1:\"2\";s:4:\"IM12\";s:1:\"4\";s:4:\"IM13\";s:1:\"2\";s:4:\"IM15\";s:1:\"2\";s:4:\"IM23\";s:1:\"4\";s:4:\"IM24\";s:1:\"2\";s:4:\"IM27\";s:1:\"4\";s:4:\"IM32\";s:1:\"3\";s:4:\"IM33\";s:1:\"2\";s:4:\"IM36\";s:1:\"4\";s:4:\"IM37\";s:1:\"4\";s:4:\"IM38\";s:1:\"4\";s:4:\"IM45\";s:1:\"2\";s:4:\"IM46\";s:1:\"2\";s:4:\"IM54\";s:1:\"4\";s:4:\"IM60\";s:1:\"2\";}', '0.9735', '2021-05-15 21:12:01', 'BM2', 'S27'),
-(22, 'a:4:{s:3:\"BM2\";s:6:\"0.9777\";s:3:\"BM1\";s:6:\"0.8596\";s:3:\"BM5\";s:6:\"0.4340\";s:3:\"BM3\";s:6:\"0.3570\";}', 'a:20:{s:3:\"IM1\";s:1:\"3\";s:3:\"IM3\";s:1:\"2\";s:3:\"IM4\";s:1:\"2\";s:3:\"IM5\";s:1:\"2\";s:3:\"IM6\";s:1:\"2\";s:4:\"IM12\";s:1:\"4\";s:4:\"IM13\";s:1:\"2\";s:4:\"IM15\";s:1:\"2\";s:4:\"IM23\";s:1:\"4\";s:4:\"IM24\";s:1:\"2\";s:4:\"IM27\";s:1:\"4\";s:4:\"IM32\";s:1:\"3\";s:4:\"IM33\";s:1:\"2\";s:4:\"IM36\";s:1:\"4\";s:4:\"IM37\";s:1:\"4\";s:4:\"IM38\";s:1:\"4\";s:4:\"IM45\";s:1:\"2\";s:4:\"IM46\";s:1:\"2\";s:4:\"IM54\";s:1:\"4\";s:4:\"IM60\";s:1:\"2\";}', '0.9777', '2021-05-17 14:42:45', 'BM2', 'S28');
+(24, 'a:5:{s:3:\"BM4\";s:6:\"0.9595\";s:3:\"BM2\";s:6:\"0.9149\";s:3:\"BM1\";s:6:\"0.8436\";s:3:\"BM5\";s:6:\"0.4709\";s:3:\"BM3\";s:6:\"0.1530\";}', 'a:20:{s:3:\"IM1\";s:1:\"3\";s:3:\"IM3\";s:1:\"2\";s:3:\"IM4\";s:1:\"2\";s:3:\"IM5\";s:1:\"2\";s:3:\"IM6\";s:1:\"2\";s:4:\"IM12\";s:1:\"4\";s:4:\"IM13\";s:1:\"2\";s:4:\"IM15\";s:1:\"2\";s:4:\"IM23\";s:1:\"4\";s:4:\"IM24\";s:1:\"2\";s:4:\"IM27\";s:1:\"4\";s:4:\"IM32\";s:1:\"3\";s:4:\"IM33\";s:1:\"2\";s:4:\"IM36\";s:1:\"4\";s:4:\"IM37\";s:1:\"4\";s:4:\"IM38\";s:1:\"4\";s:4:\"IM45\";s:1:\"2\";s:4:\"IM46\";s:1:\"2\";s:4:\"IM54\";s:1:\"4\";s:4:\"IM60\";s:1:\"2\";}', '0.9595', '2021-05-18 21:09:45', 'BM4', 'S30'),
+(26, 'a:2:{s:3:\"BM2\";s:6:\"0.5418\";s:3:\"BM1\";s:6:\"0.2100\";}', 'a:3:{s:3:\"IM2\";s:1:\"3\";s:3:\"IM5\";s:1:\"3\";s:3:\"IM7\";s:1:\"3\";}', '0.5418', '2021-05-20 10:41:04', 'BM2', 'S3'),
+(27, 'a:4:{s:3:\"BM4\";s:6:\"0.9595\";s:3:\"BM2\";s:6:\"0.9149\";s:3:\"BM1\";s:6:\"0.8383\";s:3:\"BM5\";s:6:\"0.4709\";}', 'a:19:{s:3:\"IM1\";s:1:\"3\";s:3:\"IM2\";s:1:\"2\";s:3:\"IM3\";s:1:\"2\";s:3:\"IM4\";s:1:\"2\";s:3:\"IM5\";s:1:\"2\";s:3:\"IM6\";s:1:\"2\";s:4:\"IM12\";s:1:\"4\";s:4:\"IM15\";s:1:\"2\";s:4:\"IM23\";s:1:\"4\";s:4:\"IM24\";s:1:\"2\";s:4:\"IM27\";s:1:\"4\";s:4:\"IM32\";s:1:\"3\";s:4:\"IM36\";s:1:\"4\";s:4:\"IM37\";s:1:\"4\";s:4:\"IM38\";s:1:\"4\";s:4:\"IM45\";s:1:\"2\";s:4:\"IM46\";s:1:\"2\";s:4:\"IM54\";s:1:\"4\";s:4:\"IM60\";s:1:\"2\";}', '0.9595', '2021-05-20 10:50:56', 'BM4', 'S1'),
+(28, 'a:5:{s:3:\"BM4\";s:6:\"0.9898\";s:3:\"BM2\";s:6:\"0.9838\";s:3:\"BM5\";s:6:\"0.9570\";s:3:\"BM1\";s:6:\"0.8757\";s:3:\"BM3\";s:6:\"0.6190\";}', 'a:34:{s:3:\"IM5\";s:1:\"3\";s:3:\"IM6\";s:1:\"3\";s:3:\"IM8\";s:1:\"2\";s:4:\"IM10\";s:1:\"3\";s:4:\"IM13\";s:1:\"2\";s:4:\"IM15\";s:1:\"2\";s:4:\"IM16\";s:1:\"2\";s:4:\"IM18\";s:1:\"2\";s:4:\"IM19\";s:1:\"2\";s:4:\"IM20\";s:1:\"2\";s:4:\"IM21\";s:1:\"4\";s:4:\"IM23\";s:1:\"3\";s:4:\"IM28\";s:1:\"3\";s:4:\"IM29\";s:1:\"3\";s:4:\"IM32\";s:1:\"2\";s:4:\"IM36\";s:1:\"4\";s:4:\"IM37\";s:1:\"4\";s:4:\"IM38\";s:1:\"3\";s:4:\"IM39\";s:1:\"4\";s:4:\"IM40\";s:1:\"4\";s:4:\"IM41\";s:1:\"4\";s:4:\"IM44\";s:1:\"3\";s:4:\"IM45\";s:1:\"2\";s:4:\"IM46\";s:1:\"2\";s:4:\"IM47\";s:1:\"2\";s:4:\"IM48\";s:1:\"4\";s:4:\"IM49\";s:1:\"2\";s:4:\"IM50\";s:1:\"3\";s:4:\"IM51\";s:1:\"2\";s:4:\"IM52\";s:1:\"2\";s:4:\"IM53\";s:1:\"3\";s:4:\"IM54\";s:1:\"2\";s:4:\"IM60\";s:1:\"2\";s:4:\"IM61\";s:1:\"4\";}', '0.9898', '2021-05-20 16:12:33', 'BM4', 'S2'),
+(29, 'a:4:{s:3:\"BM4\";s:6:\"0.9187\";s:3:\"BM2\";s:6:\"0.8520\";s:3:\"BM1\";s:6:\"0.7639\";s:3:\"BM5\";s:6:\"0.6686\";}', 'a:32:{s:3:\"IM1\";s:1:\"2\";s:3:\"IM2\";s:1:\"2\";s:3:\"IM7\";s:1:\"2\";s:4:\"IM10\";s:1:\"2\";s:4:\"IM11\";s:1:\"2\";s:4:\"IM12\";s:1:\"2\";s:4:\"IM13\";s:1:\"2\";s:4:\"IM15\";s:1:\"2\";s:4:\"IM16\";s:1:\"2\";s:4:\"IM17\";s:1:\"2\";s:4:\"IM18\";s:1:\"2\";s:4:\"IM28\";s:1:\"2\";s:4:\"IM29\";s:1:\"2\";s:4:\"IM30\";s:1:\"2\";s:4:\"IM32\";s:1:\"2\";s:4:\"IM36\";s:1:\"3\";s:4:\"IM37\";s:1:\"3\";s:4:\"IM38\";s:1:\"3\";s:4:\"IM39\";s:1:\"2\";s:4:\"IM40\";s:1:\"2\";s:4:\"IM41\";s:1:\"2\";s:4:\"IM44\";s:1:\"2\";s:4:\"IM45\";s:1:\"2\";s:4:\"IM46\";s:1:\"2\";s:4:\"IM49\";s:1:\"2\";s:4:\"IM50\";s:1:\"2\";s:4:\"IM52\";s:1:\"2\";s:4:\"IM53\";s:1:\"3\";s:4:\"IM54\";s:1:\"2\";s:4:\"IM55\";s:1:\"2\";s:4:\"IM60\";s:1:\"2\";s:4:\"IM61\";s:1:\"3\";}', '0.9187', '2021-05-20 16:31:40', 'BM4', 'S3'),
+(30, 'a:5:{s:3:\"BM5\";s:6:\"0.9774\";s:3:\"BM4\";s:6:\"0.9619\";s:3:\"BM2\";s:6:\"0.9345\";s:3:\"BM3\";s:6:\"0.9179\";s:3:\"BM1\";s:6:\"0.6542\";}', 'a:44:{s:3:\"IM2\";s:1:\"2\";s:3:\"IM3\";s:1:\"2\";s:3:\"IM4\";s:1:\"2\";s:3:\"IM7\";s:1:\"3\";s:3:\"IM8\";s:1:\"2\";s:4:\"IM10\";s:1:\"4\";s:4:\"IM11\";s:1:\"2\";s:4:\"IM12\";s:1:\"4\";s:4:\"IM14\";s:1:\"2\";s:4:\"IM15\";s:1:\"2\";s:4:\"IM16\";s:1:\"2\";s:4:\"IM17\";s:1:\"2\";s:4:\"IM18\";s:1:\"3\";s:4:\"IM19\";s:1:\"4\";s:4:\"IM20\";s:1:\"4\";s:4:\"IM21\";s:1:\"4\";s:4:\"IM24\";s:1:\"4\";s:4:\"IM28\";s:1:\"2\";s:4:\"IM29\";s:1:\"2\";s:4:\"IM32\";s:1:\"2\";s:4:\"IM34\";s:1:\"2\";s:4:\"IM35\";s:1:\"2\";s:4:\"IM36\";s:1:\"3\";s:4:\"IM37\";s:1:\"3\";s:4:\"IM38\";s:1:\"4\";s:4:\"IM39\";s:1:\"2\";s:4:\"IM40\";s:1:\"2\";s:4:\"IM41\";s:1:\"2\";s:4:\"IM42\";s:1:\"3\";s:4:\"IM43\";s:1:\"3\";s:4:\"IM44\";s:1:\"2\";s:4:\"IM45\";s:1:\"2\";s:4:\"IM46\";s:1:\"2\";s:4:\"IM47\";s:1:\"2\";s:4:\"IM50\";s:1:\"2\";s:4:\"IM51\";s:1:\"2\";s:4:\"IM52\";s:1:\"2\";s:4:\"IM53\";s:1:\"3\";s:4:\"IM54\";s:1:\"2\";s:4:\"IM57\";s:1:\"2\";s:4:\"IM58\";s:1:\"2\";s:4:\"IM59\";s:1:\"2\";s:4:\"IM60\";s:1:\"2\";s:4:\"IM61\";s:1:\"3\";}', '0.9774', '2021-05-20 16:46:40', 'BM5', 'S4');
 
 -- --------------------------------------------------------
 
@@ -201,8 +202,8 @@ CREATE TABLE `t_item_masalah` (
 INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item_masalah`) VALUES
 (1, 'IM1', 'Tugas-tugas pelajaran yang diberikan guru tidak dapat saya kerjakan dengan baik karena materi pelajaran yang menunjang penyelesaian tugas tersebut tidak saya kuasai.'),
 (2, 'IM2', 'Saya tidak dapat mengaitkan atau melihat urutan yang teratur antara materi pelajaran terdahulu dengan materi pelajaran berikutnya.'),
-(3, 'IM3', 'Sewaktu proses belajar-mengajar di kelas berlangsung saya tidak memanfaatkaan kesempatan untuk bertanya tentang hal-hal yang kurang saya pahami'),
-(4, 'IM4', 'Sewaktu proses belajar-mengajar di kelas berlangsung saya mengalami kesulitan menyusun kata-kata untuk bertanya kepada guru tentang hal-hal yang kurang saya pahami  '),
+(3, 'IM3', 'Sewaktu proses belajar-mengajar di kelas berlangsung saya tidak memanfaatkaan kesempatan untuk bertanya tentang hal-hal yang kurang saya pahami.'),
+(4, 'IM4', 'Sewaktu proses belajar-mengajar di kelas berlangsung saya mengalami kesulitan menyusun kata-kata untuk bertanya kepada guru tentang hal-hal yang kurang saya pahami.'),
 (5, 'IM5', 'Saya sulit menghindarkan diri dari berbuat curang sewaktu ulangan/ujian berlangsung.'),
 (6, 'IM6', 'Saya sulit menghindarkan diri dari melayani pertanyaan teman sewaktu ulangan/ujian berlangsung.'),
 (7, 'IM7', 'Saya mengalami kesulitan dalam membuat ringkasan bahan bacaan (misalnya dari buku pelajaran) untuk melengkapi catatan pelajaran.'),
@@ -213,8 +214,8 @@ INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item
 (12, 'IM12', 'Ketidaksukaan saya kepada guru tertentu menyebabkan saya melalaikan tugas-tugas pelajaran.'),
 (13, 'IM13', 'Saya mengalami kesulitan dalam belajar karena materi pelajaran tidak berurutan. Sehingga materi pelajaran terdahulu tidak menunjang untuk mempelajari materi pelajaran berikutnya.'),
 (14, 'IM14', 'Saya mengalami kesulitan dalam menyelesaikan tugas pelajaran karena tidak meneliti petunjuk mengerjakan tugas tersebut.'),
-(15, 'IM15', 'Saya kehabisan waktu untuk mengoreksi kembali semua jawaban ulangan/ujian sebelum diserahkan kepada guru/pengawas'),
-(16, 'IM16', 'Saya menghafal hukum-hukum'),
+(15, 'IM15', 'Saya kehabisan waktu untuk mengoreksi kembali semua jawaban ulangan/ujian sebelum diserahkan kepada guru/pengawas.'),
+(16, 'IM16', 'Saya menghafal hukum-hukum, definisi-definisi, rumus-rumus dan sebagainya tanpa mamahami benar apa yang dimaksud.'),
 (17, 'IM17', 'Saya mengalami kesulitan memahami bahan bacaan (misalnya dari buku pelajaran) yang memuat istilah-istilah baru.'),
 (18, 'IM18', 'Dalam mempelajari bahan bacaan, saya melewatkan bagian-bagian tertentu seperti grafik, diagram dan tabel. Yang ternyata hal itu adalah penting.'),
 (19, 'IM19', 'Kegiatan belajar saya terganggu karena setiap kali harus memikirkan biaya untuk membayar SPP.'),
@@ -322,28 +323,11 @@ CREATE TABLE `t_siswa` (
 --
 
 INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode_siswa`) VALUES
-(1, 'emil', 'Laki-laki', 'X IPA 1', 'S1'),
-(2, 'emil', 'Laki-laki', 'X IPA 1', 'S2'),
-(3, 'qwe', 'Laki-laki', 'X IPA 1', 'S3'),
-(4, 'qwe', 'Laki-laki', 'X IPA 1', 'S4'),
-(5, 'emil', 'Laki-laki', 'X IPA 1', 'S5'),
-(6, 'emil', 'Laki-laki', 'X IPA 1', 'S6'),
-(7, 'emil', 'Laki-laki', 'X IPA 1', 'S7'),
-(8, 'qwe', 'Laki-laki', 'X IPA 1', 'S8'),
-(9, 'qwe', 'Laki-laki', 'X IPA 1', 'S9'),
-(10, 'niubie', 'Laki-laki', 'X IPA 1', 'S10'),
-(11, 'zxc', 'Laki-laki', 'X IPA 1', 'S11'),
-(12, 'new', 'Laki-laki', 'X IPA 1', 'S12'),
-(13, 'Emil', 'Laki-laki', 'X IPA 1', 'S13'),
-(14, 'emil', 'Laki-laki', 'X IPA 1', 'S14'),
-(15, 'aa', 'Laki-laki', 'X IPA 1', 'S15'),
-(16, 'a16', 'Laki-laki', 'X IPA 3', 'S16'),
-(17, 'aa', 'Laki-laki', 'X IPA 2', 'S17'),
-(18, 'aaaaa', 'Laki-laki', 'X IPA 2', 'S18'),
-(19, 'emil', 'Laki-laki', 'X IPA 1', 'S19'),
-(26, 'Aisyah Nabila Putri', 'Perempuan', 'X IPA 1', 'S20'),
-(27, 'Aisyah Nabila Putri', 'Perempuan', 'X IPA 1', 'S27'),
-(28, 'Aisyah Nabila Putri', 'Perempuan', 'X IPA 1', 'S28');
+(1, 'AISYAH NABILA PUTRI', 'Perempuan', 'X IPA 1', 'S1'),
+(2, 'AKBAR NURKHOLIFAH', 'Laki-laki', 'X IPA 1', 'S2'),
+(3, 'ALIFKA NURUL IZZA', 'Perempuan', 'X IPA 1', 'S3'),
+(4, 'AMINUDDIN ', 'Laki-laki', 'X IPA 1', 'S4'),
+(5, 'AMMA TULLAH SHAFIYYAH', 'Perempuan', 'X IPA 1', 'S5');
 
 -- --------------------------------------------------------
 
@@ -445,7 +429,7 @@ ALTER TABLE `t_bidang_masalah`
 -- AUTO_INCREMENT untuk tabel `t_hasil`
 --
 ALTER TABLE `t_hasil`
-  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_identifikasi`
@@ -475,7 +459,7 @@ ALTER TABLE `t_pilihan_pengguna`
 -- AUTO_INCREMENT untuk tabel `t_siswa`
 --
 ALTER TABLE `t_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_user`

@@ -148,7 +148,6 @@ switch($act){
      
       $argejala = array();
 
-      print_r($_POST['kondisi']);
 
       for ($i = 0; $i < count($_POST['kondisi']); $i++) {
         $arkondisi = explode("_", $_POST['kondisi'][$i]);
@@ -157,7 +156,6 @@ switch($act){
         }
       }
 
-      // print_r($argejala);
 	  
       $sqlkondisi =(" SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna+0");
       $rdatagridk = mysqli_query($mysqli, $sqlkondisi);
@@ -165,18 +163,14 @@ switch($act){
         $arkondisitext[$rkondisi['id_pilihan_pengguna']] = $rkondisi['kondisi'];
       }
 
-      // print_r($arkondisitext);
 
       $sqlpkt =(" SELECT * FROM t_bidang_masalah ORDER by id_bidang_masalah+0");
       $rdatagridp = mysqli_query($mysqli, $sqlpkt);
       while($rpkt=mysqli_fetch_array($rdatagridp)) {
         $arpkt[$rpkt['kode_bidang_masalah']] = $rpkt['nama_bidang_masalah'];
-        // $ardpkt[$rpkt['kode_bidang_masalah']] = $rpkt['penyebab'];
-        // $arspkt[$rpkt['kode_bidang_masalah']] = $rpkt['pencegahan'];
-        // $argpkt[$rpkt['kode_bidang_masalah']] = $rpkt['penanganan'];
+       
       }
 
-      // print_r($arpkt);
 	  
 	  $sqlp =(" SELECT * FROM t_bidang_masalah ORDER by id_bidang_masalah");
 	  $sqlpenyakit = mysqli_query($mysqli, $sqlp);
@@ -184,17 +178,13 @@ switch($act){
       while ($rpenyakit = mysqli_fetch_array($sqlpenyakit)) {
         $cftotal_temp = 0;
         $cf = 0;
-        // print_r($rpenyakit);
         $sqlg =(" SELECT * FROM t_identifikasi where kode_bidang_masalah = '$rpenyakit[kode_bidang_masalah]'");
         $sqlgejala = mysqli_query($mysqli, $sqlg);
         $cflama = 0;
         while ($rgejala = mysqli_fetch_array($sqlgejala)) {
-          // print_r($rgejala);
           $arkondisi = explode("_", $_POST['kondisi'][0]);
           $gejala = $arkondisi[0];
 
-          // print_r($arkondisi);
-          print_r($_POST['kondisi']);
           for ($i = 0; $i < count($_POST['kondisi']); $i++) {
             
             $arkondisi = explode("_", $_POST['kondisi'][$i]);
@@ -218,7 +208,6 @@ switch($act){
           $arpenyakit += array($rpenyakit['kode_bidang_masalah'] => number_format($cflama, 4));
         }
       }
-      // print_r($arpenyakit);
 
       arsort($arpenyakit);
 
@@ -232,8 +221,7 @@ switch($act){
         $vlpkt1[$np1] = $value1;
       }
 
-      // print_r($idpkt1[1]);
-      // print_r($vlpkt1);
+    
 
 	    $kd_daftar = $_GET['id_siswa'];
       // echo $kd_daftar;
@@ -296,7 +284,7 @@ include("../admin/leftbar.php");
 
     <div class="page-content">
       <div class="page-header">
-        <h1>Konsultasi<br><small> Untuk Memulai Konsultasi Silahkan Masukan Identitas Terlebih Dahulu</h1>
+        <h1>Konsultasi<br><small>Untuk Memulai Konsultasi Silahkan Masukan Identitas Terlebih Dahulu</h1>
 
 
       </div>
@@ -306,16 +294,15 @@ include("../admin/leftbar.php");
         <div class="col-xs-12">
 
           <?php
-				$mysqli= mysqli_connect("localhost","root","","thesisDB");
-                $qupdate = "SELECT max(id_siswa) as maxKode FROM t_siswa";
-                $rupdate = mysqli_query($mysqli, $qupdate);
-                $dupdate = mysqli_fetch_assoc($rupdate);
-                $kd_daftar = $dupdate['maxKode'];
-                $no_urut = $kd_daftar + 1;
-                $char = "S";
-                $newID = $char.sprintf("%01s",$no_urut);
-
-                    ?>
+				    $mysqli= mysqli_connect("localhost","root","","thesisDB");
+            $qupdate = "SELECT max(id_siswa) as maxKode FROM t_siswa";
+            $rupdate = mysqli_query($mysqli, $qupdate);
+            $dupdate = mysqli_fetch_assoc($rupdate);
+            $kd_daftar = $dupdate['maxKode'];
+            $no_urut = $kd_daftar + 1;
+            $char = "S";
+            $newID = $char.sprintf("%01s",$no_urut);
+          ?>
           <form class="form-horizontal" name="tambah_subkat" id="tambah_subkat" method="post"
             action="?unit=p_item_masalah_unit&act=inputact" enctype="multipart/form-data">
 
@@ -336,25 +323,19 @@ include("../admin/leftbar.php");
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label no-padding-right" for="jk">Jenis Kelamin</label>
+              <label class="col-sm-3 control-label no-padding-right" for="jenis_kelamin">Jenis Kelamin</label>
               <div class="col-sm-9">
-                <!-- <select class="col-xs-10 col-sm-5" name="jk" id="jk" required>
-                        <option value=""></option>
-                        <option value="laki-laki">Laki-Laki</option>
-                        <option value="perempuan">Perempuan</option>
-                    </select> -->
-
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin" value="Laki-laki"
+                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="laki-laki" value="Laki-laki"
                     checked>
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <label class="form-check-label" for="laki-laki">
                     Laki-laki
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin"
+                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan"
                     value="Perempuan">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <label class="form-check-label" for="perempuan">
                     Perempuan
                   </label>
                 </div>
@@ -365,11 +346,32 @@ include("../admin/leftbar.php");
               <label class="col-sm-3 control-label no-padding-right" for="kelas">Kelas</label>
               <div class="col-sm-9">
                 <!-- <input class="col-xs-10 col-sm-5" type="text" name="usia" id="usia" required    /> -->
-                <select class="form-select col-xs-10 col-sm-5 " name="kelas" id="kelas"
+                <select class="form-select col-xs-10 col-sm-5" style="font-size: 12px" name="kelas" id="kelas"
                   aria-label="Default select example" required>
                   <option value="X IPA 1">X IPA 1</option>
                   <option value="X IPA 2">X IPA 2</option>
                   <option value="X IPA 3">X IPA 3</option>
+                  <option value="X IPA 4">X IPA 4</option>
+                  <option value="X IPA 5">X IPA 5</option>
+                  <option value="X IPA 6">X IPA 6</option>
+                  <option value="X IPS 1">X IPS 1</option>
+                  <option value="X IPS 2">X IPS 2</option>
+                  <option value="XI IPA 1">XI IPA 1</option>
+                  <option value="XI IPA 2">XI IPA 2</option>
+                  <option value="XI IPA 3">XI IPA 3</option>
+                  <option value="XI IPA 4">XI IPA 4</option>
+                  <option value="XI IPA 5">XI IPA 5</option>
+                  <option value="XI IPA 6">XI IPA 6</option>
+                  <option value="XI IPS 1">XI IPS 1</option>
+                  <option value="XI IPS 2">XI IPS 2</option>
+                  <option value="XII IPA 1">XII IPA 1</option>
+                  <option value="XII IPA 2">XII IPA 2</option>
+                  <option value="XII IPA 3">XII IPA 3</option>
+                  <option value="XII IPA 4">XII IPA 4</option>
+                  <option value="XII IPA 5">XII IPA 5</option>
+                  <option value="XII IPA 6">XII IPA 6</option>
+                  <option value="XII IPS 1">XII IPS 1</option>
+                  <option value="XII IPS 2">XII IPS 2</option>
                 </select>
               </div>
             </div>
@@ -494,7 +496,6 @@ include("../admin/leftbar.php");
     $argejala = unserialize($rhasil['item_masalah']);
   }
 
-  // print_r($argejala);
 
   $np1 = 0;
   foreach ($arpenyakit as $key1 => $value1) {

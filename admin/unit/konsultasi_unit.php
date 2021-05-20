@@ -60,10 +60,10 @@ include("../admin/leftbar.php");
                                 <tr >
                                      <td style= text-align:center;vertical-align:middle >$no</td>
                                      <td style= text-align:center;vertical-align:middle>$ddatagrid[tanggal]</td>
-                                     <td style= text-align:center;vertical-align:middle>".ucwords("$ddatagrid[nama_siswa]")."</td>
+                                     <td style= text-align:left;vertical-align:middle>".ucwords("$ddatagrid[nama_siswa]")."</td>
                                      <td style= text-align:center;vertical-align:middle>$ddatagrid[kelas]</td>
                                      <td style= text-align:center;vertical-align:middle>$ddatagrid[jenis_kelamin]</td>
-                                     <td style= text-align:left;vertical-align:middle>$ddatagrid[nama_bidang_masalah]</td>
+                                     <td style= text-align:center;vertical-align:middle>$ddatagrid[nama_bidang_masalah]</td>
                                      <td style= text-align:center;vertical-align:middle>$ddatagrid[nilai_cf]</td>
                                      <td style=text-align:center;vertical-align:middle>
                                          <a href=?unit=konsultasi_unit&act=detail&kode_hasil=$ddatagrid[kode_hasil] class='btn btn-sm btn-info glyphicon glyphicon-eye-open' > Detail</a> 
@@ -239,7 +239,7 @@ include("../admin/leftbar.php");
             $ddatagrid=mysqli_fetch_array($rdatagrid);
 							echo '<tr><td style=text-align:center;vertical-align:middle>' .$ig. '</td>';
 							echo "<td style=text-align:center;vertical-align:middle> $ddatagrid[kode_item_masalah]</td>";
-							echo "<td> $ddatagrid[nama_item_masalah]</td>";
+							echo "<td > $ddatagrid[nama_item_masalah]</td>";
               echo '<td style=text-align:left;vertical-align:middle><span class="kondisipilih">' . $arkondisitext[$kondisi] . "</span></td>";
   
 						}

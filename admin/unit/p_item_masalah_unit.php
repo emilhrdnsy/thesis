@@ -69,13 +69,15 @@ switch($act){
 							$i = 0;
                 while($ddatagrid=mysqli_fetch_array($rdatagrid)) {
 								$i++;
-								echo "<tr><td class=opsi style=text-align:center;vertical-align:middle;font-size:12px>$i</td>";
-                echo "<td class=opsi style=text-align:center;vertical-align:middle;font-size:12px> $ddatagrid[kode_item_masalah]</td>";
-								echo "<td class=gejala style=vertical-align:middle;font-size:12px;text-align:justify>$ddatagrid[nama_item_masalah]</td>";
-								echo '<td class="opsi" style=vertical-align:middle;font-size:12px>
-                  <select name="kondisi[]" id="sl' . $i . '" class="opsikondisi col-sm-12"/>
-                  <option data-id="0" value="0" style="color:silver">--Pilih jika sesuai--</option>';
+                ?>
+								<tr><td class=opsi style=text-align:center;vertical-align:middle;font-size:12px><?=$i?></td>
+                <td class=opsi style=text-align:center;vertical-align:middle;font-size:12px> <?=$ddatagrid[kode_item_masalah]?></td>
+								<td class=gejala style=vertical-align:middle;font-size:12px;text-align:justify><?=$ddatagrid[nama_item_masalah]?></td>
+								<td class="opsi" style=vertical-align:middle;font-size:12px>
+                  <select name="kondisi[]" id= "sl<?= $i ?>" class="opsikondisi col-sm-12" required="required">
+                  <option data-id="0" value="0" style="color:silver">--Pilih jika sesuai--</option>;
 
+                  <?php
 									$qdatagridk =' SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna ';
 									$rdatagridk = mysqli_query($mysqli, $qdatagridk);
 									while($ddatagridk=mysqli_fetch_array($rdatagridk)) {
@@ -83,12 +85,14 @@ switch($act){
                         <option data-id="<?php echo $ddatagridk['id_pilihan_pengguna']; ?>"
                           value="<?php echo $ddatagrid['kode_item_masalah'] . '_' . $ddatagridk['id_pilihan_pengguna']; ?>">
                           <?php echo $ddatagridk['kondisi']; ?></option>
-                        <?php
+                        
+                  <?php
 									}
-									echo '</select></td>';
+                     } 
+                     ?>      
+                     </select></td>;
 									
-                             }
-                             ?>
+                           
 
                         </tr>
 
@@ -143,12 +147,9 @@ switch($act){
       date_default_timezone_set("Asia/Makassar");
       $inptanggal = date('Y-m-d H:i:s');
 
-      $arbobot = array('0', '0', '0.3', '0.7', '1.0');
-
-     
+      $arbobot = array('0', '0', '0.3', '0.7', '0.9');
       $argejala = array();
-
-
+      
       for ($i = 0; $i < count($_POST['kondisi']); $i++) {
         $arkondisi = explode("_", $_POST['kondisi'][$i]);
         if (strlen($_POST['kondisi'][$i]) > 1) {
@@ -248,9 +249,9 @@ switch($act){
         
          $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_hasil WHERE nilai_cf ='0'"));
         
-       if ($cek > 0) {
-          echo "<script> alert('Anda Belum Memilh Gejala');
-              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
+       if ($cek <1) {
+          echo "<script> alert('Anda Belum Memilh');
+              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kode_siswa';
               </script>";
           } else {
           mysqli_query($mysqli,$qinput);
@@ -302,6 +303,8 @@ include("../admin/leftbar.php");
             $no_urut = $kd_daftar + 1;
             $char = "S";
             $newID = $char.sprintf("%01s",$no_urut);
+
+            $check = "SELECT * FROM t_siswa WHERE nama_siswa LIKE "
           ?>
           <form class="form-horizontal" name="tambah_subkat" id="tambah_subkat" method="post"
             action="?unit=p_item_masalah_unit&act=inputact" enctype="multipart/form-data">
@@ -459,7 +462,7 @@ include("../admin/leftbar.php");
   date_default_timezone_set("Asia/Makassar");
   $inptanggal = date('Y-m-d H:i:s');
 
-  $arbobot = array('0', '0.3', '0.7', '1.0');
+  $arbobot = array('0', '0', '0.3', '0.7', '0.9');
   $argejala = array();
  
  for ($i = 0; $i < count($_POST['kondisi']); $i++) {

@@ -34,19 +34,19 @@ include("../admin/leftbar.php");
                 <table id="datatable" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th style="text-align: center">No.</th>
-                      <th style="text-align: center">Tanggal</th>
-                      <th style="text-align: center">Nama</th>
-                      <th style="text-align: center">Kelas</th>
-                      <th style="text-align: center">Jenis Kelamin</th>
-                      <th style="text-align: center">Masalah</th>
-                      <th style="text-align: center">Nilai CF</th>
-                      <th style="text-align: center">Aksi</th>
+                      <th style="text-align: center; width: 6%">No.</th>
+                      <th style="text-align: center; width: 10%">Tanggal</th>
+                      <th style="text-align: center; width: 15%">Nama</th>
+                      <th style="text-align: center; width: 8%">Kelas</th>
+                      <th style="text-align: center; width: 12%">Jenis Kelamin</th>
+                      <th style="text-align: center; width: 20%">Masalah</th>
+                      <th style="text-align: center; width: 9%">Nilai CF</th>
+                      <th style="text-align: center; width: 20%">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php $no=1; 
-                          $qdatagrid ="  SELECT 
+                          $qdatagrid ="SELECT 
                             t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
                             t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
                             t_siswa.kode_siswa, t_siswa.nama_siswa, t_siswa.kelas, t_siswa.jenis_kelamin

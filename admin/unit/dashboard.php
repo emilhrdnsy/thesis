@@ -23,7 +23,7 @@ include("../admin/leftbar.php");
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="alert alert-block alert-success">
 								<button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>
-								<i class="ace-icon fa fa-bullhorn green"></i> Selamat Datang di Aplikasi Sistem Pakar Bimbingan Konseling Menggunakan Metode Certainty Factor
+								<i class="ace-icon fa fa-bullhorn green"></i> Sebuah sistem yang digunakan untuk mengidentifikasi masalah belajar siswa. Dibangun menggunakan bahasa pemrograman PHP dan mengimplementasikan Metode <i>Certainty Factor</i>
 							</div>
 						</div><!-- /.col -->
 					</div><!-- /.row -->

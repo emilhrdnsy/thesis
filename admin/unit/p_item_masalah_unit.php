@@ -143,17 +143,7 @@ switch($act){
 		
     case "proses":
 
-      $results = array_unique($_POST['kondisi']);
-      if(count($results) == 1)
-      {
-        echo"<script>
-          alert('Tidak ada item yang tepilih');
-          document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
-        </script>";
-      }
-      else
-      {
-       
+     
 	
       $arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
       date_default_timezone_set("Asia/Makassar");
@@ -236,7 +226,17 @@ switch($act){
 
      
 	    $kd_daftar = $_GET['id_siswa'];
-      
+      $results = array_unique($_POST['kondisi']);
+      if(count($results) == 1)
+      {
+        echo"<script>
+          alert('Tidak ada item yang tepilih');
+          document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
+        </script>";
+      }
+      else
+      {
+       
 
 	  $qinput = "
           INSERT INTO t_hasil
@@ -259,25 +259,13 @@ switch($act){
           )
         ";
         
-        
-        //  $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_hasil WHERE nilai_cf ="));
-        
-      
-      //  if ($cek == null) {
-      //     echo "<script> alert('Tidak ada item yang tepilih');
-      //       document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
-      //       </script>";
-      //  }  
-      //  else {
-      //     echo "<script> alert('Data Tersimpan');
-      //       document.location='adminmainapp.php?unit=p_item_masalah_unit&act=update&id_siswa=$kd_daftar';
-      //       </script>";
-      //     exit();
-      //    }
-		 
-      //   break;
-	  
-		}
+        mysqli_query($mysqli,$qinput);
+            echo "<script> alert('Data Tersimpan');
+              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=update&id_siswa=$kd_daftar';
+              </script>";
+            exit();
+      }
+      break;
         case "input":
             ?>
 

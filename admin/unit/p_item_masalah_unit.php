@@ -47,18 +47,18 @@ switch($act){
                     <i class=""></i>
                     Pilih Item
                   </h5>
-
+                  
                 </div>
+                
                 <div class="widget-body">
                   <div class="widget-main no-padding">
                     <table class="table table-striped table-bordered table-hover">
                       <thead class="thin-border-bottom">
-
                         <tr>
-                          <th style="width:100px;text-align:center;font-size:12px">No.</th>
-                          <th style="width:100px;text-align:center;font-size:12px">Kode Item</th>
-                          <th style="text-align: center;font-size:12px">Nama Item</th>
-                          <th style="width:300px; text-align:center;font-size:12px">Pilih Kondisi</th>
+                          <th style="width:100px; text-align: center;font-size:12px">No.</th>
+                          <th style="width:100px; text-align: center;font-size:12px">Kode Item</th>
+                          <th style="text-align: center; font-size: 12px">Nama Item</th>
+                          <th style="width:300px; text-align: center; font-size: 12px">Pilih Kondisi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -142,6 +142,18 @@ switch($act){
         break;
 		
     case "proses":
+
+      $results = array_unique($_POST['kondisi']);
+      if(count($results) == 1)
+      {
+        echo"<script>
+          alert('Tidak ada item yang tepilih');
+          document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
+        </script>";
+      }
+      else
+      {
+       
 	
       $arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
       date_default_timezone_set("Asia/Makassar");
@@ -174,12 +186,12 @@ switch($act){
 
 	  
 	  $sqlp =(" SELECT * FROM t_bidang_masalah ORDER by id_bidang_masalah");
-	  $sqlpenyakit = mysqli_query($mysqli, $sqlp);
-      $arpenyakit = array();
-      while ($rpenyakit = mysqli_fetch_array($sqlpenyakit)) {
+	  $sqlbidang = mysqli_query($mysqli, $sqlp);
+      $arbidang = array();
+      while ($rbidang = mysqli_fetch_array($sqlbidang)) {
         $cftotal_temp = 0;
         $cf = 0;
-        $sqlg =(" SELECT * FROM t_identifikasi where kode_bidang_masalah = '$rpenyakit[kode_bidang_masalah]'");
+        $sqlg =(" SELECT * FROM t_identifikasi where kode_bidang_masalah = '$rbidang[kode_bidang_masalah]'");
         $sqlgejala = mysqli_query($mysqli, $sqlg);
         $cflama = 0;
         while ($rgejala = mysqli_fetch_array($sqlgejala)) {
@@ -206,26 +218,26 @@ switch($act){
           }
         }
         if ($cflama > 0) {
-          $arpenyakit += array($rpenyakit['kode_bidang_masalah'] => number_format($cflama, 4));
+          $arbidang += array($rbidang['kode_bidang_masalah'] => number_format($cflama, 4));
         }
       }
 
-      arsort($arpenyakit);
+      arsort($arbidang);
 
       $inpgejala = serialize($argejala);
-      $inppenyakit = serialize($arpenyakit);
+      $inpbidang = serialize($arbidang);
 
       $np1 = 0;
-      foreach ($arpenyakit as $key1 => $value1) {
+      foreach ($arbidang as $key1 => $value1) {
         $np1++;
         $idpkt1[$np1] = $key1;
         $vlpkt1[$np1] = $value1;
       }
 
-    
-
+     
 	    $kd_daftar = $_GET['id_siswa'];
-      // echo $kd_daftar;
+      
+
 	  $qinput = "
           INSERT INTO t_hasil
           (
@@ -240,30 +252,32 @@ switch($act){
           (
             '$inptanggal',
             '$inpgejala',
-            '$inppenyakit',
+            '$inpbidang',
             '$idpkt1[1]',
             '$vlpkt1[1]',
 			      '$kd_daftar'
           )
         ";
         
-         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_hasil WHERE nilai_cf ='0'"));
         
-       if ($cek <1) {
-          echo "<script> alert('Anda Belum Memilh');
-              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kode_siswa';
-              </script>";
-          } else {
-          mysqli_query($mysqli,$qinput);
-          echo "<script> alert('Data Tersimpan');
-              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=update&id_siswa=$kd_daftar';
-              </script>";
-          exit();
-         }
+        //  $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_hasil WHERE nilai_cf ="));
+        
+      
+      //  if ($cek == null) {
+      //     echo "<script> alert('Tidak ada item yang tepilih');
+      //       document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
+      //       </script>";
+      //  }  
+      //  else {
+      //     echo "<script> alert('Data Tersimpan');
+      //       document.location='adminmainapp.php?unit=p_item_masalah_unit&act=update&id_siswa=$kd_daftar';
+      //       </script>";
+      //     exit();
+      //    }
 		 
-        break;
+      //   break;
 	  
-		
+		}
         case "input":
             ?>
 
@@ -309,12 +323,10 @@ include("../admin/leftbar.php");
           <form class="form-horizontal" name="tambah_subkat" id="tambah_subkat" method="post"
             action="?unit=p_item_masalah_unit&act=inputact" enctype="multipart/form-data">
 
-
-
             <div class="form-group">
               <label class="col-sm-3 control-label no-padding-right">Kode Daftar</label>
               <div class="col-sm-9">
-                <input class="col-xs-10 col-sm-5" type="text" name="id_siswa" id="kd_daftar" required="required"
+                <input class="col-xs-10 col-sm-5" type="text" name="id_siswa" id="id_siswa" required="required"
                   value="<?php echo "$newID"; ?>" readonly="" />
               </div>
             </div>
@@ -402,7 +414,7 @@ include("../admin/leftbar.php");
 <script type="text/javascript">
   var frmvalidator = new Validator("tambah_subkat");
 
-  frmvalidator.addValidation("kd_penyakit", "req", "Silakan Pilih kategori");
+  frmvalidator.addValidation("kode_bidang_masalah", "req", "Silakan Pilih kategori");
   frmvalidator.addValidation("namasubkategori", "req", "Silakan Masukkan Nama Subkategori");
   frmvalidator.addValidation("namasubkategori", "maxlen=35", "Maksimal Karakter Nama 35 digit");
   frmvalidator.addValidation("namasubkategori", "alpha_s", "Hanya Huruf Saja");
@@ -495,13 +507,13 @@ include("../admin/leftbar.php");
               WHERE t_hasil.kode_siswa = '$kd_daftar'";
 	$rdatagridp = mysqli_query($mysqli, $sqlhasil);
   while ($rhasil = mysqli_fetch_array($rdatagridp)) {
-    $arpenyakit = unserialize($rhasil['bidang_masalah']);
+    $arbidang = unserialize($rhasil['bidang_masalah']);
     $argejala = unserialize($rhasil['item_masalah']);
   }
 
 
   $np1 = 0;
-  foreach ($arpenyakit as $key1 => $value1) {
+  foreach ($arbidang as $key1 => $value1) {
     $np1++;
     $idpkt1[$np1] = $key1;
     $vlpkt1[$np1] = $value1;
@@ -604,7 +616,7 @@ include("../admin/leftbar.php");
                     <?php  
 						 
 						$np = 0;
-						foreach ($arpenyakit as $key => $value) {
+						foreach ($arbidang as $key => $value) {
 						$np++;
 						$idpkt[$np] = $key;
 						$nmpkt[$np] = $arpkt[$key];

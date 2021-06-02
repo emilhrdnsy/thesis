@@ -1,6 +1,6 @@
 <?php
 session_start();
-date_default_timezone_set("Asia/Brunei");
+date_default_timezone_set("Asia/Makassar");
 if(!isset ($_SESSION['nm_pengguna'])){
     header("location:login.php");
 }

@@ -166,12 +166,12 @@ include("../admin/leftbar.php");
 									WHERE t_hasil.kode_hasil = '$kd_hasil'";
 	$rdatagridp = mysqli_query($mysqli, $sqlhasil);
   while ($rhasil = mysqli_fetch_array($rdatagridp)) {
-    $arpenyakit = unserialize($rhasil['bidang_masalah']);
+    $arbidangmasalah = unserialize($rhasil['bidang_masalah']);
     $ar_item_masalah = unserialize($rhasil['item_masalah']);
   }
 
   $np1 = 0;
-  foreach ($arpenyakit as $key1 => $value1) {
+  foreach ($arbidangmasalah as $key1 => $value1) {
     $np1++;
     $idpkt1[$np1] = $key1;
     $vlpkt1[$np1] = $value1;
@@ -278,7 +278,7 @@ include("../admin/leftbar.php");
                     <?php  
 						 
 						$np = 0;
-						foreach ($arpenyakit as $key => $value) {
+						foreach ($arbidangmasalah as $key => $value) {
 						$np++;
 						$idpkt[$np] = $key;
 						$nmpkt[$np] = $arpkt[$key];

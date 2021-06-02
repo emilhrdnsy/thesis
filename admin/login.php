@@ -16,33 +16,30 @@ if (!empty($_SESSION['nm_pengguna'])) {
         <link href="../css/prettyPhoto.css" rel="stylesheet">
         <link href="../css/price-range.css" rel="stylesheet">
         <link href="../css/animate.css" rel="stylesheet">
-	<link href="../css/main.css" rel="stylesheet">
+	    <link href="../css/main.css" rel="stylesheet">
         <link href="../css/responsive.css" rel="stylesheet">
 		
-	    <script language="javascript">
-              function validasi(form) {
-                if (form.nm_pengguna.value == "" && form.password.value == "") {
-                alert("Silakan Masukan nm_pengguna Dan Password Anda");
-                form.user.focus();
-                return(false);
-              }
-                if (form.nm_pengguna.value == "") {
-                alert("Silakan Masukan nm_pengguna Anda");
-                form.user.focus();
-                return(false);
-              }
-                if (form.password.value == "") {
-                alert("Silakan Masukan Password Anda");
-                form.pass.focus();
-                return(false);
-              }       
-                return(true);
-              }
-        </script> 	
+         
+	    	
     </head>
 	
     <body>
-       <section id="form"><!--form-->
+
+    
+
+    <?php 
+	if(isset($_GET['pesan'])){
+		if($_GET['pesan'] == "gagal"){
+			alert("Login gagal! username dan password salah!");
+		}else if($_GET['pesan'] == "logout"){
+			echo "Anda telah berhasil logout";
+		}else if($_GET['pesan'] == "belum_login"){
+			echo "Anda harus login untuk mengakses halaman admin";
+		}
+	}
+	?>
+    
+    <section id="form"><!--form-->
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4">
@@ -52,7 +49,14 @@ if (!empty($_SESSION['nm_pengguna'])) {
                     <form method="post" action="loginnaction.php" onsubmit="return validasi(this)">
                         <input type="text" name="nm_pengguna" id="nm_pengguna" placeholder="Nama Pengguna" autofocus="autofocus" />
                         <input type="password" name="password" id="password" placeholder="Kata Sandi" />
-                        <button type="submit" class="btn btn-default">Masuk</button>
+                        <button type="submit" id="btn" class="btn btn-default">Masuk</button>
+                        <script >
+                            const tombol = document.querySelector('#btn');
+                            tombol.addEventListener('click', function() {
+                                
+                            });  
+                        </script>
+                        
                     </form>
                 </div><!--/login form-->
             </div>
@@ -60,6 +64,8 @@ if (!empty($_SESSION['nm_pengguna'])) {
         </div>
     </div>
 </section><!--/form-->
+   
+    
     </body>
 
 

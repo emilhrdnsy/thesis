@@ -47,9 +47,9 @@ switch($act){
                     <i class=""></i>
                     Pilih Item
                   </h5>
-                  
+
                 </div>
-                
+
                 <div class="widget-body">
                   <div class="widget-main no-padding">
                     <table class="table table-striped table-bordered table-hover">
@@ -70,40 +70,41 @@ switch($act){
                 while($ddatagrid=mysqli_fetch_array($rdatagrid)) {
 								$i++;
                 ?>
-								<tr><td class=opsi style=text-align:center;vertical-align:middle;font-size:12px><?=$i?></td>
-                <td class=opsi style=text-align:center;vertical-align:middle;font-size:12px> <?=$ddatagrid[kode_item_masalah]?></td>
-								<td class=gejala style=vertical-align:middle;font-size:12px;text-align:justify><?=$ddatagrid[nama_item_masalah]?></td>
-								<td class="opsi" style=vertical-align:middle;font-size:12px>
-                  <select name="kondisi[]" id= "sl<?= $i ?>" class="opsikondisi col-sm-12" required="required">
-                  <option data-id="0" value="0" style="color:silver">--Pilih jika sesuai--</option>;
+                        <tr>
+                          <td class=opsi style=text-align:center;vertical-align:middle;font-size:12px><?=$i?></td>
+                          <td class=opsi style=text-align:center;vertical-align:middle;font-size:12px>
+                            <?=$ddatagrid[kode_item_masalah]?></td>
+                          <td class=gejala style=vertical-align:middle;font-size:12px;text-align:justify>
+                            <?=$ddatagrid[nama_item_masalah]?></td>
+                          <td class="opsi" style=vertical-align:middle;font-size:12px>
+                            <select name="kondisi[]" id="sl<?= $i ?>" class="opsikondisi col-sm-12" required="required">
+                              <option data-id="0" value="0" style="color:silver">--Pilih jika sesuai--</option>;
 
-                  <?php
+                              <?php
 									$qdatagridk =' SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna ';
 									$rdatagridk = mysqli_query($mysqli, $qdatagridk);
 									while($ddatagridk=mysqli_fetch_array($rdatagridk)) {
 									 ?>
-                        <option data-id="<?php echo $ddatagridk['id_pilihan_pengguna']; ?>"
-                          value="<?php echo $ddatagrid['kode_item_masalah'] . '_' . $ddatagridk['id_pilihan_pengguna']; ?>">
-                          <?php echo $ddatagridk['kondisi']; ?></option>
-                        
-                  <?php
+                              <option data-id="<?php echo $ddatagridk['id_pilihan_pengguna']; ?>"
+                                value="<?php echo $ddatagrid['kode_item_masalah'] . '_' . $ddatagridk['id_pilihan_pengguna']; ?>">
+                                <?php echo $ddatagridk['kondisi']; ?></option>
+
+                              <?php
 									}
                      } 
-                     ?>      
-                     </select></td>;
-									
-                           
-
+                     ?>
+                            </select>
+                          </td>
                         </tr>
-
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
               <div class="clearfix form-actions">
-                <div class="" >
-                  <button type="submit" name="submit" class="btn btn-danger" style="width: 20%; margin-left: auto">Proses</button>
+                <div class="">
+                  <button type="submit" name="submit" class="btn btn-danger"
+                    style="width: 20%; margin-left: auto">Proses</button>
                 </div>
               </div>
             </form>
@@ -336,8 +337,7 @@ include("../admin/leftbar.php");
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan"
-                    value="Perempuan">
+                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="Perempuan">
                   <label class="form-check-label" for="perempuan">
                     Perempuan
                   </label>
@@ -635,7 +635,8 @@ include("../admin/leftbar.php");
 
           <div class="page-header"></div>
           <h5>IDENTIFIKASI</h5>
-          <h6>Hasil Dari Identifikasi Bidang Masalah Yang Paling Mungkin adalah: <b><?php echo $dupdate['nama_bidang_masalah']; ?></b></h6>
+          <h6>Hasil Dari Identifikasi Bidang Masalah Yang Paling Mungkin adalah:
+            <b><?php echo $dupdate['nama_bidang_masalah']; ?></b></h6>
 
           <div class="widget-body">
             <div class="widget-main">
@@ -644,8 +645,8 @@ include("../admin/leftbar.php");
                 Layanan : <?php echo $dupdate['layanan']; ?>
               </p>
 
-              
-          
+
+
 
             </div>
           </div>

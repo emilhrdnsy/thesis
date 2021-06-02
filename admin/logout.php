@@ -8,7 +8,7 @@ require_once '../lib/koneksi.php';
         $qupdate = "SELECT * FROM  t_login WHERE nm_pengguna = '".$_SESSION['nm_pengguna']."'";
         $rupdate = mysqli_query($mysqli, $qupdate);
         $dupdate = mysqli_fetch_assoc($rupdate);
- 		date_default_timezone_set("Asia/Brunei");
+ 		date_default_timezone_set("Asia/Makassar");
         $tanggalsekarang = date("Y-m-d H:i:s");
         $zupdate = 
                 "

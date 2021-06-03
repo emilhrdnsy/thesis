@@ -1,3 +1,7 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
 <?php
 session_start();
 require_once '../lib/koneksi.php';
@@ -37,14 +41,11 @@ if ($jumlahbaris > 0){
         ";  
       $rupdate = mysqli_query($mysqli,$zupdate);
 
-      
-      echo "<script type='text/javascript'>";
-      echo "swal('WOW!','Message!','success');";
-      echo "</script>";
     
       
-      header('location:adminmainapp.php?unit=dashboard');
-    // header('location:tes.php');
+      
+      
+      header('adminmainapp.php?unit=dashboard');
 }
 
  else if ($jumlahbaris2 >0 ) {
@@ -70,18 +71,21 @@ if ($jumlahbaris > 0){
  }
         
 else if ($nm_pengguna == '' && $password == '') {
-  echo"
-    <script>
-    alert('Silakan Masukan Nama Pengguna Dan Password Anda');
+  // echo"
+  //   <script>
+  //   alert('Silakan Masukkan Nama Pengguna Dan Password');
+  //   </script>
+  // ";
+  echo"<script>
+    swal('Berhasil Login', 'aaa', 'success');
     window.location.href = 'login.php';
-    </script>
-  ";
+    </script>";
 }
 
 else if ($nm_pengguna == '') {
   echo"
     <script>
-    alert('Silakan Masukan Nama Pengguna');
+    alert('Silakan Masukkan Nama Pengguna');
     window.location.href = 'login.php';
     </script>
   ";
@@ -90,7 +94,7 @@ else if ($nm_pengguna == '') {
 else if ($password == '') {
   echo"
     <script>
-    alert('Silakan Password Anda');
+    alert('Silakan Masukkan Password Anda');
     window.location.href = 'login.php';
     </script>
   ";

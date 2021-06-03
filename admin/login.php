@@ -1,3 +1,4 @@
+
 <?php
 session_start();
  
@@ -18,6 +19,8 @@ if (!empty($_SESSION['nm_pengguna'])) {
         <link href="../css/animate.css" rel="stylesheet">
 	    <link href="../css/main.css" rel="stylesheet">
         <link href="../css/responsive.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
+  
 		
          
 	    	
@@ -49,14 +52,7 @@ if (!empty($_SESSION['nm_pengguna'])) {
                     <form method="post" action="loginnaction.php" onsubmit="return validasi(this)">
                         <input type="text" name="nm_pengguna" id="nm_pengguna" placeholder="Nama Pengguna" autofocus="autofocus" />
                         <input type="password" name="password" id="password" placeholder="Kata Sandi" />
-                        <button type="submit" id="btn" class="btn btn-default">Masuk</button>
-                        <script >
-                            const tombol = document.querySelector('#btn');
-                            tombol.addEventListener('click', function() {
-                                
-                            });  
-                        </script>
-                        
+                        <button type="submit"class="btn btn-default">Masuk</button>
                     </form>
                 </div><!--/login form-->
             </div>
@@ -64,9 +60,8 @@ if (!empty($_SESSION['nm_pengguna'])) {
         </div>
     </div>
 </section><!--/form-->
-   
-    
-    </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
 
-
+</body>
 </html>

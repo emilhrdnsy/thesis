@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Bulan Mei 2021 pada 15.18
+-- Waktu pembuatan: 03 Jun 2021 pada 03.31
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -446,7 +446,9 @@ INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode
 (82, 'aaa', 'Laki-laki', 'X IPA 1', 'S82'),
 (83, 'aaa', 'Laki-laki', 'X IPA 1', 'S83'),
 (84, 'aaaa', 'Laki-laki', 'X IPA 1', 'S84'),
-(85, 'aaaa', 'Laki-laki', 'X IPA 1', 'S85');
+(85, 'aaaa', 'Laki-laki', 'X IPA 1', 'S85'),
+(86, 'aaaa', 'Laki-laki', 'X IPA 1', 'S86'),
+(87, 'aaaa', 'Laki-laki', 'X IPA 1', 'S87');
 
 -- --------------------------------------------------------
 
@@ -578,7 +580,7 @@ ALTER TABLE `t_pilihan_pengguna`
 -- AUTO_INCREMENT untuk tabel `t_siswa`
 --
 ALTER TABLE `t_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_user`

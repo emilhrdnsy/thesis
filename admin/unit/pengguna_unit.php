@@ -66,7 +66,7 @@ include("../admin/leftbar.php");
                                 echo "
                                 <tr>
                                     <td style= text-align:center;vertical-align:middle>$no</td>
-                                    <td style= text-align:center;vertical-align:middle>$ddatagrid[nama]</td>
+                                    <td style= text-align:center;vertical-align:middle>".ucwords("$ddatagrid[nama]")."</td>
                                     <td style= text-align:center;vertical-align:middle>$ddatagrid[nama_pengguna]</td>
                                     <td style= text-align:center;vertical-align:middle>$ddatagrid[kata_sandi]</td>
                                     <td style=text-align:center;vertical-align:middle>

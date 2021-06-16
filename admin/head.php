@@ -38,4 +38,12 @@ $open='class="active open"';
 <script src="../css/backend/js/jquery-1.11.3.min.js"></script>
         <!-- Favicon -->
         <link rel="shortcut icon" href="../gambar/backend/" />
+        <style>
+           .swal2-popup { 
+               font-size: 1.3rem !important; }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
     </head>

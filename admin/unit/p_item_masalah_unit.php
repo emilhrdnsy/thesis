@@ -234,13 +234,8 @@ switch($act){
           alert('Tidak ada item yang tepilih');
           document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
         </script>";
-        // echo"<script>
-        //   Swal.fire({
-        //     title: 'Tidak ada item yang tepilih',
-        //     type: 'error'
-        //   });
-        //   document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
-        // </script>";
+       
+        
       }
       else
       {
@@ -268,21 +263,15 @@ switch($act){
         ";
         
         mysqli_query($mysqli,$qinput);
-        
-            echo "<script> 
-              Swal({
-                  title:'Data Tersimpan', 
-                  type: 'success'});
-              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=update&id_siswa=$kd_daftar';
+             
+          echo "<script> alert('Data Tersimpan');
+            document.location='adminmainapp.php?unit=p_item_masalah_unit&act=update&id_siswa=$kd_daftar';
             </script>";
-            // echo "<script> alert('Data Tersimpan');
-            //   document.location='adminmainapp.php?unit=p_item_masalah_unit&act=update&id_siswa=$kd_daftar';
-            //   </script>";
-            exit();
-      }
-      break;
+          exit();
+        }
+        break;
         case "input":
-            ?>
+        ?>
 
 <?php
 include("../admin/leftbar.php");

@@ -19,8 +19,12 @@ if (!empty($_SESSION['nm_pengguna'])) {
         <link href="../css/animate.css" rel="stylesheet">
 	    <link href="../css/main.css" rel="stylesheet">
         <link href="../css/responsive.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
-  
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
+         -->
+        <style>
+           .swal2-popup { 
+               font-size: 1.3rem !important; }
+        </style>
 		
          
 	    	
@@ -60,8 +64,77 @@ if (!empty($_SESSION['nm_pengguna'])) {
         </div>
     </div>
 </section><!--/form-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+     -->
+    
+    
+    <?php 
+        if(isset($_SESSION['emptyfield']))
+        {
+    ?>
+        <script>
+            Swal.fire({
+                type: 'error',
+                title: 'Kesalahan',
+                text: 'Nama Pengguna dan Kata Sandi Kosong',
+                customClass: '.swal2-popup',
+            });
+        </script>
+    <?php
+            unset($_SESSION['emptyfield']); 
+        }    
+    ?>
 
+    <?php 
+        if(isset($_SESSION['usernmfield']))
+        {
+    ?>
+        <script>
+            Swal.fire({
+                type: 'error',
+                title: 'Kesalahan',
+                text: 'Nama Pengguna Kosong!',
+                customClass: '.swal2-popup',
+            });
+        </script>
+    <?php
+            unset($_SESSION['usernmfield']); 
+        }    
+    ?>
+
+    <?php 
+        if(isset($_SESSION['passfield']))
+        {
+    ?>
+        <script>
+            Swal.fire({
+                type: 'error',
+                title: 'Kesalahan',
+                text: 'Kata Sandi Kosong!',
+                customClass: '.swal2-popup',
+            });
+        </script>
+    <?php
+            unset($_SESSION['passfield']); 
+        }    
+    ?>
+  
+    <?php 
+        if(isset($_SESSION['error']))
+        {
+    ?>
+        <script>
+            Swal.fire({
+                type: 'error',
+                title: 'Gagal!',
+                text: 'Gagal',
+                customClass: '.swal2-popup',
+            });
+        </script>
+    <?php
+            unset($_SESSION['error']); 
+        }    
+    ?>
 </body>
 </html>

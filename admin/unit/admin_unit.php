@@ -1,3 +1,4 @@
+
 <?php
 $act = $_GET['act'];
 switch($act){
@@ -67,13 +68,13 @@ include("../admin/leftbar.php");
                                 echo "
                                 <tr>
                                     <td style= text-align:center;vertical-align:middle>$no</td>
-                                    <td style= text-align:center;vertical-align:middle>$ddatagrid[nama]</td>
+                                    <td style= text-align:center;vertical-align:middle>".ucwords("$ddatagrid[nama]")."</td>
                                     <td style= text-align:center;vertical-align:middle>$ddatagrid[nama_pengguna]</td>
                                     <td style= text-align:center;vertical-align:middle>$ddatagrid[kata_sandi]</td>	
                                                                       
                                     <td style=text-align:center;vertical-align:middle>
                                         <a href=?unit=admin_unit&act=update&id_login=$ddatagrid[id_login] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
-                                        <a href=?unit=admin_unit&act=delete&id_login=$ddatagrid[id_login] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
+                                        <a href=# class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='confirm($ddatagrid[id_login])'></a>    
                                     </td>                
                                 </tr>
                                 ";
@@ -105,6 +106,48 @@ include("../admin/leftbar.php");
         $('#datatable').dataTable({
           "lengthMenu": [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, "Semua"]]
         });
+
+        function confirm(id_user) {
+          swal.fire({
+            title: 'Are you sure?',
+            text: "You will not be able to recover this imaginary file!",
+            type: 'warning',
+            showCancelButton: true,
+            showDenyButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: "No, cancel it!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+          }).then(function (result) {
+            // const inputOptions = new Promise((resolve) => {
+            // setTimeout(() => {
+            //   document.location="?unit=admin_unit&act=delete&id_login=" + id_user
+            // }, 1000)
+            // })
+            if (result.value) {  
+            Swal.fire({
+              title:'Deleted!',
+              text: 'Your file has been deleted.',
+              type: 'success',
+              // inputOptions: inputOptions,
+              showConfirmButton  : false ,
+              })
+              setTimeout(function()  {
+                window.location.href = "?unit=admin_unit&act=delete&id_login=" + id_user
+                
+              }, 1000);
+           
+                  
+               
+              } else {               
+              Swal.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+              )
+            }
+          })
+        }
       </script>
 	</body>
 </html>
@@ -214,8 +257,21 @@ include("../admin/leftbar.php");
         
        
           mysqli_query($mysqli,$qinput);
-          echo "<script> alert('Data Tersimpan');
+          
+          echo "<script> 
+          const inputOptions = new Promise((resolve) => {
+            setTimeout(() => {
               document.location='adminmainapp.php?unit=admin_unit&act=datagrid';
+            }, 1500)
+          })
+          swal.fire({
+              type: 'success',
+              title: 'Proses Berhasil',
+              text: 'Sukses',
+              inputOptions: inputOptions,
+              showConfirmButton: false,
+            });
+            
               </script>";
           exit();
         
@@ -305,7 +361,7 @@ include("../admin/leftbar.php");
 <?php
         break;
     
-         case "updateact":
+        case "updateact":
         $id_login = $_POST['id_login'];
         $nama = $_POST['nama'];
         $nama_pengguna = $_POST['nama_pengguna'];
@@ -339,15 +395,16 @@ include("../admin/leftbar.php");
         break;      
     
         case "delete":
-        $id_login = $_GET['id_login'];
-        $qdelete = "
-          DELETE  FROM t_admin 
-       
-          WHERE
-            id_login = '$id_login'
-        ";
-        $rdelete = mysqli_query($mysqli,$qdelete);
-        header("location:?unit=admin_unit&act=datagrid");
+          
+              $id_login = $_GET['id_login'];
+              $qdelete = "
+                DELETE  FROM t_admin 
+            
+                WHERE
+                  id_login = '$id_login'
+              ";
+              $rdelete = mysqli_query($mysqli,$qdelete);
+              header("location:?unit=admin_unit&act=datagrid");       
             break;
 
 case "aktif":

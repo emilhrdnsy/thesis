@@ -41,11 +41,9 @@ if ($jumlahbaris > 0){
         ";  
       $rupdate = mysqli_query($mysqli,$zupdate);
 
-    
-      
-      
-      
-      header('adminmainapp.php?unit=dashboard');
+    // $_SESSION['success'] = "success";
+    // header('location: login.php');
+    header('location: adminmainapp.php?unit=dashboard');
 }
 
  else if ($jumlahbaris2 >0 ) {
@@ -63,48 +61,31 @@ if ($jumlahbaris > 0){
         katasandi = '".$_SESSION['katasandi']."'
         ";  
       $rupdate2 = mysqli_query($mysqli,$zupdate2);
-      echo "<script>
-      alert('berhasil login')
-      window.location.href='adminmainapp.php?unit=dashboard';
-      </script>";
-    // header('location:adminmainapp.php?unit=dashboard');
+      // echo "<script>
+      // alert('berhasil login')
+      // window.location.href='adminmainapp.php?unit=dashboard';
+      // </script>";
+    header('location:adminmainapp.php?unit=dashboard');
  }
         
 else if ($nm_pengguna == '' && $password == '') {
-  // echo"
-  //   <script>
-  //   alert('Silakan Masukkan Nama Pengguna Dan Password');
-  //   </script>
-  // ";
-  echo"<script>
-    swal('Berhasil Login', 'aaa', 'success');
-    window.location.href = 'login.php';
-    </script>";
+  $_SESSION['emptyfield'] = "emptyfield";
+  header('location: login.php');
 }
 
 else if ($nm_pengguna == '') {
-  echo"
-    <script>
-    alert('Silakan Masukkan Nama Pengguna');
-    window.location.href = 'login.php';
-    </script>
-  ";
+  $_SESSION['usernmempty'] = "usernmempty";
+  header('location: login.php');
 }
 
 else if ($password == '') {
-  echo"
-    <script>
-    alert('Silakan Masukkan Password Anda');
-    window.location.href = 'login.php';
-    </script>
-  ";
+  $_SESSION['passempty'] = "passempty";
+  header('location: login.php');
 }     
 
 else {
-  echo "<script>
-    alert('Nama Pengguna Atau Kata Sandi Salah');
-    window.location.href='./'
-    </script>";
+  $_SESSION['error'] = "error";
+  header('location: login.php');
 }
 
 // else {

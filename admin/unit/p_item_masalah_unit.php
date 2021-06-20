@@ -230,17 +230,16 @@ switch($act){
       $results = array_unique($_POST['kondisi']);
       if(count($results) == 1)
       {
-        echo"<script>
-          alert('Tidak ada item yang tepilih');
-          document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
+        echo "<script> 
+          swal({
+            title: 'Info',
+            text: 'Tidak ada item yang terpilih',
+            type: 'info'
+          }).then(function() {
+            document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$kd_daftar';
+          }); 
         </script>";
-       
-        
-      }
-      else
-      {
-       
-
+      } else {       
 	  $qinput = "
           INSERT INTO t_hasil
           (
@@ -263,11 +262,22 @@ switch($act){
         ";
         
         mysqli_query($mysqli,$qinput);
-             
-          echo "<script> alert('Data Tersimpan');
+        echo "<script> 
+        const inputOptions = new Promise((resolve) => {
+          setTimeout(() => {
             document.location='adminmainapp.php?unit=p_item_masalah_unit&act=update&id_siswa=$kd_daftar';
-            </script>";
-          exit();
+          }, 1500)
+        })
+        swal.fire({
+            type: 'success',
+            title: 'Berhasil',
+            text: 'Berhasil Tersimpan',
+            inputOptions: inputOptions,
+            showConfirmButton: false,
+          });
+          </script>";
+        exit(); 
+         
         }
         break;
         case "input":
@@ -436,15 +446,39 @@ include("../admin/leftbar.php");
         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_siswa WHERE kode_siswa = '$id_siswa'"));
         
         if ($cek > 0) {
-          echo "<script> alert('Kode Sudah Ada');
+          echo "<script> 
+          const inputOptions = new Promise((resolve) => {
+            setTimeout(() => {
               document.location='adminmainapp.php?unit=p_item_masalah_unit&act=input';
+            }, 1500)
+          })
+          swal.fire({
+              type: 'info',
+              title: 'Info',
+              text: 'Data Sudah Ada',
+              inputOptions: inputOptions,
+              showConfirmButton: false,
+            });
+              
+            </script>";
+            } else {
+            mysqli_query($mysqli,$qinput);
+            echo "<script> 
+            const inputOptions = new Promise((resolve) => {
+              setTimeout(() => {
+                document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$id_siswa';
+              }, 1500)
+            })
+            swal.fire({
+                type: 'success',
+                title: 'Berhasil',
+                text: 'Berhasil Tersimpan',
+                inputOptions: inputOptions,
+                showConfirmButton: false,
+              });
               </script>";
-          } else {
-          mysqli_query($mysqli,$qinput);
-          echo "<script> alert('Data Tersimpan');
-              document.location='adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&id_siswa=$id_siswa';
-              </script>";
-          exit();
+            exit();
+ 
          }
         break;
     
@@ -641,26 +675,15 @@ include("../admin/leftbar.php");
           <h6>Hasil Dari Identifikasi Bidang Masalah Yang Paling Mungkin adalah:
             <b><?php echo $dupdate['nama_bidang_masalah']; ?></b></h6>
 
-          <div class="widget-body">
+          <div class="widget-body" style="margin-left: -12px; width:102%">
             <div class="widget-main">
-
-              <p class="alert alert-danger">
+              <p class="alert alert-success">
                 Layanan : <?php echo $dupdate['layanan']; ?>
               </p>
-
-
-
-
             </div>
           </div>
-          <div class="clearfix form-actions">
-            <div class="col-md-offset-3 col-md-9">
-              <a href="adminmainapp.php?unit=l_konsultasi&kd_daftar=<?php echo $kd_daftar; ?>"
-                class='btn btn-sm btn-danger glyphicon glyphicon-print'> Print</a>
-              <a href="adminmainapp.php?unit=p_item_masalah_unit&act=datagrid&kd_daftar=<?php echo $kd_daftar; ?>"
-                class='btn btn-sm btn-info glyphicon'>Kembali</a> <br><br><br>
-            </div>
-          </div>
+          
+         
 
 
         </div><!-- /.col -->

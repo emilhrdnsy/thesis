@@ -225,7 +225,8 @@ include("../admin/leftbar.php");
                     </tr>
                   </thead>
                   <tbody>
-                    <?php  
+          
+          <?php  
 						 
 						$ig = 0;
 						foreach ($ar_item_masalah as $key => $value) {
@@ -243,82 +244,70 @@ include("../admin/leftbar.php");
               echo '<td style=text-align:left;vertical-align:middle><span class="kondisipilih">' . $arkondisitext[$kondisi] . "</span></td>";
   
 						}
-                             ?>
+          ?>
 
-                    </tr>
+            </tr>
 
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-header"></div>
+    <div class="widget-box widget-color-red" id="widget-box-2">
+      <div class="widget-header">
+        <h5 class="widget-title bigger lighter">
+          <i class=""></i>
+          Hasil Konsultasi Bidang Masalah
+        </h5>
+    </div>
+    <div class="widget-body">
+      <div class="widget-main no-padding">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="thin-border-bottom">
+          <tr>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Kode</th>
+            <th style="text-align: center">Bidang Masalah</th>
+            <th style="text-align: center">Nilai CF</th>
+            <th style="text-align: center">Persen</th>
+          </tr>
+        </thead>
+    <tbody>
+    <?php  
+      $np = 0;
+      foreach ($arbidangmasalah as $key => $value) {
+        $np++;
+        $idpkt[$np] = $key;
+        $nmpkt[$np] = $arpkt[$key];
+        $vlpkt[$np] = $value;
+						
+        $qdatagrid =" SELECT * FROM t_bidang_masalah where kode_bidang_masalah = '$key'";
+        $rdatagrid = mysqli_query($mysqli, $qdatagrid);
+        $ddatagrid=mysqli_fetch_array($rdatagrid);
+        for ($ipl = 1; $ipl < count($idpkt); $ipl++) ;
+          echo '<tr><td style=text-align:center>' . $np . '</td>';
+          echo "<td class=opsi style=text-align:center> $ddatagrid[kode_bidang_masalah]</td>";
+          echo "<td class=opsi > $ddatagrid[nama_bidang_masalah]</td>";
+          echo '<td style=text-align:center>' . $vlpkt[$ipl] . '</td>';
+          echo "<td style=text-align:center> " . round($vlpkt[$ipl], 2) * 100 . " %</td></tr>";
+      }				
+    ?>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-
-          <div class="page-header"></div>
-          <div class="widget-box widget-color-red" id="widget-box-2">
-            <div class="widget-header">
-              <h5 class="widget-title bigger lighter">
-                <i class=""></i>
-                Hasil Konsultasi Bidang Masalah
-              </h5>
-
-            </div>
-            <div class="widget-body">
-              <div class="widget-main no-padding">
-                <table class="table table-striped table-bordered table-hover">
-                  <thead class="thin-border-bottom">
-                    <tr>
-                      <th style="text-align: center">No.</th>
-                      <th style="text-align: center">Kode</th>
-                      <th style="text-align: center">Bidang Masalah</th>
-                      <th style="text-align: center">Nilai CF</th>
-                      <th style="text-align: center">Persen</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php  
-						 
-						$np = 0;
-						foreach ($arbidangmasalah as $key => $value) {
-						$np++;
-						$idpkt[$np] = $key;
-						$nmpkt[$np] = $arpkt[$key];
-						$vlpkt[$np] = $value;
-						
-                        $qdatagrid =" SELECT * FROM t_bidang_masalah where kode_bidang_masalah = '$key'";
-                        $rdatagrid = mysqli_query($mysqli, $qdatagrid);
-                        $ddatagrid=mysqli_fetch_array($rdatagrid);
-						for ($ipl = 1; $ipl < count($idpkt); $ipl++) ;
-							echo '<tr><td style=text-align:center>' . $np . '</td>';
-              echo "<td class=opsi style=text-align:center> $ddatagrid[kode_bidang_masalah]</td>";
-              echo "<td class=opsi > $ddatagrid[nama_bidang_masalah]</td>";
-							echo '<td style=text-align:center>' . $vlpkt[$ipl] . '</td>';
-							echo "<td style=text-align:center> " . round($vlpkt[$ipl], 2) * 100 . " %</td></tr>";
-							
-						 }
-						
-                             ?>
-
-
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-
           <div class="page-header"></div>
           <h5>Hasil Diagnosa</h5>
           <h6>Hasil Dari Diagnosa Bidang Masalah Yang Paling Mungkin adalah :
             <b><?php echo $dupdate['nama_bidang_masalah']; ?></b></h6>
-
           <div class="widget-body">
             <div class="widget-main">
-
               <p class="alert alert-danger">
                 Layanan : <?php echo $dupdate['layanan']; ?>
               </p>
-
             </div>
           </div>
           <div class="clearfix form-actions">
@@ -329,8 +318,6 @@ include("../admin/leftbar.php");
                 class='btn btn-sm btn-info glyphicon'>Kembali</a> <br><br><br>
             </div>
           </div>
-
-
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.page-content -->
@@ -338,28 +325,22 @@ include("../admin/leftbar.php");
 
 </div><!-- /.main-content -->
 <?php
-            include("../admin/footer.php");
-            ?>
+  include("../admin/footer.php");
+?>
 </body>
 
 </html>
 
 <?php
-        break;
-    
-            
-    
-        case "delete":
-        $kd_hasil = $_GET['kode_hasil'];
-        $qdelete = "
-          DELETE  FROM t_hasil
-          WHERE
-            kode_hasil = '$kd_hasil'
-        ";
+  break;
+   
+  case "delete":
+    $kd_hasil = $_GET['kode_hasil'];
+    $qdelete = " DELETE  FROM t_hasil WHERE kode_hasil = '$kd_hasil' ";
 
-        $rdelete = mysqli_query($mysqli,$qdelete);
-        header("location:?unit=konsultasi_unit&act=datagrid");
-             break;
+    $rdelete = mysqli_query($mysqli,$qdelete);
+    header("location:?unit=konsultasi_unit&act=datagrid");
+  break;
 }
             
             

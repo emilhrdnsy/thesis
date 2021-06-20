@@ -109,41 +109,29 @@ include("../admin/leftbar.php");
 
         function confirm(id_user) {
           swal.fire({
-            title: 'Are you sure?',
-            text: "You will not be able to recover this imaginary file!",
+            title: 'Hapus Data',
+            text: "Yakin ingin menghapus?",
             type: 'warning',
             showCancelButton: true,
-            showDenyButton: true,
-            confirmButtonText: 'Delete',
-            cancelButtonText: "No, cancel it!",
-            closeOnConfirm: false,
-            closeOnCancel: false,
+            confirmButtonText: 'Hapus',
+            cancelButtonText: "Batal",
           }).then(function (result) {
-            // const inputOptions = new Promise((resolve) => {
-            // setTimeout(() => {
-            //   document.location="?unit=admin_unit&act=delete&id_login=" + id_user
-            // }, 1000)
-            // })
             if (result.value) {  
             Swal.fire({
-              title:'Deleted!',
-              text: 'Your file has been deleted.',
+              title:'Berhasil',
+              text: 'Data Admin Berhasil Terhapus ',
               type: 'success',
-              // inputOptions: inputOptions,
               showConfirmButton  : false ,
               })
               setTimeout(function()  {
                 window.location.href = "?unit=admin_unit&act=delete&id_login=" + id_user
-                
-              }, 1000);
-           
-                  
-               
+              }, 1000);  
               } else {               
-              Swal.fire(
-                'Cancelled',
-                'Your imaginary file is safe :)',
-                'error'
+              Swal.fire({
+                title: 'Dibatalkan',
+                text: 'Batal Menghapus Data Admin',
+                type: 'error',
+              }
               )
             }
           })
@@ -179,11 +167,28 @@ include("../admin/leftbar.php");
 						<div class="page-header"><h1>Tambah Data Admin</h1></div>
 						<div class="row">
 							<div class="col-xs-12">
-                                                            
+              
+              <?php
+				  $mysqli= mysqli_connect("localhost","root","","thesisDB");
+                $qupdate = "SELECT max(kode_login) as maxKode FROM t_admin";
+
+                $rupdate = mysqli_query($mysqli, $qupdate);
+                $dupdate = mysqli_fetch_assoc($rupdate);
+                $kode_admin = $dupdate['maxKode'];
+                $no_urut = $kode_admin + 1;
+                $char = "ADM";
+                $newID = $char.sprintf("%01s",$no_urut);
+                    ?>                              
 <form class="form-horizontal" method="post" action="?unit=admin_unit&act=inputact" enctype="multipart/form-data" >
                   
                                                                              
-                        <div class="form-group">
+                      <div class="form-group">
+                      <label class="col-sm-3 control-label no-padding-right"for="nama">Kode Admin</label>
+                      <div class="col-sm-9">
+                       <input class="col-xs-10 col-sm-5" type="text" name="kode_admin" id="kode_admin" value="<?php echo "$newID"; ?>" readonly=""    />
+                       </div>
+                       </div>
+                      <div class="form-group">
                       <label class="col-sm-3 control-label no-padding-right"for="nama">Nama</label>
                       <div class="col-sm-9">
                        <input class="col-xs-10 col-sm-5" type="text" name="nama" id="nama" required    />
@@ -266,8 +271,8 @@ include("../admin/leftbar.php");
           })
           swal.fire({
               type: 'success',
-              title: 'Proses Berhasil',
-              text: 'Sukses',
+              title: 'Berhasil',
+              text: 'Berhasil Menambah Data Admin',
               inputOptions: inputOptions,
               showConfirmButton: false,
             });
@@ -305,10 +310,22 @@ include("../admin/leftbar.php");
 						<div class="page-header"><h1>Edit Data Admin</h1></div>
 						<div class="row">
 			<div class="col-xs-12">
-                                                            
+
+                <?php
+				        $mysqli= mysqli_connect("localhost","root","","thesisDB");
+                $qupdate = "SELECT max(kode_login) as maxKode FROM t_admin";
+
+                $rupdate = mysqli_query($mysqli, $qupdate);
+                $dupdate = mysqli_fetch_assoc($rupdate);
+                $kode_admin = $dupdate['maxKode'];
+                $no_urut = $kode_admin + 1;
+                $char = "ADM";
+                $newID = $char.sprintf("%01s",$no_urut);
+                    ?>
+
 <form class="form-horizontal" method="post" action="?unit=admin_unit&act=updateact" enctype="multipart/form-data" >
                    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="id_login">Kode Pengguna</label>
+                      <label class="col-sm-3 control-label no-padding-right"for="id_login">Kode Admin</label>
                       <div class="col-sm-9">
                        <input class="col-xs-10 col-sm-5" type="text" name="id_login" id="id_login" readonly="readonly" value="<?php echo $dupdate['id_login'] ?>"  required    />
                        </div>
@@ -331,15 +348,12 @@ include("../admin/leftbar.php");
                       <div class="col-sm-9">
                        <input class="col-xs-10 col-sm-5" type="text" name="kata_sandi" id="kata_sandi" value="<?php echo $dupdate['kata_sandi'] ?>"  required    />
                        </div>
-                       </div>
-					  
-					    
-                    
+                       </div>   
                  <div class="clearfix form-actions">
                             <div class="col-md-offset-3 col-md-9">
                         <button type="submit" name="submit" class="btn btn-success">Simpan</button>
                         <button type="reset" name="reset" class="btn btn-danger">Batal</button>
-                  <button type="button" name="kembali" class="btn btn-info" onclick="window.location='adminmainapp.php?unit=pengguna_unit&act=datagrid'">kembali</button>
+                  <button type="button" name="kembali" class="btn btn-info" onclick="window.location='adminmainapp.php?unit=admin_unit&act=datagrid'">kembali</button>
                    </div>          
 				   </div>                                                          
                  </form>
@@ -362,7 +376,7 @@ include("../admin/leftbar.php");
         break;
     
         case "updateact":
-        $id_login = $_POST['id_login'];
+        $kode_login = $_POST['kode_login'];
         $nama = $_POST['nama'];
         $nama_pengguna = $_POST['nama_pengguna'];
         // $kata_sandi = md5($_POST['kata_sandi']);
@@ -375,7 +389,7 @@ include("../admin/leftbar.php");
                 nama_pengguna = '$nama_pengguna',
                 nama = '$nama'       
               WHERE
-                id_login = '$id_login'
+                kode_login = '$kode_login'
             ";            
         }
         else {
@@ -385,13 +399,33 @@ include("../admin/leftbar.php");
                 nama = '$nama',
                 kata_sandi = '$kata_sandi'       
               WHERE
-                id_login = '$id_login'
+                kode_login = '$kode_login'
             ";                        
         }
+        if($qupdate)
+        {
+            $rupdate = mysqli_query($mysqli,$qupdate);
+            
+            echo "<script>
+            swal({
+                title:'Berhasil',
+                text: 'Data Berhasil Diubah',
+                type: 'success',
+                
+            }).then(function() {
+                document.location = '?unit=admin_unit&act=datagrid';
+                exit;
+            });
+            </script>";
+        }
+        else
+        {
+            echo mysqli_error();
+        }  
 
-        $rupdate = mysqli_query($mysqli,$qupdate);
+        // $rupdate = mysqli_query($mysqli,$qupdate);
         //echo $qupdate . '<br />';
-        header("location:?unit=admin_unit&act=datagrid");      
+        // header("location:?unit=admin_unit&act=datagrid");      
         break;      
     
         case "delete":

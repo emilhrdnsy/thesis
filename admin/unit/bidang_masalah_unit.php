@@ -63,8 +63,8 @@ include("../admin/leftbar.php");
                                              <td style= text-align:justify;vertical-align:middle>$ddatagrid[detail_bidang_masalah]</td>
                                              <td style= text-align:justify;vertical-align:middle>$ddatagrid[layanan]</td>
                                              <td style=text-align:center;vertical-align:middle>
-                                                 <a href=?unit=bidang_masalah_unit&act=update&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' > </a> 
-                                                 <a href=?unit=bidang_masalah_unit&act=delete&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
+                                                 <a href=?unit=bidang_masalah_unit&act=update&kode_bidang_masalah=$ddatagrid[kode_bidang_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil'> </a> 
+                                                 <a href=# class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='confirm($ddatagrid[id_bidang_masalah])'></a> 
                                              </td>                
                                         </tr>
                                         ";
@@ -98,6 +98,38 @@ include("../admin/footer.php");
             [10, 25, 50, 100, 500, 1000, "Semua"]
         ]
     });
+
+    
+
+    function confirm(id_user) {
+          swal.fire({
+            title: 'Hapus Data',
+            text: "Yakin ingin menghapus?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Hapus',
+            cancelButtonText: "Batal",
+          }).then(function (result) {
+            if (result.value) {  
+            Swal.fire({
+              title:'Berhasil',
+              text: 'Data Bidang Masalah Berhasil Terhapus ',
+              type: 'success',
+              showConfirmButton: false ,
+              })
+              setTimeout(function()  {
+                window.location.href = "?unit=bidang_masalah_unit&act=delete&id_bidang_masalah=" + id_user
+              }, 1200);  
+              } else {               
+              Swal.fire({
+                title: 'Dibatalkan',
+                text: 'Batal Menghapus Data Bidang Masalah',
+                type: 'error',
+              }
+              )
+            }
+          })
+        }
 </script>
 </body>
 
@@ -132,7 +164,7 @@ include("../admin/leftbar.php");
             <div class="row">
                 <div class="col-xs-12">
 
-                    <?php
+                <?php
 				$mysqli= mysqli_connect("localhost","root","","thesisDB");
                 $qupdate = "SELECT max(id_bidang_masalah) as maxKode FROM t_bidang_masalah";
                 $rupdate = mysqli_query($mysqli, $qupdate);
@@ -142,7 +174,7 @@ include("../admin/leftbar.php");
                 $char = "BM";
                 $newID = $char.sprintf("%01s",$no_urut);
 
-                    ?>
+                ?>
 
                     <form class="form-horizontal" id="tambah_kat" name="tambah_kat" method="post"
                         action="?unit=bidang_masalah_unit&act=inputact" enctype="multipart/form-data">
@@ -173,7 +205,7 @@ include("../admin/leftbar.php");
                             <label class="col-sm-3 control-label" for="layanan">Layanan :</label>
                             <div class="col-sm-9">
                                 <select class="form-select col-xs-10 col-sm-5 " name="layanan" id="layanan"
-                                aria-label="Default select example" required>
+                                aria-label="Default select example">
                                     <option value="" style="color: #c0c0c0">--Pilih Layanan--</option>
                                     <option value="Layanan Pembelajaran" >Layanan Pembelajaran</option>
                                     <option value="Layanan Konseling Perorangan" >Layanan Konseling Perorangan</option>
@@ -240,19 +272,38 @@ include("../admin/leftbar.php");
         $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_bidang_masalah WHERE nama_bidang_masalah = '$nama_bidang_masalah'"));
         
         if ($cek > 0) {
-          echo "<script> alert('Nama Bidang Masalah Sudah Ada');
+          echo "<script> 
+          swal({
+            title: 'Info',
+            text: 'Bidang Masalah sudah ada',
+            type: 'info'
+          }).then(function() {
               document.location='adminmainapp.php?unit=bidang_masalah_unit&act=input';
-              </script>";
+          }); 
+        
+            </script>";
           } else {
           mysqli_query($mysqli,$qinput);
-          echo "<script> alert('Data Tersimpan');
+          echo "<script> 
+          const inputOptions = new Promise((resolve) => {
+            setTimeout(() => {
               document.location='adminmainapp.php?unit=bidang_masalah_unit&act=datagrid';
-              </script>";
+            }, 1500)
+          })
+          swal.fire({
+              type: 'success',
+              title: 'Berhasil',
+              text: 'Berhasil Menambah Bidang Masalah',
+              inputOptions: inputOptions,
+              showConfirmButton: false,
+            });
+            </script>";
           exit();
          }
         break;
     
         case "update":
+            
         $kode_bidang_masalah = $_GET['kode_bidang_masalah'];
         $qupdate = "SELECT * FROM t_bidang_masalah WHERE kode_bidang_masalah = '$kode_bidang_masalah'";
         $rupdate = mysqli_query($mysqli, $qupdate);
@@ -272,13 +323,13 @@ include("../admin/leftbar.php");
                     <a href="#">Beranda</a>
                 </li>
                 <li>Data Master</li>
-                <li>Edit Data Bidang Masalah</li>
+                <li>Ubah Data Bidang Masalah</li>
             </ul><!-- /.breadcrumb -->
         </div>
 
         <div class="page-content">
             <div class="page-header">
-                <h1>Edit Data Bidang Masalah</h1>
+                <h1>Ubah Data Bidang Masalah</h1>
             </div>
             <div class="row">
                 <div class="col-xs-12">
@@ -329,7 +380,7 @@ include("../admin/leftbar.php");
 
                         <div class="clearfix form-actions">
                             <div class="col-md-offset-3 col-md-9">
-                                <button type="submit" name="submit" class="btn btn-success">Simpan</button>
+                                <button type="submit" name="submit" class="btn btn-success" >Simpan</button>
                                 <button type="reset" name="reset" class="btn btn-danger">Batal</button>
                                 <button type="button" name="kembali" class="btn btn-info"
                                     onclick="window.location='adminmainapp.php?unit=bidang_masalah_unit&act=datagrid'">kembali</button>
@@ -349,22 +400,25 @@ include("../admin/leftbar.php");
 </div><!-- /.main-content -->
 <?php
             include("../admin/footer.php");
-            ?>
+
+           
+?>
 
 <script type="text/javascript">
     var frmvalidator = new Validator("tambah_kat");
     frmvalidator.addValidation("nama_bidang_masalah", "req", "Silakan Masukkan Nama Bidang Masalah");
-    frmvalidator.addValidation("nama_bidang_masalah", "maxlen=35", "Maksimal Karakter Nama 35 digit");
+    frmvalidator.addValidation("nama_bidang_masalah", "maxlen=100", "Maksimal Karakter Nama 100 digit");
     frmvalidator.addValidation("nama_bidang_masalah", "alpha_s", "Hanya Huruf Saja");
     frmvalidator.addValidation("nama_bidang_masalah", "simbol", "Hanya Huruf Saja");
 </script>
+
 </body>
 
 </html>
 <?php
         break;
-    
-            case "updateact":
+        case "updateact":
+       
             $kode_bidang_masalah = $_POST['kode_bidang_masalah'];
             $nama_bidang_masalah = $_POST['nama_bidang_masalah'];
             $detail_bidang_masalah = $_POST['detail_bidang_masalah'];
@@ -377,17 +431,38 @@ include("../admin/leftbar.php");
                 WHERE
                 kode_bidang_masalah = '$kode_bidang_masalah'
             ";
-            $rupdate = mysqli_query($mysqli,$qupdate);
-            header("location:?unit=bidang_masalah_unit&act=datagrid");
-                    break;
+            if($qupdate)
+            {
+                $rupdate = mysqli_query($mysqli,$qupdate);
+                
+                echo "<script>
+                swal({
+                    title:'Berhasil',
+                    text: 'Data Berhasil Diubah',
+                    type: 'success',
+                    
+                }).then(function() {
+                    document.location = '?unit=bidang_masalah_unit&act=datagrid';
+                    exit;
+                });
+                </script>";
+            }
+            else
+            {
+                echo mysqli_error();
+            }  
+         
+            // header('location:?unit=bidang_masalah_unit&act=datagrid');
+
+     
+          
+            break;
     
         case "delete":
-              $kode_bidang_masalah = $_GET['kode_bidang_masalah'];
-        $qdelete = "
-          DELETE  FROM t_bidang_masalah       
-          WHERE
-          kode_bidang_masalah = '$kode_bidang_masalah'
-        ";
+            $id_bidang_masalah = $_GET['id_bidang_masalah'];
+            $qdelete = "DELETE FROM t_bidang_masalah 
+            WHERE id_bidang_masalah = '$id_bidang_masalah'
+            ALTER TABLE t_bidang_masalah AUTO_INCREMENT = 1";
 
         $rdelete = mysqli_query($mysqli,$qdelete);
         header("location:?unit=bidang_masalah_unit&act=datagrid");

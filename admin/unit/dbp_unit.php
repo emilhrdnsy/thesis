@@ -76,7 +76,7 @@ include("../admin/leftbar.php");
                                   <td style= text-align:center;vertical-align:middle>$ddatagrid[cf_bidang_masalah]</td>
                                   <td style=text-align:center;vertical-align:middle>
                                     <a href=?unit=dbp_unit&act=update&kode_identifikasi=$ddatagrid[kode_identifikasi] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
-                                    <a href=?unit=dbp_unit&act=delete&kode_identifikasi=$ddatagrid[kode_identifikasi] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
+                                    <a href=# class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='confirm($ddatagrid[kode_identifikasi])'></a>    
                                   </td>                
                                 </tr>
                                 ";
@@ -111,6 +111,35 @@ include("../admin/leftbar.php");
       [10, 25, 50, 100, 500, 1000, "Semua"]
     ]
   });
+  function confirm(id_user) {
+          swal.fire({
+            title: 'Hapus Data',
+            text: "Yakin ingin menghapus?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Hapus',
+            cancelButtonText: "Batal",
+          }).then(function (result) {
+            if (result.value) {  
+            Swal.fire({
+              title:'Berhasil',
+              text: 'Data Item Masalah Berhasil Terhapus ',
+              type: 'success',
+              showConfirmButton: false ,
+              })
+              setTimeout(function()  {
+                window.location.href = "?unit=dbp_unit&act=delete&kode_identifikasi=" + id_user
+              }, 1000);  
+              } else {               
+              Swal.fire({
+                title: 'Dibatalkan',
+                text: 'Batal Menghapus Data Item Masalah',
+                type: 'error',
+              }
+              )
+            }
+          })
+        }
 </script>
 </body>
 
@@ -155,7 +184,7 @@ include("../admin/leftbar.php");
               <label class="col-sm-3 control-label no-padding-right" for="kode_bidang_masalah">Bidang Masalah</label>
               <div class="col-sm-9">
                 <select class="col-xs-10 col-sm-5" name="kode_bidang_masalah" id="kode_bidang_masalah" required>
-                  <option selected="selected">-Pilih Bidang Masalah-</option>
+                  <option selected="selected">--Pilih Bidang Masalah--</option>
                   <?php
                         $qcombo = 
                         "
@@ -177,7 +206,7 @@ include("../admin/leftbar.php");
               <label class="col-sm-3 control-label no-padding-right" for="kode_item_masalah">Item Masalah</label>
               <div class="col-sm-9">
                 <select class="col-xs-10 col-sm-5" name="kode_item_masalah" id="kode_item_masalah" required>
-                  <option selected="selected">-Pilih Item Masalah-</option>
+                  <option selected="selected">--Pilih Item Masalah--</option>
                   <?php
                         $qcombo = 
                         "
@@ -186,7 +215,7 @@ include("../admin/leftbar.php");
                         $rcombo = mysqli_query($mysqli,$qcombo);
                         while($dcombo = mysqli_fetch_assoc($rcombo)) {
                             echo "
-                            <option value=$dcombo[kode_item_masalah]>$dcombo[nama_item_masalah]</option> 
+                            <option value=$dcombo[kode_item_masalah]>$dcombo[kode_item_masalah]</option> 
                             ";
                         }
                         ?>
@@ -263,14 +292,32 @@ include("../admin/leftbar.php");
          $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_identifikasi WHERE kode_bidang_masalah = '$kode_bidang_masalah' and kode_item_masalah = '$kode_item_masalah'"));
         
         if ($cek > 0) {
-          echo "<script> alert('Bidang Masalah dengan item tersebut sudah ada');
+          echo "<script> 
+            wal({
+              title: 'Info',
+              text: 'Item Masalah sudah ada',
+              type: 'info'
+            }).then(function() {
               document.location='adminmainapp.php?unit=dbp_unit&act=input';
-              </script>";
+            }); 
+              
+            </script>";
           } else {
           mysqli_query($mysqli,$qinput);
-          echo "<script> alert('Data Tersimpan');
+          echo "<script> 
+          const inputOptions = new Promise((resolve) => {
+            setTimeout(() => {
               document.location='adminmainapp.php?unit=dbp_unit&act=datagrid';
-              </script>";
+            }, 1500)
+          })
+          swal.fire({
+              type: 'success',
+              title: 'Berhasil',
+              text: 'Berhasil Menambah Data Basis Pengetahuan',
+              inputOptions: inputOptions,
+              showConfirmButton: false,
+            });
+            </script>";
           exit();
          }
         break;
@@ -432,10 +479,28 @@ include("../admin/leftbar.php");
               md = '$md',
               cf_bidang_masalah = '$cf_bidang_masalah'
               WHERE
-              kode_identifikasi = '$kode_identifikasi'";			
-         $rinput = mysqli_query($mysqli,$qinput);
+              kode_identifikasi = '$kode_identifikasi'";
+              if($qinput)
+              {
+                  $rinput = mysqli_query($mysqli,$qinput);
+                  
+                  echo "<script>
+                  swal({
+                      title:'Berhasil',
+                      text: 'Data Berhasil Diubah',
+                      type: 'success',
+                      
+                  }).then(function() {
+                      document.location = '?unit=dbp_unit&act=datagrid';
+                      exit;
+                  });
+                  </script>";
+              }
+              else
+              {
+                  echo mysqli_error();
+              }  	
          	
-        header("location:?unit=dbp_unit&act=datagrid");     
                  break;
     
         case "delete":

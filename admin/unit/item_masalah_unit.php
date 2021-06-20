@@ -56,7 +56,7 @@ include("../admin/leftbar.php");
                                              <td style= text-align:justify;vertical-align:middle >$ddatagrid[nama_item_masalah]</td>
                                              <td style=text-align:center;vertical-align:middle>
                                                  <a href=?unit=item_masalah_unit&act=update&kode_item_masalah=$ddatagrid[kode_item_masalah] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
-                                                 <a href=?unit=item_masalah_unit&act=delete&kode_item_masalah=$ddatagrid[kode_item_masalah] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
+                                                 <a href=# class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='confirm($ddatagrid[id_item_masalah])'></a>     
                                              </td>                
                                         </tr>
                                         ";
@@ -87,6 +87,36 @@ include("../admin/footer.php");
         $('#datatable').dataTable({
           "lengthMenu": [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, "Semua"]]
         });
+
+        function confirm(id_user) {
+          swal.fire({
+            title: 'Hapus Data',
+            text: "Yakin ingin menghapus?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Hapus',
+            cancelButtonText: "Batal",
+          }).then(function (result) {
+            if (result.value) {  
+            Swal.fire({
+              title:'Berhasil',
+              text: 'Data Item Masalah Berhasil Terhapus ',
+              type: 'success',
+              showConfirmButton: false ,
+              })
+              setTimeout(function()  {
+                window.location.href = "?unit=item_masalah_unit&act=delete&id_item_masalah=" + id_user
+              }, 1000);  
+              } else {               
+              Swal.fire({
+                title: 'Dibatalkan',
+                text: 'Batal Menghapus Data Item Masalah',
+                type: 'error',
+              }
+              )
+            }
+          })
+        }
       </script>
 	</body>
 </html>
@@ -119,7 +149,7 @@ include("../admin/leftbar.php");
 							<div class="col-xs-12">
                                                             
                  <?php
-				$mysqli= mysqli_connect("localhost","root","","thesisDB");
+				  $mysqli= mysqli_connect("localhost","root","","thesisDB");
                 $qupdate = "SELECT max(id_item_masalah) as maxKode FROM t_item_masalah";
 
                 $rupdate = mysqli_query($mysqli, $qupdate);
@@ -179,17 +209,36 @@ include("../admin/leftbar.php");
        
          $cek = mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM t_item_masalah WHERE nama_item_masalah = '$nama_item_masalah'"));
         
-        if ($cek > 0) {
-          echo "<script> alert('Data Item Masalah Sudah Ada');
+        if ($cek > 0) {    
+          echo "<script> 
+            swal({
+              title: 'Info',
+              text: 'Item Masalah Sudah Ada',
+              type: 'info'
+            }).then(function() {
               document.location='adminmainapp.php?unit=item_masalah_unit&act=input';
+            }); 
+          
+            </script>";
+            } else {
+            mysqli_query($mysqli,$qinput);
+            echo "<script> 
+            const inputOptions = new Promise((resolve) => {
+              setTimeout(() => {
+                document.location='adminmainapp.php?unit=item_masalah_unit&act=datagrid';
+              }, 1500)
+            })
+            swal.fire({
+                type: 'success',
+                title: 'Berhasil',
+                text: 'Berhasil Menambah Item Masalah',
+                inputOptions: inputOptions,
+                showConfirmButton: false,
+              });
               </script>";
-          } else {
-          mysqli_query($mysqli,$qinput);
-          echo "<script> alert('Data Tersimpan');
-              document.location='adminmainapp.php?unit=item_masalah_unit&act=datagrid';
-              </script>";
-          exit();
-         }
+            exit();
+          }
+         
         break;
     
         case "update":
@@ -212,12 +261,12 @@ include("../admin/leftbar.php");
 								<a href="#">Beranda</a>
 							</li>
                             <li>Data Master</li>
-							<li>Edit Data Item Masalah</li>
+							<li>Ubah Data Item Masalah</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
 
 					<div class="page-content">
-						<div class="page-header"><h1>Edit Data Item Masalah</h1></div>
+						<div class="page-header"><h1>Ubah Data Item Masalah</h1></div>
 						<div class="row">
 							<div class="col-xs-12">
                                                             
@@ -263,29 +312,48 @@ include("../admin/leftbar.php");
  <?php
         break;
     
-            case "updateact":
-                $kode_item_masalah = $_POST['kode_item_masalah'];
-                $nama_item_masalah = $_POST['nama_item_masalah'];
-        $qupdate = "
-          UPDATE t_item_masalah SET
-          nama_item_masalah = '$nama_item_masalah'
-          WHERE
-          kode_item_masalah = '$kode_item_masalah'
-        ";
-        $rupdate = mysqli_query($mysqli,$qupdate);
-        header("location:?unit=item_masalah_unit&act=datagrid");
-                 break;
+        case "updateact":
+          $kode_item_masalah = $_POST['kode_item_masalah'];
+          $nama_item_masalah = $_POST['nama_item_masalah'];
+          $qupdate = "
+            UPDATE t_item_masalah SET
+            nama_item_masalah = '$nama_item_masalah'
+            WHERE
+            kode_item_masalah = '$kode_item_masalah'
+          ";
+          if($qupdate)
+            {
+                $rupdate = mysqli_query($mysqli,$qupdate);
+                
+                echo "<script>
+                swal({
+                    title:'Berhasil',
+                    text: 'Data Berhasil Diubah',
+                    type: 'success',
+                    
+                }).then(function() {
+                    document.location = '?unit=item_masalah_unit&act=datagrid';
+                    exit;
+                });
+                </script>";
+            }
+            else
+            {
+                echo mysqli_error();
+            }  
+         
+          break;
     
         case "delete":
-              $kode_item_masalah = $_GET['kode_item_masalah'];
-        $qdelete = "
-          DELETE  FROM t_item_masalah
-       
-          WHERE
-            kode_item_masalah = '$kode_item_masalah'
-        ";
+          $id_item_masalah = $_GET['id_item_masalah'];
+          $qdelete = "
+            DELETE  FROM t_item_masalah
+        
+            WHERE
+              id_item_masalah = '$id_item_masalah'
+          ";
 
-        $rdelete = mysqli_query($mysqli,$qdelete);
+          $rdelete = mysqli_query($mysqli,$qdelete);
         header("location:?unit=item_masalah_unit&act=datagrid");
         break;
 }

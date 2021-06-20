@@ -38,7 +38,7 @@
               <ul class="nav ace-nav">
                 <li class="light-blue dropdown-modal">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                    <span class="user-info"><small>Selamat Datang</small>  <?php echo ucwords($dupdate['nama']); ?></span>
+                    <span class="user-info" style="text-align: right"><small>Nama Pengguna</small>  <?php echo ucwords($dupdate['nama']); ?></span>
                     
                   </a>
                 </li>

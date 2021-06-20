@@ -71,7 +71,7 @@ include("../admin/leftbar.php");
                                     <td style= text-align:center;vertical-align:middle>$ddatagrid[kata_sandi]</td>
                                     <td style=text-align:center;vertical-align:middle>
                                       <a href=?unit=pengguna_unit&act=update&id_login=$ddatagrid[id_login] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
-                                      <a href=?unit=pengguna_unit&act=delete&id_login=$ddatagrid[id_login] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'></a>    
+                                      <a href=# class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='confirm($ddatagrid[id_login])'></a>  
                                     </td>                
                                 </tr>
                                 ";
@@ -103,6 +103,36 @@ include("../admin/leftbar.php");
         $('#datatable').dataTable({
           "lengthMenu": [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, "Semua"]]
         });
+
+        function confirm(id_user) {
+          swal.fire({
+            title: 'Are you sure?',
+            text: "You will not be able to recover this imaginary file!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Hapus',
+            cancelButtonText: "Batal",
+          }).then(function (result) {
+            if (result.value) {  
+            Swal.fire({
+              title:'Berhasil',
+              text: 'Data Data Pengguna Berhasil Terhapus',
+              type: 'success',
+              showConfirmButton  : false ,
+              })
+              setTimeout(function()  {
+                window.location.href = "?unit=pengguna_unit&act=delete&id_login=" + id_user
+              }, 1000);  
+              } else {               
+              Swal.fire({
+                title: 'Dibatalkan',
+                text: 'Batal Menghapus Data Pengguna',
+                type: 'error',
+              }
+              )
+            }
+          })
+        }
       </script>
 	</body>
 </html>
@@ -209,9 +239,22 @@ include("../admin/leftbar.php");
         
         
           mysqli_query($mysqli,$qinput);
-          echo "<script> alert('Data Tersimpan');
+          echo "<script> 
+          const inputOptions = new Promise((resolve) => {
+            setTimeout(() => {
               document.location='adminmainapp.php?unit=pengguna_unit&act=datagrid';
+            }, 1500)
+          })
+          swal.fire({
+              type: 'success',
+              title: 'Berhasil',
+              text: 'Berhasil Menambah Data Pengguna',
+              inputOptions: inputOptions,
+              showConfirmButton: false,
+            });
+            
               </script>";
+         
           exit();
          
         break;    
@@ -328,10 +371,29 @@ include("../admin/leftbar.php");
                 id_login = '$id_login'
             ";                        
         }
+        if($qupdate)
+        {
+            $rupdate = mysqli_query($mysqli,$qupdate);
+            
+            echo "<script>
+            swal({
+                title:'Berhasil',
+                text: 'Data Berhasil Diubah',
+                type: 'success',
+                
+            }).then(function() {
+                document.location = '?unit=pengguna_unit&act=datagrid';
+                exit;
+            });
+            </script>";
+        }
+        else
+        {
+            echo mysqli_error();
+        }  
 
-        $rupdate = mysqli_query($mysqli,$qupdate);
         //echo $qupdate . '<br />';
-        header("location:?unit=pengguna_unit&act=datagrid");      
+        // header("location:?unit=pengguna_unit&act=datagrid");      
         break;  
     
         case "delete":

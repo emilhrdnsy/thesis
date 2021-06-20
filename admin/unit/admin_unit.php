@@ -73,8 +73,8 @@ include("../admin/leftbar.php");
                                     <td style= text-align:center;vertical-align:middle>$ddatagrid[kata_sandi]</td>	
                                                                       
                                     <td style=text-align:center;vertical-align:middle>
-                                        <a href=?unit=admin_unit&act=update&id_login=$ddatagrid[id_login] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
-                                        <a href=# class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='confirm($ddatagrid[id_login])'></a>    
+                                        <a href=?unit=admin_unit&act=update&id_admin=$ddatagrid[id_admin] class='btn btn-sm btn-warning glyphicon glyphicon-pencil' ></a> 
+                                        <a href=# class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='confirm($ddatagrid[id_admin])'></a>    
                                     </td>                
                                 </tr>
                                 ";
@@ -124,7 +124,7 @@ include("../admin/leftbar.php");
               showConfirmButton  : false ,
               })
               setTimeout(function()  {
-                window.location.href = "?unit=admin_unit&act=delete&id_login=" + id_user
+                window.location.href = "?unit=admin_unit&act=delete&id_admin=" + id_user
               }, 1000);  
               } else {               
               Swal.fire({
@@ -170,7 +170,7 @@ include("../admin/leftbar.php");
               
               <?php
 				  $mysqli= mysqli_connect("localhost","root","","thesisDB");
-                $qupdate = "SELECT max(kode_login) as maxKode FROM t_admin";
+                $qupdate = "SELECT max(id_admin) as maxKode FROM t_admin";
 
                 $rupdate = mysqli_query($mysqli, $qupdate);
                 $dupdate = mysqli_fetch_assoc($rupdate);
@@ -212,7 +212,7 @@ include("../admin/leftbar.php");
 					 
 					   
                   <div class="clearfix form-actions">
-                            <div class="col-md-offset-3 col-md-9">
+                        <div class="col-md-offset-3 col-md-9">
                         <button type="submit" name="submit" class="btn btn-success">Simpan</button>
                         <button type="reset" name="reset" class="btn btn-danger">Batal</button>
                   <button type="button" name="kembali" class="btn btn-info" onclick="window.location='adminmainapp.php?unit=admin_unit&act=datagrid'">kembali</button>
@@ -241,18 +241,21 @@ include("../admin/leftbar.php");
         case "inputact":
         $nama_pengguna = $_POST['nama_pengguna'];
         // $kata_sandi = md5($_POST['kata_sandi']);
+        $kode_admin = $_POST['kode_admin'];
         $kata_sandi = $_POST['kata_sandi'];
         $nama = $_POST['nama'];
         $qinput = "
           INSERT INTO t_admin
           (
             nama_pengguna,
+            kode_admin,
             kata_sandi,
             nama
           )
           VALUES
           (
             '$nama_pengguna',
+            '$kode_admin',
             '$kata_sandi',
             '$nama'
           )
@@ -283,8 +286,8 @@ include("../admin/leftbar.php");
         break;    
     
         case "update":
-            $id_login = $_GET['id_login'];
-        $qupdate = "SELECT * FROM  t_admin WHERE id_login = '$id_login'";
+        $id_admin = $_GET['id_admin'];
+        $qupdate = "SELECT * FROM  t_admin WHERE id_admin = '$id_admin'";
         $rupdate = mysqli_query($mysqli, $qupdate);
         $dupdate = mysqli_fetch_assoc($rupdate);
             ?>
@@ -311,23 +314,12 @@ include("../admin/leftbar.php");
 						<div class="row">
 			<div class="col-xs-12">
 
-                <?php
-				        $mysqli= mysqli_connect("localhost","root","","thesisDB");
-                $qupdate = "SELECT max(kode_login) as maxKode FROM t_admin";
-
-                $rupdate = mysqli_query($mysqli, $qupdate);
-                $dupdate = mysqli_fetch_assoc($rupdate);
-                $kode_admin = $dupdate['maxKode'];
-                $no_urut = $kode_admin + 1;
-                $char = "ADM";
-                $newID = $char.sprintf("%01s",$no_urut);
-                    ?>
-
+               
 <form class="form-horizontal" method="post" action="?unit=admin_unit&act=updateact" enctype="multipart/form-data" >
                    <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right"for="id_login">Kode Admin</label>
+                      <label class="col-sm-3 control-label no-padding-right"for="id_admin">Kode Admin</label>
                       <div class="col-sm-9">
-                       <input class="col-xs-10 col-sm-5" type="text" name="id_login" id="id_login" readonly="readonly" value="<?php echo $dupdate['id_login'] ?>"  required    />
+                       <input class="col-xs-10 col-sm-5" type="text" name="kode_admin" id="kode_admin" readonly="readonly" value="<?php echo $dupdate['kode_admin'] ?>"  required    />
                        </div>
                        </div>
                     <div class="form-group">
@@ -376,7 +368,7 @@ include("../admin/leftbar.php");
         break;
     
         case "updateact":
-        $kode_login = $_POST['kode_login'];
+        $kode_admin = $_POST['kode_admin'];
         $nama = $_POST['nama'];
         $nama_pengguna = $_POST['nama_pengguna'];
         // $kata_sandi = md5($_POST['kata_sandi']);
@@ -387,9 +379,10 @@ include("../admin/leftbar.php");
             $qupdate = "
               UPDATE t_admin SET
                 nama_pengguna = '$nama_pengguna',
-                nama = '$nama'       
+                nama = '$nama',
+                kode_admin = '$kode_admin'       
               WHERE
-                kode_login = '$kode_login'
+                kode_admin = '$kode_admin'
             ";            
         }
         else {
@@ -399,7 +392,7 @@ include("../admin/leftbar.php");
                 nama = '$nama',
                 kata_sandi = '$kata_sandi'       
               WHERE
-                kode_login = '$kode_login'
+                kode_admin = '$kode_admin'
             ";                        
         }
         if($qupdate)
@@ -430,19 +423,19 @@ include("../admin/leftbar.php");
     
         case "delete":
           
-              $id_login = $_GET['id_login'];
+              $id_admin = $_GET['id_admin'];
               $qdelete = "
                 DELETE  FROM t_admin 
             
                 WHERE
-                  id_login = '$id_login'
+                  id_admin = '$id_admin'
               ";
               $rdelete = mysqli_query($mysqli,$qdelete);
               header("location:?unit=admin_unit&act=datagrid");       
             break;
 
 case "aktif":
-      $id_login = $_GET['id_login'];
+      $id_admin = $_GET['id_admin'];
                 $blokir = $_POST['blokir'];
         $qupdate = "
           UPDATE t_admin SET
@@ -450,7 +443,7 @@ case "aktif":
             batas_login = '0' 
      
           WHERE
-            id_login = '$id_login' 
+            id_admin = '$id_admin' 
         ";
         $rupdate = mysqli_query($mysqli,$qupdate);
         header("location:?unit=admin_unit&act=datagrid");
@@ -458,13 +451,13 @@ case "aktif":
 
         break;
     case "blokir":
-      $id_login = $_GET['id_login'];
+      $id_admin = $_GET['id_admin'];
                 $blokir = $_POST['blokir'];
         $qupdate = "
           UPDATE t_admin SET
             blokir = 'Y' 
           WHERE
-            id_login = '$id_login' 
+            id_admin = '$id_admin' 
         ";
         $rupdate = mysqli_query($mysqli,$qupdate);
         header("location:?unit=admin_unit&act=datagrid");

@@ -461,8 +461,7 @@ include("../admin/leftbar.php");
         case "delete":
             $id_bidang_masalah = $_GET['id_bidang_masalah'];
             $qdelete = "DELETE FROM t_bidang_masalah 
-            WHERE id_bidang_masalah = '$id_bidang_masalah'
-            ALTER TABLE t_bidang_masalah AUTO_INCREMENT = 1";
+            WHERE id_bidang_masalah = '$id_bidang_masalah'";
 
         $rdelete = mysqli_query($mysqli,$qdelete);
         header("location:?unit=bidang_masalah_unit&act=datagrid");

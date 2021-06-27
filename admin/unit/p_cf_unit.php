@@ -1,5 +1,5 @@
 <?php
-include("../admin/leftbar.php");
+	include("../admin/leftbar.php");
 ?>
 
 <div class="main-content">
@@ -16,24 +16,25 @@ include("../admin/leftbar.php");
 		</div>
 
 		<div class="page-content">
-
-
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="ma3">
 						<article class="tc w-75 center pt5 pb2 ph3 mw6-ns ba bw1 b--light-gray" style="background: #fff;">
 							<header class="mb4">
 								<h1 class="f3 lh-title mv2 dark-gray">Certainty Factor</h1>
-								
+
 								<br>
 								<h2 class="f5 silver mt2 mb1">Sistem Pakar Identifikasi Masalah Menggunakan Metode Certainty
 									Factor</h2>
 								<br>
 							</header>
-							<p class="f6 tl lh-copy silver" style="margin: 20px; text-align: justify">Sebuah sistem yang mampu mengidentifikasi masalah
+							<p class="f6 tl lh-copy silver" style="margin: 20px; text-align: justify">Sebuah sistem yang mampu
+								mengidentifikasi masalah
 								pada siswa SMA berdasarkan pengetahuan yang diberikan langsung dari pakar/guru BK dan melalui
 								studi literatur. Penelitian ini menggunakan metode perhitungan Certainty Factor (CF) dalam
-								menghitung tingkat kepakaran. Data penelitian ini terdiri dari data item masalah dan data bidang masalah, serta data aturan.</p>
+								menghitung tingkat kepakaran. Data penelitian ini terdiri dari data item masalah dan data bidang
+								masalah, serta data aturan.
+							</p>
 						</article>
 					</div>
 				</div>
@@ -42,12 +43,8 @@ include("../admin/leftbar.php");
 	</div>
 </div><!-- /.main-content -->
 
-
-
-
 <?php
-            include("../admin/footer.php");
-            ?>
+	include("../admin/footer.php");
+?>
 </body>
-
 </html>

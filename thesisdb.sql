@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jun 2021 pada 14.17
+-- Waktu pembuatan: 27 Jun 2021 pada 10.46
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -28,25 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `t_admin` (
-  `id_login` int(11) NOT NULL,
-  `kode_login` varchar(11) NOT NULL,
+  `id_admin` int(11) NOT NULL,
+  `kode_admin` varchar(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `nama_pengguna` varchar(20) NOT NULL,
-  `kata_sandi` varchar(20) NOT NULL,
-  `batas_login` int(3) NOT NULL,
-  `blokir` enum('N','Y') NOT NULL
+  `kata_sandi` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `t_admin`
 --
 
-INSERT INTO `t_admin` (`id_login`, `kode_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas_login`, `blokir`) VALUES
-(1, 'ADM1', 'admin', 'admin', 'admin', 20, 'N'),
-(2, 'ADM2', 'a', 's2', 'a', 0, 'N'),
-(3, 'ADM3', 'sss', 'www', 'sss', 0, 'N'),
-(4, 'ADM4', 'aaa', 'ssss', 'aa', 0, 'N'),
-(5, 'ADM5', 'www', 'www', 'ffff', 0, 'N');
+INSERT INTO `t_admin` (`id_admin`, `kode_admin`, `nama`, `nama_pengguna`, `kata_sandi`) VALUES
+(1, 'ADM-G1', 'admin', 'admin', 'admin'),
+(2, 'ADM-G2', 'emil', 'emile', 'emile');
 
 -- --------------------------------------------------------
 
@@ -149,7 +144,9 @@ INSERT INTO `t_hasil` (`kode_hasil`, `bidang_masalah`, `item_masalah`, `nilai_cf
 (53, 'a:0:{}', 'a:0:{}', '', '2021-06-19 21:01:13', '', 'S91'),
 (54, 'a:0:{}', 'a:0:{}', '', '2021-06-19 21:01:17', '', 'S91'),
 (55, 'a:0:{}', 'a:0:{}', '', '2021-06-19 21:01:19', '', 'S91'),
-(56, 'a:1:{s:3:\"BM2\";s:6:\"0.5336\";}', 'a:3:{s:4:\"IM54\";s:1:\"2\";s:4:\"IM56\";s:1:\"3\";s:4:\"IM59\";s:1:\"2\";}', '0.5336', '2021-06-19 21:30:04', 'BM2', 'S92');
+(56, 'a:1:{s:3:\"BM2\";s:6:\"0.5336\";}', 'a:3:{s:4:\"IM54\";s:1:\"2\";s:4:\"IM56\";s:1:\"3\";s:4:\"IM59\";s:1:\"2\";}', '0.5336', '2021-06-19 21:30:04', 'BM2', 'S92'),
+(57, 'a:1:{s:3:\"BM1\";s:6:\"0.3759\";}', 'a:2:{s:3:\"IM1\";s:1:\"2\";s:3:\"IM2\";s:1:\"3\";}', '0.3759', '2021-06-26 19:17:25', 'BM1', 'KD-32'),
+(58, 'a:5:{s:3:\"BM4\";s:6:\"0.9452\";s:3:\"BM2\";s:6:\"0.8807\";s:3:\"BM1\";s:6:\"0.8211\";s:3:\"BM5\";s:6:\"0.4424\";s:3:\"BM3\";s:6:\"0.1530\";}', 'a:20:{s:3:\"IM1\";s:1:\"3\";s:3:\"IM3\";s:1:\"2\";s:3:\"IM4\";s:1:\"2\";s:3:\"IM5\";s:1:\"2\";s:3:\"IM6\";s:1:\"2\";s:4:\"IM12\";s:1:\"4\";s:4:\"IM13\";s:1:\"2\";s:4:\"IM15\";s:1:\"2\";s:4:\"IM23\";s:1:\"4\";s:4:\"IM24\";s:1:\"2\";s:4:\"IM27\";s:1:\"4\";s:4:\"IM32\";s:1:\"3\";s:4:\"IM33\";s:1:\"2\";s:4:\"IM36\";s:1:\"4\";s:4:\"IM37\";s:1:\"4\";s:4:\"IM38\";s:1:\"4\";s:4:\"IM45\";s:1:\"2\";s:4:\"IM46\";s:1:\"2\";s:4:\"IM54\";s:1:\"4\";s:4:\"IM61\";s:1:\"2\";}', '0.9452', '2021-06-26 21:24:44', 'BM4', 'KD-34');
 
 -- --------------------------------------------------------
 
@@ -233,7 +230,8 @@ INSERT INTO `t_identifikasi` (`kode_identifikasi`, `mb`, `md`, `cf_bidang_masala
 (59, 0.8, 0.1, 0.7, 0, 'BM2', 'IM59'),
 (60, 0.9, 0.3, 0.6, 0, 'BM2', 'IM60'),
 (61, 0.9, 0.4, 0.5, 0, 'BM4', 'IM61'),
-(62, 1.2, 3.2, -2, 0, 'BM4', 'IM4');
+(63, 0.8, 0.2, 0.6, 0, '', 'IM1'),
+(64, 0, 0, 0, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -312,7 +310,8 @@ INSERT INTO `t_item_masalah` (`id_item_masalah`, `kode_item_masalah`, `nama_item
 (58, 'IM58', 'Kesulitan transportasi melemahkan semangat saya untuk belajar.'),
 (59, 'IM59', 'Saya mengalami kesulitan dalam memahami materi pelajaran, terutama yang berbentuk grafik, gambar, dan tabel.'),
 (60, 'IM60', 'Saya mengalami kesulitan untuk mengingat materi pelajaran tertentu.'),
-(61, 'IM61', 'Saya mengalami hambatan tertentu dalam belajar bersama karena suasana kelompok yang kurang menyenangkan.');
+(61, 'IM61', 'Saya mengalami hambatan tertentu dalam belajar bersama karena suasana kelompok yang kurang menyenangkan.'),
+(63, 'IM62', 'aasss');
 
 -- --------------------------------------------------------
 
@@ -406,7 +405,8 @@ INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode
 (29, 'CAHAYA INTAN KAMILA', 'Perempuan', 'X IPA 4', 'S29'),
 (30, 'ADELIA IFITAH ANWAR', 'Perempuan', 'X IPA 4', 'S30'),
 (31, 'AISYAH NABILA PUTRI', 'Perempuan', 'X IPA 1', 'S51'),
-(32, 'AISYAH NABILA PUTRI', 'Perempuan', 'X IPA 1', 'S52');
+(33, 'emil', 'Laki-laki', 'X IPA 1', 'KD-32'),
+(34, 'Emil', 'Laki-laki', 'X IPA 1', 'KD-34');
 
 -- --------------------------------------------------------
 
@@ -415,22 +415,20 @@ INSERT INTO `t_siswa` (`id_siswa`, `nama_siswa`, `jenis_kelamin`, `kelas`, `kode
 --
 
 CREATE TABLE `t_user` (
-  `id_login` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `kode_user` varchar(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `nama_pengguna` varchar(20) NOT NULL,
-  `kata_sandi` varchar(20) NOT NULL,
-  `batas_login` int(3) NOT NULL,
-  `blokir` enum('N','Y') NOT NULL
+  `kata_sandi` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `t_user`
 --
 
-INSERT INTO `t_user` (`id_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas_login`, `blokir`) VALUES
-(1, 'user', 'user', 'user', 20, 'N'),
-(2, 'emil', 'emil12', 'emil', 0, 'N'),
-(3, 'wew', 'ggg', 'wew', 0, 'N');
+INSERT INTO `t_user` (`id_user`, `kode_user`, `nama`, `nama_pengguna`, `kata_sandi`) VALUES
+(1, 'USER-S1', 'user', 'user', 'user'),
+(2, 'USER-S2', 'emil', 'emile', 'emile');
 
 --
 -- Indexes for dumped tables
@@ -440,7 +438,7 @@ INSERT INTO `t_user` (`id_login`, `nama`, `nama_pengguna`, `kata_sandi`, `batas_
 -- Indeks untuk tabel `t_admin`
 --
 ALTER TABLE `t_admin`
-  ADD PRIMARY KEY (`id_login`);
+  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indeks untuk tabel `t_bidang_masalah`
@@ -488,7 +486,7 @@ ALTER TABLE `t_siswa`
 -- Indeks untuk tabel `t_user`
 --
 ALTER TABLE `t_user`
-  ADD PRIMARY KEY (`id_login`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -498,31 +496,31 @@ ALTER TABLE `t_user`
 -- AUTO_INCREMENT untuk tabel `t_admin`
 --
 ALTER TABLE `t_admin`
-  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_bidang_masalah`
 --
 ALTER TABLE `t_bidang_masalah`
-  MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_bidang_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_hasil`
 --
 ALTER TABLE `t_hasil`
-  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `kode_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_identifikasi`
 --
 ALTER TABLE `t_identifikasi`
-  MODIFY `kode_identifikasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `kode_identifikasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_item_masalah`
 --
 ALTER TABLE `t_item_masalah`
-  MODIFY `id_item_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_item_masalah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_layanan`
@@ -540,13 +538,13 @@ ALTER TABLE `t_pilihan_pengguna`
 -- AUTO_INCREMENT untuk tabel `t_siswa`
 --
 ALTER TABLE `t_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_user`
 --
 ALTER TABLE `t_user`
-  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

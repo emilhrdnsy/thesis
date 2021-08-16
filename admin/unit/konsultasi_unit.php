@@ -35,13 +35,13 @@ include("../admin/leftbar.php");
                   <thead>
                     <tr>
                       <th style="text-align: center; width: 6%">No.</th>
-                      <th style="text-align: center; width: 10%">Tanggal</th>
+                      <th style="text-align: center; width: 15%">Tanggal</th>
                       <th style="text-align: center; width: 15%">Nama</th>
                       <th style="text-align: center; width: 8%">Kelas</th>
                       <th style="text-align: center; width: 12%">Jenis Kelamin</th>
                       <th style="text-align: center; width: 20%">Masalah</th>
                       <th style="text-align: center; width: 9%">Nilai CF</th>
-                      <th style="text-align: center; width: 20%">Aksi</th>
+                      <th style="text-align: center; width: 15%">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -66,8 +66,8 @@ include("../admin/leftbar.php");
                               <td style= text-align:center;vertical-align:middle>$ddatagrid[nama_bidang_masalah]</td>
                               <td style= text-align:center;vertical-align:middle>$ddatagrid[nilai_cf]</td>
                               <td style=text-align:center;vertical-align:middle>
-                                  <a href=?unit=konsultasi_unit&act=detail&kode_hasil=$ddatagrid[kode_hasil] class='btn btn-sm btn-info glyphicon glyphicon-eye-open' > Detail</a> 
-                                  <a href=?unit=konsultasi_unit&act=delete&kode_hasil=$ddatagrid[kode_hasil] class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"Yakin Akan Menghapus Data?\")'> Hapus</a>    
+                                  <a href=?unit=konsultasi_unit&act=detail&kode_hasil=$ddatagrid[kode_hasil] class='btn btn-sm btn-info glyphicon glyphicon-eye-open'></a> 
+                                  <a href=# class='btn btn-sm btn-danger glyphicon glyphicon-trash' onclick='confirm($ddatagrid[kode_hasil])'></a> 
                               </td>                
                             </tr>
                             ";
@@ -102,6 +102,36 @@ include("../admin/leftbar.php");
       [10, 25, 50, 100, 500, 1000, "Semua"]
     ]
   });
+
+  function confirm(id_user) {
+		swal.fire({
+			title: 'Hapus Data',
+			text: "Yakin ingin menghapus?",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Hapus',
+			cancelButtonText: "Batal",
+		}).then(function (result) {
+			if (result.value) {
+				Swal.fire({
+					title: 'Berhasil',
+					text: 'Data Bidang Masalah Berhasil Terhapus ',
+					type: 'success',
+					showConfirmButton: false,
+				})
+				setTimeout(function () {
+					window.location.href = "?unit=konsultasi_unit&act=delete&kode_hasil=" +
+						id_user
+				}, 1200);
+			} else {
+				Swal.fire({
+					title: 'Dibatalkan',
+					text: 'Batal Menghapus Data Bidang Masalah',
+					type: 'error',
+				})
+			}
+		})
+	}
 </script>
 </body>
 </html>
@@ -125,7 +155,7 @@ include("../admin/leftbar.php");
 		
   $arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
   date_default_timezone_set("Asia/Makassar");
-  $inptanggal = date('Y-m-d H:i:s');
+  $inptanggal = date("Y-m-d H:i:s");
 
   $arbobot = array('0', '0.3', '0.7', '1.0');
   $ar_item_masalah = array();
@@ -303,8 +333,8 @@ include("../admin/leftbar.php");
           </div>
           <div class="clearfix form-actions">
             <div class="col-md-offset-3 col-md-9">
-              <a href="adminmainapp.php?unit=l_konsultasi_d&kode_hasil=<?php echo $kd_hasil; ?>"
-                class='btn btn-sm btn-danger glyphicon glyphicon-print'> Print</a>
+              <a href="adminmainapp.php?unit=l_konsultasi_d&kode_hasil=<?php echo $kd_hasil; ?> "
+                class='btn btn-sm btn-danger glyphicon glyphicon-print' target="_blank"> Print</a>
               <a href="adminmainapp.php?unit=konsultasi_unit&act=datagrid"
                 class='btn btn-sm btn-info glyphicon'>Kembali</a> <br><br><br>
             </div>

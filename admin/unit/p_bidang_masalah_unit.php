@@ -37,7 +37,7 @@ include("../admin/leftbar.php");
               aria-hidden="true"></i> Detail</a>
           <a class="btn bg-olive btn-flat margin" href="#" data-toggle="modal"
             data-target="#modaltindakan<?php echo $r['kode_bidang_masalah']; ?>"><i class="fa fa-quote-right"
-              aria-hidden="true"></i> Saran</a>
+              aria-hidden="true"></i> Layanan</a>
       </div>
     </div>
     <hr>
@@ -75,12 +75,16 @@ include("../admin/leftbar.php");
         <div class="modal-header saran-ket">
           <button type="button" class="close" data-dismiss="modal"
             style="opacity: .99;color: #fff;">&times;</button>
-          <h4 class="modal-title text text-ket"><i class="fa fa-quote-right" aria-hidden="true"></i> Saran Untuk
+          <h4 class="modal-title text text-ket"><i class="fa fa-quote-right" aria-hidden="true"></i> Layanan Untuk
             <?php echo $r[nama_bidang_masalah]; ?></h4>
         </div>
+      
+
         <div class="modal-body" style="text-align: justify;text-justify: inter-word;">
-          <p><?php echo $r[layanan]; ?></p>
+          <p style="font-size: 14px; font-weight: bold"><?php echo $r[layanan]; ?></p>
+          <p><?php echo $r[detail_layanan]; ?></p>      
         </div>
+       
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>

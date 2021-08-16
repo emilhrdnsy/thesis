@@ -78,8 +78,9 @@ switch($act){
                       <?=$ddatagrid[nama_item_masalah]?></td>
                     <td class="opsi" style=vertical-align:middle;font-size:12px>
                       <select name="kondisi[]" id="sl<?= $i ?>" class="opsikondisi col-sm-12" required="required">
-                        <option data-id="0" value="0" style="color:silver">--Pilih jika sesuai--</option>;
-
+                        <!-- <option data-id="0" value="0">--Pilih Kondisi--</option>; -->
+                        <!-- <option data-id="0" value="0">Tidak Pernah</option>; -->
+                      
                 <?php
 									$qdatagridk =' SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna ';
 									$rdatagridk = mysqli_query($mysqli, $qdatagridk);
@@ -140,10 +141,13 @@ switch($act){
     break;
 		
     case "proses":
+      // print_r($_POST[kondisi]); 
+      // echo "$_POST[kondisi][0]";
+      // die('shinuu');
       $arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
       date_default_timezone_set("Asia/Makassar");
-      $inptanggal = date('Y-m-d H:i:s');
-      $arbobot = array('0', '0', '0.3', '0.7', '0.9');
+      $inptanggal = date("Y-m-d H:i:s");
+      $arbobot = array('0','0', '0.3', '0.7', '0.9');
       $argejala = array();
       for ($i = 0; $i < count($_POST['kondisi']); $i++) {
         $arkondisi = explode("_", $_POST['kondisi'][$i]);
@@ -151,7 +155,8 @@ switch($act){
           $argejala += array($arkondisi[0] => $arkondisi[1]);
         }
       }
-
+      // print_r($argejala);
+      // die();
       $sqlkondisi =(" SELECT * FROM t_pilihan_pengguna ORDER by id_pilihan_pengguna+0");
       $rdatagridk = mysqli_query($mysqli, $sqlkondisi);
       while($rkondisi=mysqli_fetch_array($rdatagridk)) {
@@ -210,7 +215,9 @@ switch($act){
         $vlpkt1[$np1] = $value1;
       }     
 	    $kd_daftar = $_GET['id_siswa'];
-      $results = array_unique($_POST['kondisi']);
+
+      // $results = array_unique($_POST['kondisi']);
+      $results = array_unique($argejala);
       if(count($results) == 1)
       {
         echo "<script> 
@@ -338,9 +345,12 @@ include("../admin/leftbar.php");
                   <option value="X IPA 4">X IPA 4</option>
                   <option value="X IPA 5">X IPA 5</option>
                   <option value="X IPA 6">X IPA 6</option>
-                  <option value="X IPS 1">X IPS 1</option>
-                  <option value="X IPS 2">X IPS 2</option>
-                  
+                  <option value="X IPA 1">XI IPA 1</option>
+                  <option value="X IPA 2">XI IPA 2</option>
+                  <option value="X IPA 3">XI IPA 3</option>
+                  <option value="X IPA 4">XI IPA 4</option>
+                  <option value="X IPA 5">XI IPA 5</option>
+                  <option value="X IPA 6">XI IPA 6</option>
                 </select>
               </div>
             </div>
@@ -435,7 +445,7 @@ include("../admin/leftbar.php");
 		
   $arcolor = array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00', '#FDCD01', '#FD9A01', '#FB6700');
   date_default_timezone_set("Asia/Makassar");
-  $inptanggal = date('Y-m-d H:i:s');
+  $inptanggal = date("Y-m-d H:i:s");
 
   $arbobot = array('0', '0', '0.3', '0.7', '0.9');
   $argejala = array();

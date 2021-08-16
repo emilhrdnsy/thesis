@@ -10,7 +10,6 @@ $nm_pengguna = $_POST['nm_pengguna'];
 $password = $_POST['password'];
 
 
-
 $qlogin =
 "
    SELECT * FROM t_admin WHERE nama_pengguna = '$nm_pengguna' AND kata_sandi = '$password'
@@ -31,7 +30,7 @@ if ($jumlahbaris > 0){
     $_SESSION['nm_pengguna'] = $dlogin ['nama_pengguna'];
     $_SESSION['status'] = "Admin";
       date_default_timezone_set("Asia/Makassar");
-      $tanggalsekarang = date("Y-m-d H:i:s");
+      $tanggalsekarang = date("d-m-Y H:i:s");
       $zupdate = 
         "
         UPDATE t_login SET

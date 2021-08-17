@@ -127,6 +127,23 @@
       </ul>
     </li>
 
+    <li <?php if ($page=='dbp_unit' or $page=='konsultasi_unit') {echo $open;}?>>
+      <a href="#" class="dropdown-toggle">
+        <i class="menu-icon fa fa-book"></i>
+        <span class="menu-text"> Data Konsultasi </span>
+        <b class="arrow fa fa-angle-down"></b>
+      </a>
+      <b class="arrow"></b>
+      <ul class="submenu">
+        <li <?php if ($page=='konsultasi_unit' && $act1=='datagrid') {echo $active;}?>>
+          <a href="adminmainapp.php?unit=konsultasi_user&act=datagrid"><i class="menu-icon fa fa-caret-right"></i>Riwayat
+            Konsultasi</a>
+          <b class="arrow"></b>
+        </li>
+       
+      </ul>
+    </li>
+
     <li <?php if ($page=='p_bidang_masalah_unit' or $page=='p_cf_unit') {echo $open;}?>>
       <a href="#" class="dropdown-toggle">
         <i class="menu-icon fa fa-info"></i>

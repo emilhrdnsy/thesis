@@ -1,15 +1,14 @@
 <body class="no-skin">
         <?php
         if (!isset($_SESSION['nm_pengguna']))
-    {
-       header("location:dashboard.php");
-    }
+        {
+          header("location:dashboard.php");
+        }
         require_once '../lib/koneksi.php';
         if ($_SESSION['status'] == 'Admin') {
           $qupdate = "SELECT * FROM  t_admin WHERE nama_pengguna = '".$_SESSION['nm_pengguna']."'";
-         $rupdate = mysqli_query($mysqli, $qupdate);
-         $dupdate = mysqli_fetch_assoc($rupdate);
-
+          $rupdate = mysqli_query($mysqli, $qupdate);
+          $dupdate = mysqli_fetch_assoc($rupdate);
         }
         else {
           $qupdate = "SELECT * FROM  t_user WHERE nama_pengguna = '".$_SESSION['nm_pengguna']."'";
@@ -34,7 +33,7 @@
               <ul class="nav ace-nav">
                 <li class="light-blue dropdown-modal">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle" style>
-                    <span class="user-info" style="text-align: right"><small>Nama Pengguna</small>  <?php echo ucwords($dupdate['nama']); ?></span>
+                    <span class="user-info" style="text-align: right"><small>Nama Pengguna</small><?php echo ucwords($dupdate['nama']); ?></span>
                     
                   </a>
                 </li>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 	include("../admin/leftbar.php");
 ?>
 
@@ -34,7 +35,7 @@
 				<div class="col-md-3 infobox-container">
 					<div class="infobox infobox-green">
 						<div class="infobox-icon"><i class="ace-icon fa fa-table"></i></div>
-						<?php
+							<?php
 								$qproduk =" SELECT * FROM t_bidang_masalah ";
 								$rproduk = mysqli_query($mysqli, $qproduk);
 								$dproduk = mysqli_num_rows($rproduk);
@@ -48,12 +49,12 @@
 			<div class="col-md-3 infobox-container">
 				<div class="infobox infobox-blue">
 					<div class="infobox-icon"><i class="ace-icon fa fa-table"></i></div>
-					<?php
-								$qslider =" SELECT * FROM t_item_masalah ";
-								$rslider = mysqli_query($mysqli, $qslider);
-								$dslider = mysqli_num_rows($rslider);
-								echo "<div class='infobox-data'><span class='infobox-data-number'>$dslider</span>";
-							?>
+						<?php
+							$qslider =" SELECT * FROM t_item_masalah ";
+							$rslider = mysqli_query($mysqli, $qslider);
+							$dslider = mysqli_num_rows($rslider);
+							echo "<div class='infobox-data'><span class='infobox-data-number'>$dslider</span>";
+						?>
 					<div class="infobox-content">Data Item Masalah</div>
 				</div>
 			</div>
@@ -62,12 +63,12 @@
 		<div class="col-md-3 infobox-container">
 			<div class="infobox infobox-pink">
 				<div class="infobox-icon"><i class="ace-icon fa fa-book"></i></div>
-				<?php
-								$qkategori =" SELECT * FROM t_hasil ";
-								$rkategori = mysqli_query($mysqli, $qkategori);
-								$dkategori= mysqli_num_rows($rkategori);
-								echo "<div class='infobox-data'><span class='infobox-data-number'>$dkategori</span>";
-							?>
+					<?php
+						$qkategori =" SELECT * FROM t_hasil ";
+						$rkategori = mysqli_query($mysqli, $qkategori);
+						$dkategori= mysqli_num_rows($rkategori);
+						echo "<div class='infobox-data'><span class='infobox-data-number'>$dkategori</span>";
+					?>
 				<div class="infobox-content">Data Konsultasi</div>
 			</div>
 		</div>

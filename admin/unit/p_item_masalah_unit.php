@@ -1,4 +1,7 @@
 <?php
+
+
+
 $act = $_GET['act'];
 switch($act){
   case "datagrid":
@@ -10,8 +13,8 @@ switch($act){
 
 <?php
   include("../admin/leftbar.php");
-?>
 
+?>
 
 <div class="main-content">
   <div class="main-content-inner">
@@ -29,7 +32,6 @@ switch($act){
     <div class="page-content">
       <div class="page-header">
         <h1>Konsultasi<small> Nama : <?php echo ucwords($dupdate['nama_siswa']); ?></h1>
-
       </div>
       <h6>Silahkan Pilih Kondisi Item Seusai Yang Dialami:</h6>
       <div class="row">
@@ -47,7 +49,6 @@ switch($act){
                     <i class=""></i>
                     Pilih Item
                   </h5>
-
                 </div>
 
                 <div class="widget-body">
@@ -261,12 +262,20 @@ switch($act){
     }
   break;
   
-  case "input":
+
+case "input":
 ?>
 
 <?php
-include("../admin/leftbar.php");
+  session_start();
+  include("../admin/leftbar.php");
+  if (!isset($_SESSION['nm_pengguna']))
+  {
+    header("location:dashboard.php");
+  }
+  require_once '../lib/koneksi.php';
 ?>
+
 <div class="main-content">
   <div class="main-content-inner">
     <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -295,8 +304,13 @@ include("../admin/leftbar.php");
             $no_urut = $kd_daftar + 1;
             $char = "KD-";
             $newID = $char.sprintf("%01s",$no_urut);
-            $check = "SELECT * FROM t_siswa WHERE nama_siswa LIKE "
+            $check = "SELECT * FROM t_siswa WHERE nama_siswa LIKE ";
+            
+            $qupdate2 = "SELECT * FROM t_user WHERE nama_pengguna = '".$_SESSION['nm_pengguna']."'";
+            $rupdate2 = mysqli_query($mysqli, $qupdate);
+            $dupdate2 = mysqli_fetch_assoc($rupdate);
           ?>
+
           <form class="form-horizontal" name="tambah_subkat" id="tambah_subkat" method="post"
             action="?unit=p_item_masalah_unit&act=inputact" enctype="multipart/form-data">
 
@@ -311,7 +325,7 @@ include("../admin/leftbar.php");
             <div class="form-group">
               <label class="col-sm-3 control-label no-padding-right" for="nama_siswa">Nama</label>
               <div class="col-sm-9">
-                <input class="col-xs-10 col-sm-5" type="text" name="nama_siswa" id="nama_siswa" required />
+                <input class="col-xs-10 col-sm-5" type="text" name="nama_siswa" id="nama_siswa" value="<?php echo ucwords($dupdate2['nama']) ?>" readonly /> 
               </div>
             </div>
             <div class="form-group">

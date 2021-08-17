@@ -38,9 +38,11 @@ else if($unit == "pengguna_unit") {
 else if($unit == "l_konsultasi_d") {
     require_once 'unit/l_konsultasi_d.php';
 }
-else if($unit == "l_konsultasi") {
-    require_once 'unit/l_konsultasi.php';
+
+else if($unit == "konsultasi_user") {
+    require_once 'unit/konsultasi_user.php';
 }
+
 else if($unit == "cetak") {
     require_once 'unit/cetak.php';
 }

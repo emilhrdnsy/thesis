@@ -30,19 +30,7 @@ if (!empty($_SESSION['nm_pengguna'])) {
 
 <body>
 
-  <?php 
-	if(isset($_GET['pesan'])){
-		if($_GET['pesan'] == "gagal"){
-			alert("Login gagal! username dan password salah!");
-		}else if($_GET['pesan'] == "logout"){
-			echo "Anda telah berhasil logout";
-		}else if($_GET['pesan'] == "belum_login"){
-			echo "Anda harus login untuk mengakses halaman admin";
-		}
-	}
-	?>
-
-  <section id="form">
+   <section id="form">
     <!--form-->
     <div class="container">
       <div class="row">
@@ -70,21 +58,25 @@ if (!empty($_SESSION['nm_pengguna'])) {
   <?php 
     if(isset($_SESSION['emptyfield']))
     {
-  ?>
-  <script>
-    Swal.fire({
-      type: 'error',
-      title: 'Kesalahan',
-      text: 'Nama Pengguna dan Kata Sandi Kosong',
-      customClass: '.swal2-popup',
-    });
-  </script>
-  <?php
+    echo "
+      <script>
+        Swal.fire({
+          type: 'error',
+          title: 'Kesalahan',
+          text: 'Nama Pengguna dan Kata Sandi Kosong',
+          customClass: '.swal2-popup',
+        });
+      </script>";
+    }
     unset($_SESSION['emptyfield']); 
-    }    
+  ?>
+  
+  <?php
+      
   ?>
 
   <?php 
+  
     if(isset($_SESSION['usernmfield']))
     {
   ?>
@@ -103,7 +95,7 @@ if (!empty($_SESSION['nm_pengguna'])) {
   ?>
 
   <?php 
-    if(isset($_SESSION['passfield']))
+    if(isset($_SESSION['passempty']))
     {
   ?>
   <script>

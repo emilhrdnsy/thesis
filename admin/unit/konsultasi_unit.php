@@ -185,7 +185,7 @@ include("../admin/leftbar.php");
                   t_hasil.bidang_masalah, t_hasil.item_masalah,
                   t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, 
                   t_bidang_masalah.layanan,
-                  t_siswa.kode_siswa, t_siswa.nama_siswa t_siswa
+                  t_siswa.kode_siswa, t_siswa.nama_siswa
                   FROM t_hasil
                   JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
 									JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
@@ -333,8 +333,11 @@ include("../admin/leftbar.php");
           </div>
           <div class="clearfix form-actions">
             <div class="col-md-offset-3 col-md-9">
-              <a href="adminmainapp.php?unit=l_konsultasi_d&kode_hasil=<?php echo $kd_hasil; ?> "
-                class='btn btn-sm btn-danger glyphicon glyphicon-print' target="_blank"> Print</a>
+               <a href="adminmainapp.php?unit=l_konsultasi_d&kode_hasil=<?php echo $kd_hasil; ?> "
+                class='btn btn-sm btn-danger glyphicon glyphicon-print' role="button" 
+                target="_blank"></i> Print</a>
+                
+                
               <a href="adminmainapp.php?unit=konsultasi_unit&act=datagrid"
                 class='btn btn-sm btn-info glyphicon'>Kembali</a> <br><br><br>
             </div>

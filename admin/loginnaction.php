@@ -38,6 +38,7 @@
     $dlogin2 = mysqli_fetch_assoc($rlogin2);
     $_SESSION['katasandi'] = $dlogin2 ['kata_sandi'];
     $_SESSION['nm_pengguna'] = $dlogin2 ['nama_pengguna'];
+    $_SESSION['nama_siswa'] = $dlogin2 ['nama_siswa'];
     $_SESSION['status'] = "Pengguna";
     date_default_timezone_set("Asia/Makassar");
     $tanggalsekarang = date("Y-m-d H:i:s");

@@ -267,8 +267,8 @@ case "input":
 ?>
 
 <?php
-  session_start();
   include("../admin/leftbar.php");
+  session_start();
   if (!isset($_SESSION['nm_pengguna']))
   {
     header("location:dashboard.php");
@@ -291,7 +291,7 @@ case "input":
 
     <div class="page-content">
       <div class="page-header">
-        <h1>Konsultasi<br><small>Untuk Memulai Konsultasi Silahkan Masukan Identitas Terlebih Dahulu</h1>
+        <h1>Konsultasi<br><small>Untuk Memulai Konsultasi, Silahkan Masukan Identitas Terlebih Dahulu</h1>
       </div>
       <div class="row">
         <div class="col-xs-12">
@@ -306,9 +306,10 @@ case "input":
             $newID = $char.sprintf("%01s",$no_urut);
             $check = "SELECT * FROM t_siswa WHERE nama_siswa LIKE ";
             
-            $qupdate2 = "SELECT * FROM t_user WHERE nama_pengguna = '".$_SESSION['nm_pengguna']."'";
-            $rupdate2 = mysqli_query($mysqli, $qupdate);
-            $dupdate2 = mysqli_fetch_assoc($rupdate);
+            $nama = $_SESSION['nm_pengguna'];
+            $qupdate2 = "SELECT * FROM t_user WHERE nama_pengguna = '$nama'";
+            $rupdate2 = mysqli_query($mysqli, $qupdate2);
+            $dupdate2 = mysqli_fetch_assoc($rupdate2);
           ?>
 
           <form class="form-horizontal" name="tambah_subkat" id="tambah_subkat" method="post"
@@ -325,7 +326,7 @@ case "input":
             <div class="form-group">
               <label class="col-sm-3 control-label no-padding-right" for="nama_siswa">Nama</label>
               <div class="col-sm-9">
-                <input class="col-xs-10 col-sm-5" type="text" name="nama_siswa" id="nama_siswa" value="<?php echo ucwords($dupdate2['nama']) ?>" readonly /> 
+                <input class="col-xs-10 col-sm-5" type="text" name="nama_siswa" id="nama_siswa" readonly="" value="<?= ucwords($dupdate2['nama_siswa']); ?>" > 
               </div>
             </div>
             <div class="form-group">
@@ -638,6 +639,11 @@ case "input":
               <p class="alert alert-success">
                 Layanan : <?php echo $dupdate['layanan']; ?>
               </p>
+              <?php $kode_siswa = explode('-', $id_siswa); ?>
+              <a href="adminmainapp.php?unit=l_konsultasi_d&kode_hasil=<?php echo $kode_siswa[1]; ?>" 
+              class='btn btn-sm btn-danger glyphicon glyphicon-print' target="_blank">
+              Print
+            </a>
             </div>
           </div>
 
@@ -645,7 +651,6 @@ case "input":
       </div><!-- /.row -->
     </div><!-- /.page-content -->
   </div>
-
 </div><!-- /.main-content -->
 
 <?php

@@ -1,11 +1,14 @@
 <?php
-session_start();
-$act = $_GET['act'];
-switch($act){
-  case "datagrid":
+  session_start();
+  
+  echo($_SESSION['nama_siswa']);
+  $act = $_GET['act'];
+  switch($act){
+    case "datagrid":
 ?>
 <?php
 include("../admin/leftbar.php");
+
 ?>
 <div class="main-content">
   <div class="main-content-inner">
@@ -46,14 +49,24 @@ include("../admin/leftbar.php");
                     </tr>
                   </thead>
                   <tbody>
-                    <?php $no=1; 
-                      $qdatagrid ="SELECT t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
-                        t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
-                        t_siswa.kode_siswa, t_siswa.nama_siswa, t_siswa.kelas, t_siswa.jenis_kelamin
-                        FROM t_hasil JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
-                        JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
-												WHERE siswa.nama_siswa = '$kd_hasil'";
-                      	$rdatagrid = mysqli_query($mysqli, $qdatagrid);
+                    <?php 
+                    $siswa = $_SESSION['nama_siswa'];
+                     $qupdate2 = "SELECT * FROM t_user WHERE nama_siswa  = '$siswa'";
+                     $rupdate2 = mysqli_query($mysqli, $qupdate2);
+                     $dupdate2 = mysqli_fetch_assoc($rupdate2);
+                      echo ($dupdate2);
+                        $no=1; 
+                        $qdatagrid ="SELECT t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
+                                  t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah,
+                                  t_siswa.kode_siswa, t_siswa.nama_siswa, t_siswa.kelas, t_siswa.jenis_kelamin
+                                FROM t_hasil
+                                JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
+                                JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
+                                WHERE t_siswa.nama_siswa = '$siswa'";
+
+                        $rdatagrid = mysqli_query($mysqli, $qdatagrid);
+
+                        print_r($ddatagrid2);
                         while($ddatagrid=mysqli_fetch_assoc($rdatagrid)) {
                             echo "
                             <tr >
@@ -140,10 +153,12 @@ include("../admin/leftbar.php");
 
   case "detail":
   $kd_hasil = $_GET['kode_hasil'];
-  $qupdate = "SELECT t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
+  $qupdate = "SELECT 
+            t_hasil.kode_hasil, t_hasil.tanggal, t_hasil.nilai_cf, t_hasil.hasil_id,
             t_bidang_masalah.kode_bidang_masalah, t_bidang_masalah.nama_bidang_masalah, t_bidang_masalah.layanan,
             t_siswa.kode_siswa, t_siswa.nama_siswa, t_siswa.kelas, t_siswa.jenis_kelamin
-            FROM t_hasil 
+            FROM 
+            t_hasil 
             JOIN t_bidang_masalah ON t_hasil.hasil_id = t_bidang_masalah.kode_bidang_masalah
             JOIN t_siswa ON t_hasil.kode_siswa = t_siswa.kode_siswa
             WHERE t_hasil.kode_hasil = '$kd_hasil'";

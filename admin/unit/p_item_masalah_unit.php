@@ -639,6 +639,7 @@ case "input":
               <p class="alert alert-success">
                 Layanan : <?php echo $dupdate['layanan']; ?>
               </p>
+              
               <?php $kode_siswa = explode('-', $id_siswa); ?>
               <a href="adminmainapp.php?unit=l_konsultasi_d&kode_hasil=<?php echo $kode_siswa[1]; ?>" 
               class='btn btn-sm btn-danger glyphicon glyphicon-print' target="_blank">
